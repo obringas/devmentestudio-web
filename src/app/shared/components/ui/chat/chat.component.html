@@ -1,0 +1,116 @@
+<!-- Botón flotante para abrir el chat -->
+@if (isBrowser()) {
+  <button
+    class="chat-toggle"
+    [class.chat-open]="isOpen()"
+    (click)="toggleChat()"
+    aria-label="Abrir chat de asistencia"
+  >
+    @if (isOpen()) {
+      <!-- Icono cerrar -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    } @else {
+      <!-- Icono chat -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    }
+  </button>
+
+  <!-- Panel de chat -->
+  @if (isOpen()) {
+    <div class="chat-panel" role="dialog" aria-label="Chat de asistencia">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8V4H8"></path>
+              <rect x="8" y="8" width="8" height="8" rx="2"></rect>
+              <path d="M8 12H4"></path>
+              <path d="M20 12h-4"></path>
+              <path d="M12 16v4h4"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="chat-title">Asistente DevMente</h3>
+            <p class="chat-subtitle">Respondo tus dudas al instante</p>
+          </div>
+        </div>
+        <button class="chat-clear" (click)="clearChat()" title="Limpiar chat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mensajes -->
+      <div class="chat-messages" #messagesContainer>
+        @for (message of messages(); track trackByMessage($index, message)) {
+          <div 
+            class="chat-message" 
+            [class.chat-message-user]="message.role === 'user'"
+            [class.chat-message-assistant]="message.role === 'assistant'"
+          >
+            @if (message.role === 'assistant') {
+              <div class="message-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 8V4H8"></path>
+                  <rect x="8" y="8" width="8" height="8" rx="2"></rect>
+                </svg>
+              </div>
+            }
+            <div class="message-content">
+              {{ message.content }}
+            </div>
+          </div>
+        }
+        
+        @if (isLoading()) {
+          <div class="chat-message chat-message-assistant">
+            <div class="message-avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8V4H8"></path>
+                <rect x="8" y="8" width="8" height="8" rx="2"></rect>
+              </svg>
+            </div>
+            <div class="message-content typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-container">
+        <input
+          #messageInput
+          type="text"
+          class="chat-input"
+          placeholder="Escribe tu mensaje..."
+          [value]="inputMessage()"
+          (input)="inputMessage.set($any($event.target).value)"
+          (keydown)="onKeyDown($event)"
+          [disabled]="isLoading()"
+        />
+        <button 
+          class="chat-send" 
+          (click)="sendMessage()" 
+          [disabled]="isLoading() || !inputMessage().trim()"
+          title="Enviar mensaje"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  }
+}

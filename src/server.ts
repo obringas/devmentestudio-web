@@ -6,6 +6,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { environment } from './environments/environment';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -23,6 +24,9 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
+
+// La integración con Gemini ahora se maneja desde el cliente (src/app/core/services/gemini.service.ts)
+// para reducir latencia y simplificar la arquitectura, utilizando la API Key con restricciones de dominio.
 
 /**
  * Serve static files from /browser

@@ -8,18 +8,28 @@ module.exports = {
     extend: {
       colors: {
         // Brand colors - Deep tech luxury palette
+        // Brand colors based on Logo
+        // Dark Blue Background: #1a1f3c
+        // Cyan/Blue Gradient: #00b4d8 -> #0ea5e9
+        // Orange/Yellow Gradient: #ff9f1c -> #eab308
+        brand: {
+          dark: '#0f172a', // Slate 900 (Background)
+          primary: '#0ea5e9', // Sky 500 (Cyan-ish Blue)
+          secondary: '#f97316', // Orange 500
+          accent: '#eab308', // Yellow 500
+        },
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9', // Sky 500 - Matches logic left side
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49',
         },
         accent: {
           50: '#ecfdf5',

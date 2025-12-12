@@ -1,6 +1,6 @@
-import { 
-  Component, 
-  signal, 
+import {
+  Component,
+  signal,
   computed,
   inject,
   ChangeDetectionStrategy,
@@ -14,127 +14,13 @@ import { MAIN_NAV } from '../../../../data';
   selector: 'app-header',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, NgClass],
-  template: `
-    <header 
-      [ngClass]="headerClasses()"
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    >
-      <div class="container-custom">
-        <nav class="flex items-center justify-between h-20">
-          <!-- Logo -->
-          <a routerLink="/" class="flex items-center gap-2 group">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
-              <span class="text-white font-bold text-lg">D</span>
-            </div>
-            <span class="font-display font-bold text-xl text-surface-100 group-hover:text-primary-400 transition-colors">
-              DevMenteStudio
-            </span>
-          </a>
-
-          <!-- Desktop Navigation -->
-          <div class="hidden lg:flex items-center gap-8">
-            @for (item of navItems; track item.href) {
-              <a 
-                [routerLink]="item.href"
-                routerLinkActive="text-primary-400"
-                [routerLinkActiveOptions]="{ exact: item.href === '/' }"
-                class="text-surface-300 hover:text-surface-100 transition-colors font-medium"
-              >
-                {{ item.label }}
-              </a>
-            }
-          </div>
-
-          <!-- Desktop CTA -->
-          <div class="hidden lg:flex items-center gap-4">
-            <a 
-              routerLink="/contacto" 
-              class="btn-primary"
-            >
-              Hablemos
-            </a>
-          </div>
-
-          <!-- Mobile Menu Button -->
-          <button 
-            type="button"
-            class="lg:hidden p-2 text-surface-300 hover:text-surface-100 transition-colors"
-            (click)="toggleMobileMenu()"
-            [attr.aria-expanded]="mobileMenuOpen()"
-            aria-label="Toggle menu"
-          >
-            <svg 
-              class="w-6 h-6" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              @if (mobileMenuOpen()) {
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="2" 
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              } @else {
-                <path 
-                  stroke-linecap="round" 
-                  stroke-linejoin="round" 
-                  stroke-width="2" 
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              }
-            </svg>
-          </button>
-        </nav>
-      </div>
-
-      <!-- Mobile Menu -->
-      @if (mobileMenuOpen()) {
-        <div 
-          class="lg:hidden absolute top-full left-0 right-0 bg-surface-950/95 backdrop-blur-xl border-t border-surface-800"
-        >
-          <div class="container-custom py-6">
-            <div class="flex flex-col gap-4">
-              @for (item of navItems; track item.href) {
-                <a 
-                  [routerLink]="item.href"
-                  routerLinkActive="text-primary-400"
-                  [routerLinkActiveOptions]="{ exact: item.href === '/' }"
-                  class="text-surface-300 hover:text-surface-100 transition-colors font-medium py-2"
-                  (click)="closeMobileMenu()"
-                >
-                  {{ item.label }}
-                </a>
-              }
-              <div class="pt-4 border-t border-surface-800">
-                <a 
-                  routerLink="/contacto" 
-                  class="btn-primary w-full text-center"
-                  (click)="closeMobileMenu()"
-                >
-                  Hablemos
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
-    </header>
-    
-    <!-- Spacer for fixed header -->
-    <div class="h-20"></div>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   private readonly platformId = inject(PLATFORM_ID);
-  
+
   readonly navItems = MAIN_NAV;
   readonly mobileMenuOpen = signal(false);
   readonly scrolled = signal(false);
