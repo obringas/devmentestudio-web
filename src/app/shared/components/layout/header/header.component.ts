@@ -4,7 +4,8 @@ import {
   computed,
   inject,
   ChangeDetectionStrategy,
-  PLATFORM_ID
+  PLATFORM_ID,
+  OnDestroy
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -18,8 +19,9 @@ import { MAIN_NAV } from '../../../../data';
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly onScroll = () => this.scrolled.set(window.scrollY > 50);
 
   readonly navItems = MAIN_NAV;
   readonly mobileMenuOpen = signal(false);
@@ -37,9 +39,8 @@ export class HeaderComponent {
   }
 
   private initScrollListener(): void {
-    window.addEventListener('scroll', () => {
-      this.scrolled.set(window.scrollY > 50);
-    }, { passive: true });
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
   }
 
   toggleMobileMenu(): void {
@@ -48,5 +49,11 @@ export class HeaderComponent {
 
   closeMobileMenu(): void {
     this.mobileMenuOpen.set(false);
+  }
+
+  ngOnDestroy(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('scroll', this.onScroll);
+    }
   }
 }

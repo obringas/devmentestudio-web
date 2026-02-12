@@ -6,12 +6,22 @@ import {
 } from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { SOCIAL_LINKS } from '../../data/navigation.data';
+
+type ContactFormControls = {
+  name: FormControl<string>;
+  email: FormControl<string>;
+  company: FormControl<string>;
+  service: FormControl<string>;
+  budget: FormControl<string>;
+  message: FormControl<string>;
+};
 
 @Component({
   selector: 'app-contact',
@@ -286,7 +296,7 @@ export class ContactComponent {
   readonly loading = signal(false);
   readonly submitted = signal(false);
 
-  readonly contactForm: FormGroup = this.fb.group({
+  readonly contactForm: FormGroup<ContactFormControls> = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
     company: [''],
@@ -316,7 +326,7 @@ export class ContactComponent {
     return iconPaths[platform] ?? iconPaths['github'];
   }
 
-  isFieldInvalid(fieldName: string): boolean {
+  isFieldInvalid(fieldName: keyof ContactFormControls): boolean {
     const field = this.contactForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }

@@ -161,18 +161,6 @@ $border-color: #3f3f46;
   display: flex;
   gap: 8px;
   max-width: 85%;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .chat-message-user {
@@ -277,7 +265,6 @@ $border-color: #3f3f46;
 
   &:disabled {
     opacity: 0.6;
-    cursor: not-allowed;
   }
 }
 

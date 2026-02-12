@@ -75,6 +75,11 @@ export class ChatComponent implements AfterViewChecked {
         });
     }
 
+    onInput(event: Event): void {
+        const target = event.target as HTMLInputElement | null;
+        this.inputMessage.set(target?.value ?? '');
+    }
+
     onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();

@@ -1,5 +1,6 @@
 import { 
   Component, 
+  computed,
   input, 
   forwardRef,
   signal,
@@ -42,7 +43,7 @@ import {
           [id]="inputId()"
           [type]="type()"
           [placeholder]="placeholder()"
-          [disabled]="disabled()"
+          [disabled]="isDisabled()"
           [required]="required()"
           [ngClass]="inputClasses"
           [ngModel]="value()"
@@ -81,6 +82,8 @@ export class InputComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
 
   readonly value = signal<string>('');
+  private readonly cvaDisabled = signal(false);
+  readonly isDisabled = computed(() => this.disabled() || this.cvaDisabled());
   
   private onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
@@ -89,7 +92,7 @@ export class InputComponent implements ControlValueAccessor {
     return {
       'pr-12': !!this.icon(),
       'border-red-500 focus:border-red-500 focus:ring-red-500/50': !!this.error(),
-      'opacity-50 cursor-not-allowed': this.disabled(),
+      'opacity-50 cursor-not-allowed': this.isDisabled(),
     };
   }
 
@@ -111,6 +114,6 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   setDisabledState(_isDisabled: boolean): void {
-    // Handled by input signal
+    this.cvaDisabled.set(_isDisabled);
   }
 }

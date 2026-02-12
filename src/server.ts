@@ -4,16 +4,21 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import express from 'express';
 import { join } from 'node:path';
+
+dotenv.config({ override: true });
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-const geminiApiKey = process.env['GEMINI_API_KEY'];
+const geminiApiKey = (process.env['GEMINI_API_KEY'] ?? '')
+  .replace(/^['"]|['"]$/g, '')
+  .trim();
+const isGeminiKeyFormatValid = geminiApiKey.startsWith('AIza') && geminiApiKey.length > 30;
 const systemInstruction = `
 Rol: Asistente virtual de DevMenteStudio (Software Studio en Salta, Argentina).
 Contacto: contacto@devmentestudio.com | https://devmentestudio.com | +54 9 387 451-3777
@@ -32,10 +37,14 @@ INSTRUCCIONES:
 
 const geminiModel = geminiApiKey
   ? new GoogleGenerativeAI(geminiApiKey).getGenerativeModel({
-    model: 'gemini-2.5-flash',
-    systemInstruction,
-  })
+      model: 'gemini-2.5-flash',
+      systemInstruction,
+    })
   : null;
+
+if (geminiApiKey && !isGeminiKeyFormatValid) {
+  console.warn('GEMINI_API_KEY tiene formato invalido. Debe comenzar con "AIza".');
+}
 
 app.use(express.json({ limit: '1mb' }));
 
@@ -51,11 +60,8 @@ app.use(express.json({ limit: '1mb' }));
  * ```
  */
 
-// La integración con Gemini ahora se maneja desde el cliente (src/app/core/services/gemini.service.ts)
-// para reducir latencia y simplificar la arquitectura, utilizando la API Key con restricciones de dominio.
-
 /**
- * Serve static files from /browser
+ * Chat API endpoint (server-side Gemini integration)
  */
 app.post('/api/chat', async (req, res) => {
   if (!geminiModel) {
@@ -87,6 +93,9 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+/**
+ * Serve static files from /browser
+ */
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',

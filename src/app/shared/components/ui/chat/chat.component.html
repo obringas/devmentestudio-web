@@ -95,7 +95,7 @@
           class="chat-input"
           placeholder="Escribe tu mensaje..."
           [value]="inputMessage()"
-          (input)="inputMessage.set($any($event.target).value)"
+          (input)="onInput($event)"
           (keydown)="onKeyDown($event)"
           [disabled]="isLoading()"
         />
