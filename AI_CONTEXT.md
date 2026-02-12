@@ -1,603 +1,329 @@
-# DevMenteStudio - Contexto para Desarrollo con IA
+# AI_CONTEXT.md - Contexto Tecnico Integral del Proyecto
 
-> **IMPORTANTE:** Este proyecto debe desarrollarse en **español**. Todas las respuestas, comentarios de código, y documentación deben estar en español.
+Este documento es la fuente de verdad para que cualquier IA (o dev nuevo) pueda entrar al proyecto y trabajar sin friccion.
 
-## 📋 Resumen del Proyecto
+## 1. Objetivo del Proyecto
 
-**DevMenteStudio** es el sitio web corporativo de un estudio de desarrollo de software ubicado en Salta, Argentina. Ofrece servicios de:
+`devmentestudio-web` es el sitio corporativo de DevMenteStudio.
 
-- Landing Pages
-- E-commerce
-- Desarrollo de Software a Medida
-- Consultoría en Arquitectura de Software
+Objetivos funcionales:
+- Presentar servicios de software (landing pages, e-commerce, desarrollo a medida, consultoria).
+- Mostrar portfolio y paginas informativas.
+- Permitir contacto comercial.
+- Incluir asistente de chat con IA para consultas rapidas.
 
-**URL de producción:** https://devmentestudio.com (pendiente de deploy)
+Objetivos tecnicos:
+- Angular moderno (standalone + signals + control flow nuevo).
+- SSR con Express para SEO/performance.
+- Seguridad: claves solo en backend, no en frontend.
+- Calidad: lint + tests + build automatizados.
 
----
+## 2. Stack Tecnologico
 
-## 🛠️ Stack Tecnológico
+- Angular 21 (standalone components)
+- TypeScript 5.9
+- SSR: `@angular/ssr` + Express
+- Estilos: Tailwind CSS + SCSS
+- Reactive programming: RxJS
+- IA: `@google/generative-ai` en servidor
+- Hosting/Deploy: Vercel (deploy automatico por push)
+- Testing: Vitest via `ng test`
+- Lint: ESLint flat config + angular-eslint
 
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| Angular | 21+ | Framework principal |
-| TypeScript | 5.x | Lenguaje de programación |
-| Tailwind CSS | 3.x | Estilos y diseño |
-| @angular/ssr | Última | Server-Side Rendering |
-| RxJS | 7.x | Programación reactiva |
-| Vercel | - | Hosting y deployment |
-| @google/generative-ai | Última | Integración con Gemini AI |
+## 3. Arquitectura General
 
----
+Arquitectura por capas:
+- `features`: paginas y casos de uso.
+- `shared`: componentes reutilizables UI/Layout.
+- `core`: servicios globales y logica transversal.
+- `data/models/config`: contratos, catalogos estaticos y config.
+- `server.ts`: API backend SSR + endpoint de chat.
 
-## 🏗️ Arquitectura del Proyecto
+Reglas clave ya aplicadas:
+- Standalone components.
+- `ChangeDetectionStrategy.OnPush` en componentes relevantes.
+- Uso de `signal`/`computed` para estado.
+- Rutas lazy-loaded.
+- SEO por ruta con servicio centralizado.
 
-### Estructura de Carpetas
+## 4. Estructura de Carpetas (Actual)
 
-```
+```text
 src/
-├── environments/            # Configuración por ambiente
-│   ├── environment.ts      # Desarrollo (API keys, URLs)
-│   └── environment.production.ts  # Producción
-│
-├── app/
-│   ├── core/                    # Singleton services, guards, interceptors
-│   │   ├── services/           # Servicios globales
-│   │   │   └── gemini.service.ts  # 🤖 Servicio de chat con Gemini AI
-│   │   └── interceptors/       # HTTP interceptors
-│   │
-│   ├── shared/                  # Código compartido entre features
-│   │   └── components/
-│   │       ├── ui/             # Componentes UI reutilizables
-│   │       │   ├── button/
-│   │       │   ├── card/
-│   │       │   ├── badge/
-│   │       │   ├── input/
-│   │       │   └── chat/       # 🤖 Componente de chat flotante
-│   │       └── layout/         # Componentes de estructura
-│   │           ├── header/
-│   │           ├── footer/
-│   │           ├── container/
-│   │           └── section/
-│   │
-│   ├── features/               # Módulos por funcionalidad (lazy loaded)
-│   │   ├── home/              # Página principal
-│   │   │   └── components/    # Hero, ServicesPreview, TechStack, CTA
-│   │   ├── services/          # Listado y detalle de servicios
-│   │   ├── portfolio/         # Galería de proyectos
-│   │   ├── about/             # Página "Nosotros"
-│   │   └── contact/           # Formulario de contacto
-│   │
-│   ├── models/                 # Interfaces y tipos TypeScript
-│   ├── data/                   # Datos estáticos (services, navigation, tech-stack)
-│   ├── config/                 # Configuración del sitio
-│   │
-│   ├── app.ts                  # Componente raíz (incluye ChatComponent)
-│   ├── app.routes.ts           # Configuración de rutas
-│   ├── app.routes.server.ts    # Configuración SSR
-│   ├── app.config.ts           # Providers de la aplicación
-│   └── app.config.server.ts    # Providers del servidor
-│
-└── server.ts                    # 🤖 Endpoint /api/chat con Gemini
+  app/
+    app.ts
+    app.config.ts
+    app.config.server.ts
+    app.routes.ts
+    app.routes.server.ts
+
+    config/
+      site.config.ts
+
+    core/
+      services/
+        gemini.service.ts         # Chat frontend (consume /api/chat + fallback)
+        gemini.service.spec.ts
+        seo.service.ts            # Meta tags dinamicos por ruta
+
+    data/
+      navigation.data.ts
+      services.data.ts
+      tech-stack.data.ts
+      index.ts
+
+    models/
+      navigation.model.ts
+      project.model.ts
+      service.model.ts
+      team-member.model.ts
+      testimonial.model.ts
+      index.ts
+
+    features/
+      home/
+        home.component.ts
+        components/
+          hero/
+          services-preview/
+          tech-stack/
+          cta-section/
+      services/
+        services-list.component.ts
+        service-detail.component.ts
+      portfolio/
+        portfolio-list.component.ts
+        project-detail.component.ts
+      about/
+        about.component.ts
+      contact/
+        contact.component.ts
+        contact.component.spec.ts
+      blog/
+        blog.component.ts
+      legal/
+        terms.component.ts
+        privacy.component.ts
+
+    shared/
+      components/
+        layout/
+          header/
+          footer/
+          container/
+          section/
+        ui/
+          button/
+          card/
+          badge/
+          input/
+          chat/
+
+  environments/
+    environment.ts
+    environment.production.ts
+
+  main.ts
+  main.server.ts
+  server.ts
+  styles.scss
 ```
 
-### Patrón de Arquitectura
+Archivos de calidad:
+- `eslint.config.js`
+- `README.md`
+- `AI_CONTEXT.md`
 
+## 5. Rutas y Modulos
+
+Rutas cliente (`app.routes.ts`):
+- `/` Home
+- `/servicios`
+- `/servicios/:slug`
+- `/portfolio`
+- `/portfolio/:slug`
+- `/nosotros`
+- `/contacto`
+- `/blog`
+- `/terminos`
+- `/privacidad`
+- wildcard -> `/`
+
+Rutas SSR (`app.routes.server.ts`):
+- Prerender: `''`, `servicios`, `portfolio`, `nosotros`, `contacto`, `blog`, `terminos`, `privacidad`
+- Server render: `servicios/:slug`, `portfolio/:slug`, `**`
+
+## 6. Funcionalidad por Modulo
+
+### Home
+- Hero principal + secciones de valor.
+- Resumen de servicios y stack.
+- CTA a contacto.
+
+### Servicios
+- Listado de servicios.
+- Detalle por slug con features, beneficios y tecnologias.
+
+### Portfolio
+- Vista principal y detalle por slug (detalle actual placeholder/controlado).
+
+### Nosotros
+- Informacion institucional y propuesta de valor.
+
+### Contacto
+- Formulario reactivo con validaciones.
+- Estado de envio simulado.
+- Bloques de contacto y redes.
+
+### Blog
+- Landing de blog (placeholder funcional con ruta real).
+
+### Legal
+- Terminos y politica de privacidad con contenido base.
+
+### Chat IA
+- Componente flotante global `app-chat`.
+- Frontend llama backend `/api/chat`.
+- Si backend/IA falla, responde fallback local.
+
+## 7. Flujo del Chat IA (Arquitectura Segura)
+
+Flujo:
+1. Usuario envia mensaje en UI.
+2. `GeminiService` (frontend) hace `POST /api/chat`.
+3. `server.ts` usa `GEMINI_API_KEY` (solo backend) y consulta Gemini.
+4. Respuesta vuelve al frontend.
+5. Si falla, `GeminiService` usa fallback local.
+
+Seguridad:
+- NO hay API keys en frontend.
+- Variables `environment.ts` ya no contienen clave Gemini.
+- Clave leida desde entorno del servidor.
+
+## 8. SEO Implementado
+
+- Titulos por ruta (`title` en rutas).
+- Descripcion por ruta (`data.description`).
+- `SeoService` actualiza dinamicamente:
+  - `meta description`
+  - `og:title`, `og:description`, `og:url`, `og:image`
+  - `twitter:title`, `twitter:description`, `twitter:url`, `twitter:image`
+  - `canonical`
+
+## 9. Buenas Practicas Adoptadas
+
+- Componentes standalone.
+- `OnPush` en componentes principales.
+- Estado con signals.
+- Lazy loading por rutas.
+- Evitar `innerHTML` inseguro:
+  - Se removio `bypassSecurityTrustHtml` en footer/contacto.
+  - SVGs renderizados via paths controlados.
+- Servicios tipados y manejo de errores.
+- Tests unitarios minimos agregados.
+- Lint configurado para TS + templates Angular.
+
+## 10. Scripts de Desarrollo y Calidad
+
+- `npm start` -> dev server
+- `npm run build` -> build de produccion
+- `npm test` -> tests (watch)
+- `npm run test:ci` -> tests sin watch
+- `npm run lint` -> lint TS/HTML
+- `npm run lint:fix` -> lint con fix
+- `npm run check` -> `lint + test:ci + build`
+
+Regla recomendada antes de push:
+- Ejecutar `npm run check` y verificar verde.
+
+## 11. Variables de Entorno
+
+Local (`.env`):
+
+```env
+GEMINI_API_KEY=AIza...
 ```
-┌─────────────────────────────────────────────────────────┐
-│                      FEATURES                           │
-│  (home, services, portfolio, about, contact)            │
-│  - Componentes específicos de cada página               │
-│  - Lazy loaded por ruta                                 │
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│                       SHARED                            │
-│  - Componentes UI reutilizables                         │
-│  - Componentes de layout                                │
-│  - Directivas y pipes compartidos                       │
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│                        CORE                             │
-│  - Servicios singleton                                  │
-│  - Guards de rutas                                      │
-│  - Interceptors HTTP                                    │
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│                   MODELS / DATA                         │
-│  - Interfaces TypeScript                                │
-│  - Datos estáticos                                      │
-│  - Configuración                                        │
-└─────────────────────────────────────────────────────────┘
-```
+
+Produccion (Vercel):
+- Configurar `GEMINI_API_KEY` en Project Settings -> Environment Variables.
+
+Notas:
+- El formato valido de key debe iniciar con `AIza`.
+- Si aparece `API_KEY_INVALID`, la key es invalida/incompleta/no corresponde al servicio.
+
+## 12. Deploy en Vercel
+
+- Trigger: push a rama conectada (actualmente `main`).
+- Vercel ejecuta build y deploy automatico.
+- El proyecto ya esta adaptado para SSR en Vercel.
+
+Checklist rapido pre-push:
+1. `npm run check`
+2. Verificar que no haya secretos en codigo.
+3. Commit descriptivo.
+4. Push a `main`.
+
+## 13. Testing Actual
+
+Suites agregadas:
+- `app.routes.spec.ts` (smoke de rutas)
+- `gemini.service.spec.ts` (flujo `/api/chat`, fallback, server platform)
+- `contact.component.spec.ts` (validaciones y submit)
+
+Estado esperado:
+- `npm run test:ci` en verde.
+
+## 14. Convenciones para Commits
+
+Preferencia del proyecto:
+- Mensajes en castellano.
+- Claros y detallados.
+- Incluir resumen + bullets de cambios relevantes.
+
+Ejemplo:
+- Titulo: `Implementa mejoras de seguridad y SEO por ruta`
+- Cuerpo:
+  - `- Migra chat a backend /api/chat con key en servidor.`
+  - `- Agrega SeoService y metadata dinamica.`
+  - `- Incorpora tests y lint.`
+
+## 15. Guia Operativa para IA (Playbook)
+
+Si una IA toma este repo:
+1. Leer `README.md` y este `AI_CONTEXT.md`.
+2. Ejecutar `npm install`.
+3. Validar `.env` (`GEMINI_API_KEY`).
+4. Ejecutar `npm run check`.
+5. Revisar rutas y modulos impactados antes de editar.
+6. Mantener consistencia con patterns actuales.
+7. No introducir secretos en frontend.
+8. Si cambia funcionalidad critica, agregar/ajustar tests.
+
+## 16. Estado Actual y Pendientes Recomendados
+
+Ya resuelto:
+- Seguridad de key Gemini (backend only).
+- Chat funcional con fallback.
+- Rutas faltantes (`/blog`, `/terminos`, `/privacidad`).
+- SEO por ruta.
+- Lint + tests + check.
+
+Pendientes sugeridos:
+- Endurecer headers de seguridad (CSP, Referrer-Policy, Permissions-Policy).
+- Tipar `FormGroup` de contacto de forma estricta.
+- Mejorar limpieza de listeners globales en header.
+- Agregar CI remoto (GitHub Actions) ejecutando `npm run check`.
+
+## 17. Definicion de Hecho (DoD)
+
+Un cambio se considera listo si:
+- Compila (`npm run build`).
+- Pasa tests (`npm run test:ci`).
+- Pasa lint (`npm run lint`).
+- No expone secretos.
+- Mantiene coherencia arquitectonica.
+- Incluye documentacion minima cuando cambia comportamiento.
 
 ---
 
-## ✅ Buenas Prácticas OBLIGATORIAS
-
-### 1. Componentes
-
-```typescript
-// ✅ CORRECTO - Standalone component con OnPush
-@Component({
-  selector: 'app-mi-componente',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  template: `...`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class MiComponenteComponent {
-  // Usar inject() en lugar de constructor
-  private readonly servicio = inject(MiServicio);
-  
-  // Usar signals para estado
-  readonly datos = signal<Dato[]>([]);
-  readonly loading = signal(false);
-  
-  // Usar computed para valores derivados
-  readonly totalItems = computed(() => this.datos().length);
-  
-  // Usar input() para inputs
-  readonly titulo = input<string>('');
-  readonly items = input.required<Item[]>();
-  
-  // Usar output() para outputs
-  readonly itemSeleccionado = output<Item>();
-}
-```
-
-```typescript
-// ❌ INCORRECTO - NO hacer esto
-@Component({...})
-export class MiComponenteComponent {
-  // NO usar constructor injection
-  constructor(private servicio: MiServicio) {}
-  
-  // NO usar variables mutables
-  datos: Dato[] = [];
-  
-  // NO usar @Input/@Output decorators
-  @Input() titulo: string;
-  @Output() click = new EventEmitter();
-}
-```
-
-### 2. Signals y Estado
-
-```typescript
-// ✅ CORRECTO - Signals para estado reactivo
-readonly usuarios = signal<Usuario[]>([]);
-readonly usuarioSeleccionado = signal<Usuario | null>(null);
-readonly filtro = signal('');
-
-// Computed para valores derivados
-readonly usuariosFiltrados = computed(() => 
-  this.usuarios().filter(u => 
-    u.nombre.toLowerCase().includes(this.filtro().toLowerCase())
-  )
-);
-
-// Actualizar estado
-this.usuarios.set(nuevosUsuarios);
-this.usuarios.update(prev => [...prev, nuevoUsuario]);
-```
-
-```typescript
-// ❌ INCORRECTO - NO usar BehaviorSubject para estado simple
-private usuariosSubject = new BehaviorSubject<Usuario[]>([]);
-usuarios$ = this.usuariosSubject.asObservable();
-```
-
-### 3. Templates con Nuevo Control Flow
-
-```html
-<!-- ✅ CORRECTO - Nuevo control flow de Angular 17+ -->
-@if (loading()) {
-  <app-skeleton />
-} @else if (error()) {
-  <p class="text-red-500">{{ error() }}</p>
-} @else {
-  @for (item of items(); track item.id) {
-    <app-card [data]="item" />
-  } @empty {
-    <p>No hay elementos</p>
-  }
-}
-
-@switch (estado()) {
-  @case ('pendiente') { <span class="badge">Pendiente</span> }
-  @case ('activo') { <span class="badge-accent">Activo</span> }
-  @default { <span>Desconocido</span> }
-}
-
-<!-- Lazy loading con @defer -->
-@defer (on viewport) {
-  <app-componente-pesado />
-} @placeholder {
-  <app-skeleton />
-} @loading (minimum 500ms) {
-  <app-spinner />
-}
-```
-
-```html
-<!-- ❌ INCORRECTO - NO usar directivas estructurales antiguas -->
-<div *ngIf="loading">...</div>
-<div *ngFor="let item of items">...</div>
-<div [ngSwitch]="estado">...</div>
-```
-
-### 4. Formularios Reactivos Tipados
-
-```typescript
-// ✅ CORRECTO - FormGroup tipado
-interface ContactoForm {
-  nombre: string;
-  email: string;
-  mensaje: string;
-}
-
-readonly contactForm = this.fb.group({
-  nombre: ['', [Validators.required, Validators.minLength(2)]],
-  email: ['', [Validators.required, Validators.email]],
-  mensaje: ['', [Validators.required, Validators.minLength(10)]],
-});
-
-// Acceso tipado
-const nombre = this.contactForm.value.nombre; // string | undefined
-```
-
-### 5. Servicios
-
-```typescript
-// ✅ CORRECTO - Servicio con inject y signals
-@Injectable({ providedIn: 'root' })
-export class UsuarioService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = inject(API_URL);
-  
-  // Estado interno con signals
-  private readonly _usuarios = signal<Usuario[]>([]);
-  readonly usuarios = this._usuarios.asReadonly();
-  
-  cargarUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`).pipe(
-      tap(usuarios => this._usuarios.set(usuarios)),
-      catchError(this.handleError)
-    );
-  }
-  
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    console.error('Error:', error);
-    return throwError(() => new Error('Error al cargar datos'));
-  }
-}
-```
-
-### 6. Estilos con Tailwind
-
-```html
-<!-- ✅ CORRECTO - Usar clases de Tailwind definidas en el proyecto -->
-<button class="btn-primary">Primario</button>
-<button class="btn-secondary">Secundario</button>
-<button class="btn-ghost">Ghost</button>
-<button class="btn-outline">Outline</button>
-
-<div class="card">Contenido</div>
-<div class="card-interactive">Clickeable</div>
-<div class="glass">Efecto glass</div>
-
-<span class="badge">Primary</span>
-<span class="badge-accent">Accent</span>
-
-<span class="text-gradient">Texto con gradiente</span>
-
-<input class="input" placeholder="Input estilizado" />
-```
-
-```html
-<!-- ❌ INCORRECTO - NO crear estilos inline complejos -->
-<button style="background: linear-gradient(...)">...</button>
-```
-
----
-
-## 🚫 Restricciones Estrictas
-
-| ❌ NO Hacer | ✅ Hacer en su lugar |
-|------------|---------------------|
-| Usar `any` | Tipar correctamente |
-| Usar NgModules | Standalone components |
-| Usar `*ngIf`, `*ngFor` | `@if`, `@for`, `@switch` |
-| Constructor injection | `inject()` function |
-| `@Input()`, `@Output()` | `input()`, `output()` |
-| `subscribe()` manual | `async` pipe o `toSignal()` |
-| Default ChangeDetection | `OnPush` siempre |
-| Componentes > 150 líneas | Dividir en componentes más pequeños |
-| Más de 3 niveles de anidación | Extraer a componentes |
-| Lógica compleja en templates | Usar `computed()` signals |
-| `console.log` en producción | Remover o usar logger service |
-| CSS inline extenso | Tailwind classes |
-
----
-
-## 🎨 Sistema de Diseño
-
-### Paleta de Colores
-
-```
-Primary (Índigo):
-- primary-50 a primary-950
-- Uso: CTAs, enlaces, elementos destacados
-
-Accent (Esmeralda):
-- accent-50 a accent-950
-- Uso: Badges de éxito, elementos secundarios
-
-Surface (Zinc):
-- surface-50 a surface-950
-- Uso: Fondos, bordes, texto
-- surface-950 = fondo principal (tema oscuro)
-- surface-100 = texto principal
-- surface-400 = texto secundario
-```
-
-### Tipografía
-
-```
-font-display: 'Space Grotesk' - Títulos y headings
-font-sans: 'Outfit' - Texto de cuerpo
-font-mono: 'JetBrains Mono' - Código
-```
-
-### Componentes de Clases Disponibles
-
-```css
-/* Botones */
-.btn-primary    /* Botón principal con glow */
-.btn-secondary  /* Botón secundario */
-.btn-ghost      /* Botón transparente */
-.btn-outline    /* Botón con borde */
-
-/* Cards */
-.card              /* Card básica */
-.card-interactive  /* Card con hover effects */
-.glass             /* Efecto glassmorphism */
-
-/* Badges */
-.badge        /* Badge primary */
-.badge-accent /* Badge accent */
-
-/* Inputs */
-.input  /* Input estilizado */
-
-/* Layout */
-.container-custom  /* Container con max-width y padding */
-.section          /* Sección con padding vertical */
-
-/* Utilidades */
-.text-gradient  /* Texto con gradiente primary->accent */
-.divider        /* Línea divisoria con gradiente */
-```
-
----
-
-## 📄 Páginas y Funcionalidades Actuales
-
-### 1. Home (`/`)
-- **Hero Section:** Título animado, badge de disponibilidad, CTAs, stats, bloque de código decorativo
-- **Services Preview:** Grid 2x2 de servicios con iconos y tecnologías
-- **Tech Stack:** Scroll infinito horizontal con tecnologías
-- **CTA Section:** Llamada a la acción con gradientes
-
-### 2. Servicios (`/servicios`)
-- **Lista:** Cards de servicios con features y tecnologías
-- **Detalle (`/servicios/:slug`):** Página completa del servicio con features, beneficios, tecnologías y CTA
-
-### 3. Portfolio (`/portfolio`)
-- **Estado:** Placeholder "Próximamente"
-- **Pendiente:** Grid de proyectos con filtros, detalle de proyecto
-
-### 4. Nosotros (`/nosotros`)
-- Historia de la empresa
-- Valores (Calidad, Cercanía, Resultados)
-- Stack tecnológico principal
-
-### 5. Contacto (`/contacto`)
-- **Formulario:** Nombre, email, empresa, servicio, presupuesto, mensaje
-- **Validaciones:** Reactive forms con mensajes de error
-- **Estado de envío:** Loading spinner y confirmación
-- **Info de contacto:** Email, ubicación, WhatsApp, redes sociales
-
-### 6. Chat de IA (Global)
-- **Chatbot flotante:** Botón en esquina inferior derecha disponible en todas las páginas
-- **Asistente virtual:** Responde preguntas sobre servicios, tecnologías y contacto
-- **Modelo:** Gemini 2.0 Flash Experimental
-- **Contexto:** Información completa del sitio (servicios, tecnologías, contacto)
-
----
-
-## 🤖 Integración con Gemini AI (Cliente-Side)
-
-### Arquitectura
-
-```
-Cliente (GeminiService)
-        │
-        ▼
-   Directo a Gemini API (generativelanguage.googleapis.com)
-   (Modelo: gemini-2.5-flash / gemini-2.0-flash-exp)
-```
-
-### Archivos Principales
-
-| Archivo | Propósito |
-|---------|----------|
-| `src/app/core/services/gemini.service.ts` | Servicio principal. Maneja lógica de chat y Fallback. |
-| `src/app/shared/components/ui/chat/` | Interfaz de usuario (Chatbot UI). |
-| `src/environments/environment.ts` | Configuración de API Key (Desarrollo). |
-
-### Estrategia de Fallback (Modo Offline)
-
-Debido a límites de cuota (Error 429), se implementó un sistema híbrido:
-1. **Intento AI:** Se conecta a Gemini.
-2. **Fallo:** Si da error (429/404), captura la excepción.
-3. **Respuesta Local:** Responde automáticamente a palabras clave ("Precios", "Servicios", "Contacto") sin usar la API.
-
-Datos de Contacto Actualizados:
-- **Email:** contacto@devmentestudio.com
-- **Teléfono:** +54 9 387 451-3777
-- **Redes:** Instagram, TikTok, Facebook, LinkedIn, GitHub, Twitter
-
-### Uso del Servicio
-
-```typescript
-// Inyectar servicio
-private readonly geminiService = inject(GeminiService);
-
-// Enviar mensaje (Retorna Observable<string>)
-this.geminiService.sendMessage('Hola').subscribe();
-```
-
----
-
-## � Cambios Recientes (Refactorización)
-
-### 1. Componentes Layout (Header/Footer)
-Se han separado los componentes `HeaderComponent` y `FooterComponent` siguiendo las mejores prácticas de Angular:
-- Lógica: `*.component.ts`
-- Template: `*.component.html`
-- Estilos: `*.component.scss`
-
-### 2. Iconos y Redes Sociales
-- **Centralización:** Todos los enlaces y SVGs de redes sociales están centralizados en `src/app/data/navigation.data.ts` (`SOCIAL_LINKS`).
-- **Seguridad:** Se utiliza `DomSanitizer` (`bypassSecurityTrustHtml`) para renderizar los iconos SVG de forma segura.
-- **Consistencia:** Tanto el Footer como la página de Contacto consumen la misma constante para garantizar uniformidad.
-
-### 3. Branding
-- Actualizado el logo a `logo.png`.
-- Unificada la paleta de colores en Tailwind config.
-
----
-
-## 🔗 Referencias
-
-- [Angular Docs](https://angular.dev)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Vercel Angular](https://vercel.com/docs/frameworks/angular)
-
----
-
-*Última actualización: Diciembre 2024*
-
-### Rutas de Cliente (`app.routes.ts`)
-```typescript
-{
-  path: '',              // Home
-  path: 'servicios',     // Lista de servicios
-  path: 'servicios/:slug', // Detalle de servicio
-  path: 'portfolio',     // Lista de portfolio
-  path: 'portfolio/:slug', // Detalle de proyecto
-  path: 'nosotros',      // Página about
-  path: 'contacto',      // Formulario de contacto
-  path: '**',            // Redirect a home
-}
-```
-
-### Rutas de Servidor (`app.routes.server.ts`)
-```typescript
-// Prerender (estáticas)
-'', 'servicios', 'portfolio', 'nosotros', 'contacto'
-
-// SSR (dinámicas)
-'servicios/:slug', 'portfolio/:slug'
-```
-
----
-
-## 📁 Archivos de Datos
-
-### `data/services.data.ts`
-Contiene array `SERVICES` con:
-- id, slug, title, shortDescription, fullDescription
-- icon, features[], technologies[], benefits[]
-- cta { text, href }
-
-### `data/navigation.data.ts`
-- `MAIN_NAV`: Items del menú principal
-- `FOOTER_SECTIONS`: Secciones del footer
-- `SOCIAL_LINKS`: Redes sociales
-
-### `data/tech-stack.data.ts`
-- `TECH_STACK`: Tecnologías con nombre, categoría, icono, color
-
-### `config/site.config.ts`
-- Nombre del sitio, descripción, URLs
-- Info de contacto
-- Configuración SEO
-
----
-
-## 🚀 Comandos Útiles
-
-```bash
-# Desarrollo
-npm start                 # Servidor en localhost:4200
-
-# Build
-npm run build            # Build de producción con SSR
-
-# Otros
-ng generate component features/nueva-feature/nueva-feature --standalone
-ng generate service core/services/nombre-servicio
-```
-
----
-
-## 📝 Tareas Pendientes
-
-1. [ ] **Portfolio:** Implementar grid de proyectos con datos reales
-2. [ ] **Blog:** Crear sección de blog (posiblemente con CMS headless)
-3. [ ] **SEO:** Agregar meta tags dinámicos por página
-4. [ ] **Analytics:** Integrar Google Analytics o Plausible
-5. [ ] **Formulario:** Conectar con backend real (API o servicio como Formspree)
-6. [ ] **Imágenes:** Agregar imágenes optimizadas y favicon personalizado
-7. [ ] **Testing:** Agregar tests unitarios y e2e
-8. [ ] **i18n:** Preparar para internacionalización si se necesita
-9. [ ] **PWA:** Considerar agregar service worker
-10. [ ] **Accesibilidad:** Auditar y mejorar a11y
-
-### ✅ Completadas
-
-- [x] **Chatbot IA:** Integración con Gemini API para asistente virtual
-
----
-
-## 💡 Tips para la IA
-
-1. **Siempre responder en español**
-2. **Mantener consistencia** con el código existente
-3. **Usar signals** para cualquier estado nuevo
-4. **Componentes pequeños** y con responsabilidad única
-5. **Tipar todo** - evitar `any` a toda costa
-6. **Tailwind primero** - usar las clases definidas antes de crear nuevas
-7. **OnPush siempre** - nunca usar Default change detection
-8. **Lazy loading** - nuevas features deben ser lazy loaded
-9. **Documentar** - comentarios en español cuando sea necesario
-10. **Seguir la estructura** - respetar la organización de carpetas
-
----
-
-## 🔗 Referencias
-
-- [Angular Docs](https://angular.dev)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Vercel Angular](https://vercel.com/docs/frameworks/angular)
-
----
-
-*Última actualización: Diciembre 2024*
+Ultima actualizacion: 2026-02-12

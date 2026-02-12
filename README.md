@@ -1,59 +1,75 @@
-# DevmentestudioWeb
+# DevMenteStudio Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.3.
+Sitio web de DevMenteStudio construido con Angular 21 + SSR.
 
-## Development server
+## Requisitos
 
-To start a local development server, run:
+- Node.js 20+
+- npm 10+
 
-```bash
-ng serve
+## Variables de entorno
+
+Crear archivo `.env` en la raíz:
+
+```env
+GEMINI_API_KEY=AIza...
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Notas:
+- La key de Gemini se usa solo en backend (`src/server.ts`).
+- No se expone en frontend.
+- Debe ser una key válida con formato `AIza...`.
 
-## Code scaffolding
+## Desarrollo local
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Instalar dependencias:
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+Levantar servidor de desarrollo:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Abrir: `http://localhost:4200/`
 
-## Running unit tests
+## Chat con IA
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- El frontend llama a `POST /api/chat`.
+- El backend (Express SSR) consume Gemini con `GEMINI_API_KEY`.
+- Si Gemini falla, el chat usa fallback local para no romper la UX.
+
+Prueba rápida del endpoint:
 
 ```bash
-ng test
+curl -X POST http://localhost:4200/api/chat -H "Content-Type: application/json" -d "{\"message\":\"hola\"}"
 ```
 
-## Running end-to-end tests
+## Scripts
 
-For end-to-end (e2e) testing, run:
+- `npm run build`: build de producción.
+- `npm run test`: tests en modo watch.
+- `npm run test:ci`: tests una sola corrida (`--watch=false`).
+- `npm run lint`: lint de TypeScript y templates Angular.
+- `npm run lint:fix`: lint con autocorrección.
+- `npm run check`: `lint + test:ci + build`.
 
-```bash
-ng e2e
-```
+## Despliegue en Vercel
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- El proyecto despliega automáticamente en cada `git push` a la rama conectada.
+- Configurar `GEMINI_API_KEY` en Vercel:
+  - Project Settings -> Environment Variables.
+- Si falta o es inválida, `/api/chat` responderá error y el frontend caerá en fallback.
 
-## Additional Resources
+## Troubleshooting
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Error:
+`API_KEY_INVALID`
+
+Revisar:
+- que la key en `.env`/Vercel sea completa y válida (`AIza...`);
+- que no tenga comillas o espacios;
+- reiniciar el servidor después de cambiar variables.
