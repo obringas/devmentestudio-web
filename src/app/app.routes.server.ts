@@ -1,39 +1,48 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
-  // Rutas estáticas - prerender
   {
     path: '',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'servicios',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'portfolio',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'nosotros',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
   {
     path: 'contacto',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Prerender,
   },
-  // Rutas dinámicas - SSR
+  {
+    path: 'blog',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'terminos',
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: 'privacidad',
+    renderMode: RenderMode.Prerender,
+  },
   {
     path: 'servicios/:slug',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
   {
     path: 'portfolio/:slug',
-    renderMode: RenderMode.Server
+    renderMode: RenderMode.Server,
   },
-  // Fallback
   {
     path: '**',
-    renderMode: RenderMode.Server
-  }
+    renderMode: RenderMode.Server,
+  },
 ];

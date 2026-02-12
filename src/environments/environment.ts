@@ -1,13 +1,10 @@
 /**
- * Configuración del entorno de desarrollo
+ * Configuracion del entorno de desarrollo
+ *
+ * Seguridad: la API key de Gemini NO debe vivir en frontend.
+ * El chat usa /api/chat y la key se toma desde GEMINI_API_KEY en el servidor.
  */
 export const environment = {
-    production: false,
-
-    // API Keys - En desarrollo usamos la key directamente
-    // En producción, se reemplaza por el archivo environment.production.ts
-    geminiApiKey: 'AIzaSyCuoxmjopJzD-QD93-CSSS3FPE16lS-_Yk',
-
-    // URLs
-    siteUrl: 'http://localhost:4200',
+  production: false,
+  siteUrl: 'http://localhost:4200',
 };

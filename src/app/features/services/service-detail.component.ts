@@ -7,7 +7,7 @@ import {
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
-import { getServiceBySlug, SERVICES } from '../../data';
+import { getServiceBySlug } from '../../data';
 
 @Component({
   selector: 'app-service-detail',

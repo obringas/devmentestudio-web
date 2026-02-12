@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent, FooterComponent } from './shared/components/layout';
 import { ChatComponent } from './shared/components/ui/chat/chat.component';
+import { SeoService } from './core/services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +20,10 @@ import { ChatComponent } from './shared/components/ui/chat/chat.component';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App { }
+export class App {
+  private readonly seoService = inject(SeoService);
 
+  constructor() {
+    this.seoService.init();
+  }
+}

@@ -4,14 +4,40 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import 'dotenv/config';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import express from 'express';
 import { join } from 'node:path';
-import { environment } from './environments/environment';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+const geminiApiKey = process.env['GEMINI_API_KEY'];
+const systemInstruction = `
+Rol: Asistente virtual de DevMenteStudio (Software Studio en Salta, Argentina).
+Contacto: contacto@devmentestudio.com | https://devmentestudio.com | +54 9 387 451-3777
+
+SERVICIOS:
+1. Landing Pages: Diseno responsive, SEO, Angular/Next.js/Tailwind.
+2. E-commerce: Tiendas escalables, pagos (Stripe/MP), .NET/SQL.
+3. Desarrollo a Medida: Soluciones personalizadas, .NET/Node.js/PostgreSQL/Azure.
+4. Consultoria: Arquitectura, auditoria, CI/CD, migracion legacy.
+
+INSTRUCCIONES:
+- Responde en espanol, se profesional y conciso.
+- Precios: Solicitar presupuesto en /contacto.
+- Dudas: Sugerir email.
+`;
+
+const geminiModel = geminiApiKey
+  ? new GoogleGenerativeAI(geminiApiKey).getGenerativeModel({
+    model: 'gemini-2.5-flash',
+    systemInstruction,
+  })
+  : null;
+
+app.use(express.json({ limit: '1mb' }));
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -31,6 +57,36 @@ const angularApp = new AngularNodeAppEngine();
 /**
  * Serve static files from /browser
  */
+app.post('/api/chat', async (req, res) => {
+  if (!geminiModel) {
+    res.status(503).json({
+      error: 'Servicio de chat no disponible',
+      detail: 'Falta configurar GEMINI_API_KEY en el servidor',
+    });
+    return;
+  }
+
+  const message = req.body?.message;
+  if (typeof message !== 'string' || !message.trim()) {
+    res.status(400).json({ error: 'El campo "message" es requerido' });
+    return;
+  }
+
+  if (message.length > 4000) {
+    res.status(400).json({ error: 'El mensaje excede el limite permitido' });
+    return;
+  }
+
+  try {
+    const result = await geminiModel.generateContent(message.trim());
+    const responseText = result.response.text();
+    res.status(200).json({ response: responseText });
+  } catch (error) {
+    console.error('Error en /api/chat:', error);
+    res.status(502).json({ error: 'No se pudo procesar la consulta en este momento' });
+  }
+});
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',

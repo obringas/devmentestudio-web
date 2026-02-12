@@ -19,7 +19,9 @@
                     @for (social of socialLinks; track social.platform) {
                     <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label"
                         class="w-10 h-10 rounded-lg bg-surface-800 flex items-center justify-center text-surface-400 hover:bg-surface-700 hover:text-primary-400 transition-all">
-                        <span [innerHTML]="getSafeHtml(social.icon)"></span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path [attr.d]="getSocialIconPath(social.platform)"></path>
+                        </svg>
                     </a>
                     }
                 </div>
