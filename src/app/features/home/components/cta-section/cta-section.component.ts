@@ -24,10 +24,10 @@ import { LocaleService } from '../../../../core/services/locale.service';
           <div class="relative grid gap-10 xl:grid-cols-[1.1fr_0.9fr] xl:items-center">
             <div>
               <span class="eyebrow">{{ copy().eyebrow }}</span>
-              <h2 class="mt-6 text-4xl font-bold text-surface-100 md:text-5xl">
+              <h2 class="mt-6 text-4xl font-bold text-surface-900 md:text-5xl">
                 {{ copy().title }}
               </h2>
-              <p class="mt-5 max-w-2xl text-lg text-surface-300">
+              <p class="mt-5 max-w-2xl text-lg text-surface-600">
                 {{ copy().description }}
               </p>
 
@@ -46,10 +46,10 @@ import { LocaleService } from '../../../../core/services/locale.service';
 
             <div class="grid gap-4">
               @for (card of copy().cards; track card.title) {
-                <article class="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+                <article class="rounded-[1.75rem] border border-surface-200 bg-white p-5">
                   <p class="text-xs uppercase tracking-[0.2em] text-surface-500">{{ card.label }}</p>
-                  <p class="mt-2 font-display text-xl font-semibold text-surface-100">{{ card.title }}</p>
-                  <p class="mt-2 text-sm text-surface-400">{{ card.description }}</p>
+                  <p class="mt-2 font-display text-xl font-semibold text-surface-900">{{ card.title }}</p>
+                  <p class="mt-2 text-sm text-surface-500">{{ card.description }}</p>
                 </article>
               }
             </div>

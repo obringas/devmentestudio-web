@@ -12,17 +12,17 @@ import { LocaleService } from '../../core/services/locale.service';
   template: `
     <div class="min-h-screen py-24 lg:py-32">
       <div class="container-custom max-w-4xl">
-        <h1 class="mb-6 text-4xl font-display font-bold text-surface-100 md:text-5xl">
+        <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl">
           {{ copy().title }}
         </h1>
-        <p class="mb-10 text-surface-400">
+        <p class="mb-10 text-surface-500">
           {{ copy().updatedAt }}
         </p>
 
-        <section class="space-y-6 text-surface-300">
+        <section class="space-y-6 text-surface-600">
           @for (section of copy().sections; track section.title) {
             <article>
-              <h2 class="mb-3 text-2xl font-display font-semibold text-surface-100">
+              <h2 class="mb-3 text-2xl font-display font-semibold text-surface-900">
                 {{ section.title }}
               </h2>
               <p>{{ section.body }}</p>
@@ -30,7 +30,7 @@ import { LocaleService } from '../../core/services/locale.service';
           }
 
           <article>
-            <h2 class="mb-3 text-2xl font-display font-semibold text-surface-100">
+            <h2 class="mb-3 text-2xl font-display font-semibold text-surface-900">
               {{ copy().contactTitle }}
             </h2>
             <p>

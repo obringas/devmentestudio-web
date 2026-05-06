@@ -31,7 +31,7 @@ export class BadgeComponent {
       // Variants
       'bg-primary-500/10 text-primary-400 border border-primary-500/20': this.variant() === 'primary',
       'bg-accent-500/10 text-accent-400 border border-accent-500/20': this.variant() === 'accent',
-      'bg-surface-700/50 text-surface-300 border border-surface-600/50': this.variant() === 'neutral',
+      'bg-surface-700/50 text-surface-600 border border-surface-600/50': this.variant() === 'neutral',
       
       // Sizes
       'px-2 py-0.5 text-2xs': this.size() === 'sm',

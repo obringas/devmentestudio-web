@@ -183,16 +183,16 @@ import { LocaleService } from '../../../../core/services/locale.service';
 
     /* ── Palette tokens ── */
     .hero {
-      --bg:             #09080c;
-      --bg-panel:       #0e0c10;
-      --panel-border:   rgba(232,224,208,0.09);
-      --ivory:          #e8e0d0;
-      --ivory-dim:      rgba(232,224,208,0.50);
-      --ivory-faint:    rgba(232,224,208,0.14);
-      --cognac:         #c07a3a;
-      --cognac-glow:    rgba(192,122,58,0.45);
-      --teal:           #3d8c7a;
-      --teal-dim:       rgba(61,140,122,0.35);
+      --bg:             #f8fafc;
+      --bg-panel:       #ffffff;
+      --panel-border:   rgba(15, 23, 42, 0.08);
+      --ivory:          #0f172a;
+      --ivory-dim:      rgba(15, 23, 42, 0.60);
+      --ivory-faint:    rgba(15, 23, 42, 0.12);
+      --cognac:         #ea580c;
+      --cognac-glow:    rgba(234, 88, 12, 0.25);
+      --teal:           #0f766e;
+      --teal-dim:       rgba(15, 118, 110, 0.2);
       --font-serif:     'Cormorant Garamond', Georgia, serif;
       --font-mono:      'JetBrains Mono', 'Consolas', monospace;
 
@@ -227,12 +227,12 @@ import { LocaleService } from '../../../../core/services/locale.service';
     .hero__glow--warm {
       width: 60vw; height: 60vw;
       top: -25%; left: -12%;
-      background: radial-gradient(circle, rgba(192,122,58,0.7), transparent 60%);
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.4), transparent 60%);
     }
     .hero__glow--cool {
       width: 48vw; height: 48vw;
       bottom: -18%; right: -10%;
-      background: radial-gradient(circle, rgba(61,140,122,0.6), transparent 60%);
+      background: radial-gradient(circle, rgba(15, 118, 110, 0.3), transparent 60%);
     }
 
     /* ── Horizontal rules ── */
@@ -287,7 +287,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       padding: 0.45rem 0.9rem;
       border: 1px solid var(--ivory-faint);
       border-radius: 999px;
-      background: rgba(232,224,208,0.03);
+      background: rgba(15, 23, 42, 0.03);
     }
     .hero__status-dot {
       flex-shrink: 0;
@@ -348,7 +348,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
     }
     .hero__btn--fill {
       background: var(--cognac);
-      color: #0c0a08;
+      color: #ffffff;
       box-shadow: 0 0 40px -8px var(--cognac-glow);
     }
     .hero__btn--fill:hover {
@@ -362,9 +362,9 @@ import { LocaleService } from '../../../../core/services/locale.service';
       background: transparent;
     }
     .hero__btn--outline:hover {
-      border-color: rgba(232,224,208,0.38);
+      border-color: rgba(15, 23, 42, 0.38);
       color: var(--ivory);
-      background: rgba(232,224,208,0.04);
+      background: rgba(15, 23, 42, 0.04);
     }
 
     /* Tags */
@@ -381,9 +381,9 @@ import { LocaleService } from '../../../../core/services/locale.service';
       text-transform: uppercase;
       color: var(--teal);
       padding: 0.32rem 0.7rem;
-      border: 1px solid rgba(61,140,122,0.28);
+      border: 1px solid rgba(15, 118, 110, 0.28);
       border-radius: 4px;
-      background: rgba(61,140,122,0.06);
+      background: rgba(15, 118, 110, 0.06);
     }
 
     /* Metrics — typeset table */
@@ -429,7 +429,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       font-style: italic;
       font-size: clamp(11rem, 18vw, 20rem);
       line-height: 0.85;
-      color: rgba(232,224,208,0.022);
+      color: rgba(15, 23, 42, 0.022);
       pointer-events: none;
       user-select: none;
       right: -0.05em;
@@ -446,9 +446,9 @@ import { LocaleService } from '../../../../core/services/locale.service';
       background: var(--bg-panel);
       overflow: hidden;
       box-shadow:
-        0 0 0 1px rgba(232,224,208,0.03),
-        0 50px 120px -40px rgba(0,0,0,0.8),
-        inset 0 1px 0 rgba(232,224,208,0.06);
+        0 0 0 1px rgba(15, 23, 42, 0.03),
+        0 30px 80px -20px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
     }
 
     /* Panel top bar */
@@ -458,7 +458,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       gap: 0.875rem;
       padding: 0.875rem 1.25rem;
       border-bottom: 1px solid var(--panel-border);
-      background: rgba(0,0,0,0.22);
+      background: rgba(15, 23, 42, 0.02);
     }
     .hero__panel-dots {
       display: flex;
@@ -469,10 +469,10 @@ import { LocaleService } from '../../../../core/services/locale.service';
       display: block;
       width: 10px; height: 10px;
       border-radius: 50%;
-      background: rgba(232,224,208,0.12);
+      background: rgba(15, 23, 42, 0.12);
     }
-    .hero__panel-dots b:first-child  { background: rgba(192,122,58,0.5); }
-    .hero__panel-dots b:nth-child(2) { background: rgba(232,224,208,0.22); }
+    .hero__panel-dots b:first-child  { background: rgba(234, 88, 12, 0.5); }
+    .hero__panel-dots b:nth-child(2) { background: rgba(15, 23, 42, 0.22); }
     .hero__panel-path {
       flex: 1;
       font-family: var(--font-mono);
@@ -490,7 +490,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       text-transform: uppercase;
       color: var(--teal);
       padding: 0.25rem 0.6rem;
-      border: 1px solid rgba(61,140,122,0.28);
+      border: 1px solid rgba(15, 118, 110, 0.28);
       border-radius: 4px;
       flex-shrink: 0;
     }
@@ -503,14 +503,14 @@ import { LocaleService } from '../../../../core/services/locale.service';
       line-height: 1.9;
     }
     .hero__line          { display: block; }
-    .hero__line--comment { color: rgba(232,224,208,0.26); font-style: italic; }
+    .hero__line--comment { color: rgba(15, 23, 42, 0.26); font-style: italic; }
     .hero__line--in      { padding-left: 1.5rem; }
 
     .t-kw   { color: var(--cognac); }
-    .t-fn   { color: #7bbfaa; }
-    .t-op   { color: rgba(232,224,208,0.38); }
-    .t-prop { color: #a8c4ba; }
-    .t-str  { color: #b4d0c2; }
+    .t-fn   { color: #0284c7; }
+    .t-op   { color: rgba(15, 23, 42, 0.38); }
+    .t-prop { color: #0f766e; }
+    .t-str  { color: #059669; }
     .t-bool { color: var(--cognac); font-style: italic; }
 
     .hero__cursor {
@@ -536,7 +536,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       padding: 0.65rem 0.875rem;
       border: 1px solid var(--panel-border);
       border-radius: 0.75rem;
-      background: rgba(232,224,208,0.025);
+      background: rgba(15, 23, 42, 0.025);
       flex: 1;
       min-width: 130px;
     }
@@ -545,7 +545,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       border-radius: 50%;
       flex-shrink: 0;
       background: var(--teal);
-      box-shadow: 0 0 8px rgba(61,140,122,0.65);
+      box-shadow: 0 0 8px rgba(15, 118, 110, 0.25);
     }
     .hero__chip-dot--warm {
       background: var(--cognac);
@@ -579,7 +579,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
       border-left: 1px solid var(--panel-border);
     }
     .hero__info--accent {
-      background: rgba(192,122,58,0.04);
+      background: rgba(234, 88, 12, 0.04);
     }
     .hero__info-lbl {
       display: block;

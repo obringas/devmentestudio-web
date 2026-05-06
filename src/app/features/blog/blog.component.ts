@@ -15,10 +15,10 @@ import { LocaleService } from '../../core/services/locale.service';
     <div class="min-h-screen py-24 lg:py-32">
       <div class="container-custom max-w-3xl text-center">
         <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
-        <h1 class="mb-6 text-4xl font-display font-bold text-surface-100 md:text-5xl">
+        <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl">
           {{ copy().title }}
         </h1>
-        <p class="mb-8 text-surface-400">
+        <p class="mb-8 text-surface-500">
           {{ copy().description }}
         </p>
         <a routerLink="/contacto" class="btn-primary">{{ copy().cta }}</a>

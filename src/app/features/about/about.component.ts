@@ -22,17 +22,17 @@ import { LocaleService } from '../../core/services/locale.service';
         <div class="container-custom">
           <div class="max-w-3xl">
             <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
-            <h1 class="mb-6 text-4xl font-display font-bold text-surface-100 md:text-5xl lg:text-6xl">
+            <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl lg:text-6xl">
               {{ copy().title }}
             </h1>
-            <p class="text-lg text-surface-400">
+            <p class="text-lg text-surface-500">
               {{ copy().description }}
             </p>
           </div>
         </div>
       </section>
 
-      <section class="bg-surface-900/30 py-16 lg:py-24">
+      <section class="bg-surface-50 py-16 lg:py-24">
         <div class="container-custom">
           <div class="grid gap-12 md:grid-cols-2">
             @for (item of copy().missionVision; track item.title) {
@@ -47,8 +47,8 @@ import { LocaleService } from '../../core/services/locale.service';
                     }
                   </svg>
                 </div>
-                <h2 class="mb-4 text-2xl font-display font-bold text-surface-100">{{ item.title }}</h2>
-                <p class="text-surface-400">{{ item.description }}</p>
+                <h2 class="mb-4 text-2xl font-display font-bold text-surface-900">{{ item.title }}</h2>
+                <p class="text-surface-500">{{ item.description }}</p>
               </div>
             }
           </div>
@@ -58,33 +58,33 @@ import { LocaleService } from '../../core/services/locale.service';
       <section class="py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-16 max-w-3xl text-center">
-            <h2 class="mb-6 text-3xl font-display font-bold text-surface-100 md:text-4xl">
+            <h2 class="mb-6 text-3xl font-display font-bold text-surface-900 md:text-4xl">
               {{ copy().valuesTitle }}
             </h2>
-            <p class="text-surface-400">
+            <p class="text-surface-500">
               {{ copy().valuesDescription }}
             </p>
           </div>
 
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             @for (value of copy().values; track value.title) {
-              <div class="rounded-2xl border border-surface-800 bg-surface-900/50 p-6 text-center transition-colors hover:border-surface-700">
+              <div class="rounded-2xl border border-surface-200 bg-surface-50 p-6 text-center transition-colors hover:border-surface-200">
                 <div class="mb-4 text-4xl">{{ value.icon }}</div>
-                <h3 class="mb-2 text-lg font-display font-semibold text-surface-100">{{ value.title }}</h3>
-                <p class="text-sm text-surface-400">{{ value.description }}</p>
+                <h3 class="mb-2 text-lg font-display font-semibold text-surface-900">{{ value.title }}</h3>
+                <p class="text-sm text-surface-500">{{ value.description }}</p>
               </div>
             }
           </div>
         </div>
       </section>
 
-      <section class="bg-surface-900/30 py-16 lg:py-24">
+      <section class="bg-surface-50 py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-16 max-w-3xl text-center">
-            <h2 class="mb-6 text-3xl font-display font-bold text-surface-100 md:text-4xl">
+            <h2 class="mb-6 text-3xl font-display font-bold text-surface-900 md:text-4xl">
               {{ copy().experienceTitle }}
             </h2>
-            <p class="text-surface-400">
+            <p class="text-surface-500">
               {{ copy().experienceDescription }}
             </p>
           </div>
@@ -95,12 +95,12 @@ import { LocaleService } from '../../core/services/locale.service';
                 <div class="flex gap-4 sm:gap-6">
                   <div class="flex-shrink-0">
                     <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 sm:h-16 sm:w-16">
-                      <span class="text-sm font-bold text-white sm:text-base">{{ milestone.year }}</span>
+                      <span class="text-sm font-bold text-surface-900 sm:text-base">{{ milestone.year }}</span>
                     </div>
                   </div>
                   <div class="pt-2">
-                    <h3 class="mb-2 text-lg font-display font-semibold text-surface-100">{{ milestone.title }}</h3>
-                    <p class="text-surface-400">{{ milestone.description }}</p>
+                    <h3 class="mb-2 text-lg font-display font-semibold text-surface-900">{{ milestone.title }}</h3>
+                    <p class="text-surface-500">{{ milestone.description }}</p>
                   </div>
                 </div>
               }
@@ -115,19 +115,19 @@ import { LocaleService } from '../../core/services/locale.service';
             @for (stat of copy().stats; track stat.label) {
               <div class="text-center">
                 <div class="mb-2 text-4xl font-display font-bold text-gradient md:text-5xl">{{ stat.value }}</div>
-                <div class="text-surface-400">{{ stat.label }}</div>
+                <div class="text-surface-500">{{ stat.label }}</div>
               </div>
             }
           </div>
         </div>
       </section>
 
-      <section class="bg-surface-900/30 py-16 lg:py-24">
+      <section class="bg-surface-50 py-16 lg:py-24">
         <div class="container-custom text-center">
-          <h2 class="mb-4 text-2xl font-display font-bold text-surface-100 md:text-3xl">
+          <h2 class="mb-4 text-2xl font-display font-bold text-surface-900 md:text-3xl">
             {{ copy().ctaTitle }}
           </h2>
-          <p class="mx-auto mb-8 max-w-2xl text-surface-400">
+          <p class="mx-auto mb-8 max-w-2xl text-surface-500">
             {{ copy().ctaDescription }}
           </p>
           <a routerLink="/contacto" class="btn-primary">

@@ -14,7 +14,7 @@ import { LocaleService } from '../../core/services/locale.service';
   template: `
     <div class="min-h-screen py-24 lg:py-32">
       <div class="container-custom px-6 text-center">
-        <h1 class="mb-4 text-2xl font-display font-bold text-surface-100">
+        <h1 class="mb-4 text-2xl font-display font-bold text-surface-900">
           {{ copy().title }}
         </h1>
         <a routerLink="/portfolio" class="btn-primary">{{ copy().button }}</a>

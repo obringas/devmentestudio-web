@@ -23,10 +23,10 @@ import { LocaleService } from '../../core/services/locale.service';
         <div class="container-custom">
           <div class="max-w-3xl">
             <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
-            <h1 class="mb-6 text-4xl font-display font-bold text-surface-100 md:text-5xl lg:text-6xl">
+            <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl lg:text-6xl">
               {{ copy().title }}
             </h1>
-            <p class="text-lg text-surface-400">
+            <p class="text-lg text-surface-500">
               {{ copy().description }}
             </p>
           </div>
@@ -39,7 +39,7 @@ import { LocaleService } from '../../core/services/locale.service';
             @for (service of services(); track service.id) {
               <a
                 [routerLink]="['/servicios', service.slug]"
-                class="group grid gap-8 rounded-[2rem] border border-surface-800 bg-surface-900/50 p-6 transition-all duration-500 hover:border-primary-500/50 lg:grid-cols-[1.2fr_0.8fr] lg:p-8"
+                class="group grid gap-8 rounded-[2rem] border border-surface-200 bg-surface-50 p-6 transition-all duration-500 hover:border-primary-500/50 lg:grid-cols-[1.2fr_0.8fr] lg:p-8"
               >
                 <div class="flex flex-col justify-center">
                   <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20">
@@ -67,17 +67,17 @@ import { LocaleService } from '../../core/services/locale.service';
                     }
                   </div>
 
-                  <h2 class="mb-4 text-2xl font-display font-bold text-surface-100 transition-colors group-hover:text-primary-400 md:text-3xl">
+                  <h2 class="mb-4 text-2xl font-display font-bold text-surface-900 transition-colors group-hover:text-primary-400 md:text-3xl">
                     {{ service.title }}
                   </h2>
 
-                  <p class="mb-6 text-surface-400">
+                  <p class="mb-6 text-surface-500">
                     {{ service.fullDescription }}
                   </p>
 
                   <div class="mb-6 flex flex-wrap gap-2">
                     @for (tech of service.technologies; track tech.name) {
-                      <span class="rounded-full bg-surface-800 px-3 py-1 text-xs text-surface-300">
+                      <span class="rounded-full bg-surface-50 px-3 py-1 text-xs text-surface-600">
                         {{ tech.name }}
                       </span>
                     }
@@ -91,7 +91,7 @@ import { LocaleService } from '../../core/services/locale.service';
                   </div>
                 </div>
 
-                <div class="rounded-[1.5rem] bg-surface-800/30 p-5 sm:p-6">
+                <div class="rounded-[1.5rem] bg-surface-50 p-5 sm:p-6">
                   <h3 class="mb-4 text-lg font-semibold text-surface-200">{{ copy().includes }}</h3>
                   <ul class="space-y-3">
                     @for (feature of service.features; track feature) {
@@ -99,7 +99,7 @@ import { LocaleService } from '../../core/services/locale.service';
                         <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <span class="text-surface-300">{{ feature }}</span>
+                        <span class="text-surface-600">{{ feature }}</span>
                       </li>
                     }
                   </ul>
@@ -110,12 +110,12 @@ import { LocaleService } from '../../core/services/locale.service';
         </div>
       </section>
 
-      <section class="bg-surface-900/30 py-16 lg:py-24">
+      <section class="bg-surface-50 py-16 lg:py-24">
         <div class="container-custom text-center">
-          <h2 class="mb-4 text-2xl font-display font-bold text-surface-100 md:text-3xl">
+          <h2 class="mb-4 text-2xl font-display font-bold text-surface-900 md:text-3xl">
             {{ copy().ctaTitle }}
           </h2>
-          <p class="mx-auto mb-8 max-w-2xl text-surface-400">
+          <p class="mx-auto mb-8 max-w-2xl text-surface-500">
             {{ copy().ctaDescription }}
           </p>
           <a routerLink="/contacto" class="btn-primary">

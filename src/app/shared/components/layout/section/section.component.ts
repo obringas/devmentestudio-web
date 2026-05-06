@@ -31,7 +31,7 @@ export class SectionComponent {
       
       // Background
       'bg-surface-950': this.background() === 'default',
-      'bg-surface-900/30': this.background() === 'alt',
+      'bg-surface-50': this.background() === 'alt',
       'bg-gradient-to-b from-surface-950 via-surface-900/50 to-surface-950': this.background() === 'gradient',
     };
   }

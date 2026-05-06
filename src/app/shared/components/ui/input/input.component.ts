@@ -29,7 +29,7 @@ import {
       @if (label()) {
         <label 
           [for]="inputId()" 
-          class="block text-sm font-medium text-surface-300 mb-2"
+          class="block text-sm font-medium text-surface-600 mb-2"
         >
           {{ label() }}
           @if (required()) {

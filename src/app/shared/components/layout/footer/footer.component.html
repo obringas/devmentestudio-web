@@ -1,5 +1,5 @@
-<footer class="relative overflow-hidden border-t border-white/10 bg-surface-950">
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(249,115,22,0.12),transparent_24%)]"></div>
+<footer class="relative overflow-hidden border-t border-surface-200 bg-surface-50">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.06),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(249,115,22,0.05),transparent_24%)]"></div>
 
     <div class="container-custom relative py-16">
         <div class="surface-panel grid grid-cols-1 gap-12 px-6 py-10 md:grid-cols-2 lg:grid-cols-5 lg:px-10">
@@ -7,22 +7,22 @@
                 <span class="eyebrow mb-5">{{ copy().eyebrow }}</span>
 
                 <a routerLink="/" class="mb-6 flex items-center gap-4">
-                    <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+                    <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-surface-200 bg-white">
                         <img src="logo.png" alt="DevMenteStudio" class="h-10 w-auto object-contain" />
                     </span>
                     <span>
-                        <span class="block text-[0.7rem] uppercase tracking-[0.28em] text-surface-400">{{ copy().studioLabel }}</span>
-                        <span class="font-display text-2xl font-semibold text-surface-100">DevMenteStudio</span>
+                        <span class="block text-[0.7rem] uppercase tracking-[0.28em] text-surface-500">{{ copy().studioLabel }}</span>
+                        <span class="font-display text-2xl font-semibold text-surface-900">DevMenteStudio</span>
                     </span>
                 </a>
 
-                <p class="mb-6 max-w-md text-surface-300">{{ copy().description }}</p>
+                <p class="mb-6 max-w-md text-surface-600">{{ copy().description }}</p>
 
-                <div class="mb-8 grid gap-3 text-sm text-surface-300">
-                    <a [href]="'mailto:' + contact.email" class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-white/20 hover:text-surface-100">
+                <div class="mb-8 grid gap-3 text-sm text-surface-600">
+                    <a [href]="'mailto:' + contact.email" class="rounded-2xl border border-surface-200 bg-white px-4 py-3 transition-colors hover:border-surface-300 hover:text-surface-900">
                         {{ contact.email }}
                     </a>
-                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-white/20 hover:text-surface-100">
+                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="rounded-2xl border border-surface-200 bg-white px-4 py-3 transition-colors hover:border-surface-300 hover:text-surface-900">
                         {{ contact.phone }}
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="flex items-center gap-4">
                     @for (social of socialLinks; track social.platform) {
                     <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label"
-                        class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-surface-400 transition-all hover:-translate-y-0.5 hover:border-white/20 hover:text-primary-300">
+                        class="flex h-11 w-11 items-center justify-center rounded-2xl border border-surface-200 bg-white text-surface-500 transition-all hover:-translate-y-0.5 hover:border-surface-300 hover:text-primary-600">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path [attr.d]="getSocialIconPath(social.platform)"></path>
                         </svg>
@@ -41,13 +41,13 @@
 
             @for (section of footerSections(); track section.title) {
             <div>
-                <h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-surface-400">
+                <h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-surface-500">
                     {{ section.title }}
                 </h4>
                 <ul class="space-y-3">
                     @for (link of section.links; track link.href) {
                     <li>
-                        <a [routerLink]="link.href" class="text-surface-300 transition-colors hover:text-surface-100">
+                        <a [routerLink]="link.href" class="text-surface-600 transition-colors hover:text-surface-900">
                             {{ link.label }}
                         </a>
                     </li>
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="border-t border-white/10">
+    <div class="border-t border-surface-200">
         <div class="container-custom py-6">
             <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
                 <p class="text-sm text-surface-500">{{ copy().copyright }}</p>

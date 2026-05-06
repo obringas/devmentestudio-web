@@ -17,14 +17,14 @@ import { LocaleService } from '../../../../core/services/locale.service';
         <div class="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div class="section-intro">
             <span class="eyebrow">{{ copy().eyebrow }}</span>
-            <h2 class="mt-6 text-4xl font-bold text-surface-100 md:text-5xl">
+            <h2 class="mt-6 text-4xl font-bold text-surface-900 md:text-5xl">
               {{ copy().title }}
             </h2>
-            <p class="mt-5 text-lg text-surface-300">
+            <p class="mt-5 text-lg text-surface-600">
               {{ copy().description }}
             </p>
           </div>
-          <div class="rounded-[1.75rem] border border-white/10 bg-white/5 px-5 py-4 text-sm text-surface-300 lg:max-w-sm">
+          <div class="rounded-[1.75rem] border border-surface-200 bg-white px-5 py-4 text-sm text-surface-600 lg:max-w-sm">
             {{ copy().sideNote }}
           </div>
         </div>
@@ -36,7 +36,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
                 <p class="text-xs uppercase tracking-[0.22em] text-surface-500">{{ category.label }}</p>
                 <div class="mt-6 flex flex-wrap gap-3">
                   @for (tech of category.items; track tech.name) {
-                    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <div class="rounded-2xl border border-surface-200 bg-white px-4 py-3">
                       <div class="flex items-center gap-3">
                         <span
                           class="flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold"
@@ -46,7 +46,7 @@ import { LocaleService } from '../../../../core/services/locale.service';
                           {{ tech.name.charAt(0) }}
                         </span>
                         <div>
-                          <p class="font-medium text-surface-100">{{ tech.name }}</p>
+                          <p class="font-medium text-surface-900">{{ tech.name }}</p>
                           <p class="text-xs uppercase tracking-[0.16em] text-surface-500">{{ category.label }}</p>
                         </div>
                       </div>
@@ -59,28 +59,28 @@ import { LocaleService } from '../../../../core/services/locale.service';
 
           <div class="surface-panel p-6 sm:p-8">
             <p class="text-xs uppercase tracking-[0.24em] text-surface-500">{{ copy().workflowEyebrow }}</p>
-            <h3 class="mt-4 text-3xl font-display font-semibold text-surface-100">
+            <h3 class="mt-4 text-3xl font-display font-semibold text-surface-900">
               {{ copy().workflowTitle }}
             </h3>
             <div class="mt-8 space-y-4">
               @for (step of copy().steps; track step.title) {
-                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <div class="rounded-[1.5rem] border border-surface-200 bg-white p-5">
                   <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary-300">{{ step.label }}</p>
-                  <p class="mt-2 text-surface-300">{{ step.description }}</p>
+                  <p class="mt-2 text-surface-600">{{ step.description }}</p>
                 </div>
               }
             </div>
 
-            <div class="mt-8 rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-primary-500/10 to-accent-500/10 p-5">
+            <div class="mt-8 rounded-[1.75rem] border border-surface-200 bg-gradient-to-br from-primary-500/10 to-accent-500/10 p-5">
               <p class="text-xs uppercase tracking-[0.22em] text-surface-500">{{ copy().coverageEyebrow }}</p>
               <div class="mt-4 grid grid-cols-2 gap-4">
                 <div>
-                  <p class="text-2xl font-display font-semibold text-surface-100">{{ allTech.length }}</p>
-                  <p class="text-sm text-surface-400">{{ copy().coverageTech }}</p>
+                  <p class="text-2xl font-display font-semibold text-surface-900">{{ allTech.length }}</p>
+                  <p class="text-sm text-surface-500">{{ copy().coverageTech }}</p>
                 </div>
                 <div>
-                  <p class="text-2xl font-display font-semibold text-surface-100">{{ categories().length }}</p>
-                  <p class="text-sm text-surface-400">{{ copy().coverageAreas }}</p>
+                  <p class="text-2xl font-display font-semibold text-surface-900">{{ categories().length }}</p>
+                  <p class="text-sm text-surface-500">{{ copy().coverageAreas }}</p>
                 </div>
               </div>
             </div>

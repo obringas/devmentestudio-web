@@ -20,7 +20,7 @@ export type CardVariant = 'default' | 'interactive' | 'glass';
       }
       <ng-content />
       @if (footer()) {
-        <div class="mt-4 pt-4 border-t border-surface-800">
+        <div class="mt-4 pt-4 border-t border-surface-200">
           <ng-content select="[card-footer]" />
         </div>
       }
@@ -41,9 +41,9 @@ export class CardComponent {
       'rounded-2xl transition-all duration-300': true,
       
       // Variants
-      'bg-surface-900/50 border border-surface-800': this.variant() === 'default',
-      'bg-surface-900/50 border border-surface-800 cursor-pointer hover:shadow-glow hover:-translate-y-1 hover:border-surface-700': this.variant() === 'interactive',
-      'bg-surface-900/60 backdrop-blur-xl border border-surface-700/50': this.variant() === 'glass',
+      'bg-surface-50 border border-surface-200': this.variant() === 'default',
+      'bg-surface-50 border border-surface-200 cursor-pointer hover:shadow-glow hover:-translate-y-1 hover:border-surface-200': this.variant() === 'interactive',
+      'bg-surface-50 backdrop-blur-xl border border-surface-200/50': this.variant() === 'glass',
       
       // Padding
       'p-0': this.padding() === 'none',
@@ -52,7 +52,7 @@ export class CardComponent {
       'p-8': this.padding() === 'lg',
       
       // Hover
-      'hover:border-surface-700 hover:bg-surface-900/70': this.hoverable() && this.variant() === 'default',
+      'hover:border-surface-200 hover:bg-surface-50': this.hoverable() && this.variant() === 'default',
     };
   }
 }

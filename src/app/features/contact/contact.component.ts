@@ -40,10 +40,10 @@ type ContactFormControls = {
         <div class="container-custom">
           <div class="max-w-3xl">
             <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
-            <h1 class="mb-6 text-4xl font-display font-bold text-surface-100 md:text-5xl lg:text-6xl">
+            <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl lg:text-6xl">
               {{ copy().title }}
             </h1>
-            <p class="text-lg text-surface-400">
+            <p class="text-lg text-surface-500">
               {{ copy().description }}
             </p>
           </div>
@@ -54,7 +54,7 @@ type ContactFormControls = {
         <div class="container-custom">
           <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <div class="lg:col-span-2">
-              <h2 class="mb-8 text-2xl font-display font-bold text-surface-100">
+              <h2 class="mb-8 text-2xl font-display font-bold text-surface-900">
                 {{ copy().contactInfoTitle }}
               </h2>
 
@@ -67,7 +67,7 @@ type ContactFormControls = {
                   </div>
                   <div>
                     <h3 class="mb-1 font-medium text-surface-200">Email</h3>
-                    <a href="mailto:contacto@devmentestudio.com" class="text-surface-400 transition-colors hover:text-primary-400">
+                    <a href="mailto:contacto@devmentestudio.com" class="text-surface-500 transition-colors hover:text-primary-400">
                       contacto&#64;devmentestudio.com
                     </a>
                   </div>
@@ -82,7 +82,7 @@ type ContactFormControls = {
                   </div>
                   <div>
                     <h3 class="mb-1 font-medium text-surface-200">{{ copy().locationLabel }}</h3>
-                    <p class="text-surface-400">Salta, Argentina</p>
+                    <p class="text-surface-500">Salta, Argentina</p>
                   </div>
                 </div>
 
@@ -94,7 +94,7 @@ type ContactFormControls = {
                   </div>
                   <div>
                     <h3 class="mb-1 font-medium text-surface-200">WhatsApp</h3>
-                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="text-surface-400 transition-colors hover:text-green-400">
+                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="text-surface-500 transition-colors hover:text-green-400">
                       +54 9 387 451-3777
                     </a>
                   </div>
@@ -109,7 +109,7 @@ type ContactFormControls = {
                       [href]="social.url"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-800 text-surface-400 transition-all hover:bg-surface-700 hover:text-primary-400"
+                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-50 text-surface-500 transition-all hover:bg-surface-700 hover:text-primary-400"
                       [attr.aria-label]="social.label"
                     >
                       <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -122,7 +122,7 @@ type ContactFormControls = {
             </div>
 
             <div class="lg:col-span-3">
-              <div class="rounded-2xl border border-surface-800 bg-surface-900/50 p-6 sm:p-8">
+              <div class="rounded-2xl border border-surface-200 bg-surface-50 p-6 sm:p-8">
                 @if (submitted()) {
                   <div class="py-12 text-center">
                     <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
@@ -130,10 +130,10 @@ type ContactFormControls = {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                       </svg>
                     </div>
-                    <h3 class="mb-2 text-xl font-display font-bold text-surface-100">
+                    <h3 class="mb-2 text-xl font-display font-bold text-surface-900">
                       {{ copy().successTitle }}
                     </h3>
-                    <p class="mb-6 text-surface-400">
+                    <p class="mb-6 text-surface-500">
                       {{ copy().successDescription }}
                     </p>
                     <button type="button" class="btn-secondary" (click)="resetForm()">
@@ -144,7 +144,7 @@ type ContactFormControls = {
                   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                     <div class="mb-6 grid gap-6 sm:grid-cols-2">
                       <div>
-                        <label for="name" class="mb-2 block text-sm font-medium text-surface-300">
+                        <label for="name" class="mb-2 block text-sm font-medium text-surface-600">
                           {{ copy().fields.name }} <span class="text-red-400">*</span>
                         </label>
                         <input
@@ -161,7 +161,7 @@ type ContactFormControls = {
                       </div>
 
                       <div>
-                        <label for="email" class="mb-2 block text-sm font-medium text-surface-300">
+                        <label for="email" class="mb-2 block text-sm font-medium text-surface-600">
                           {{ copy().fields.email }} <span class="text-red-400">*</span>
                         </label>
                         <input
@@ -180,7 +180,7 @@ type ContactFormControls = {
 
                     <div class="mb-6 grid gap-6 sm:grid-cols-2">
                       <div>
-                        <label for="company" class="mb-2 block text-sm font-medium text-surface-300">
+                        <label for="company" class="mb-2 block text-sm font-medium text-surface-600">
                           {{ copy().fields.company }}
                         </label>
                         <input
@@ -193,7 +193,7 @@ type ContactFormControls = {
                       </div>
 
                       <div>
-                        <label for="service" class="mb-2 block text-sm font-medium text-surface-300">
+                        <label for="service" class="mb-2 block text-sm font-medium text-surface-600">
                           {{ copy().fields.service }}
                         </label>
                         <select id="service" formControlName="service" class="input">
@@ -206,7 +206,7 @@ type ContactFormControls = {
                     </div>
 
                     <div class="mb-6">
-                      <label for="budget" class="mb-2 block text-sm font-medium text-surface-300">
+                      <label for="budget" class="mb-2 block text-sm font-medium text-surface-600">
                         {{ copy().fields.budget }}
                       </label>
                       <select id="budget" formControlName="budget" class="input">
@@ -218,7 +218,7 @@ type ContactFormControls = {
                     </div>
 
                     <div class="mb-6">
-                      <label for="message" class="mb-2 block text-sm font-medium text-surface-300">
+                      <label for="message" class="mb-2 block text-sm font-medium text-surface-600">
                         {{ copy().fields.message }} <span class="text-red-400">*</span>
                       </label>
                       <textarea

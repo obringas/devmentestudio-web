@@ -33,7 +33,7 @@ export class HeaderComponent implements OnDestroy {
   readonly copy = computed(() => getHeaderContent(this.language()));
 
   readonly headerClasses = computed(() => ({
-    'bg-surface-950/70 backdrop-blur-2xl border-b border-white/10 shadow-[0_18px_48px_rgba(2,6,23,0.28)]': this.scrolled(),
+    'bg-white/80 backdrop-blur-2xl border-b border-surface-200 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)]': this.scrolled(),
     'bg-transparent': !this.scrolled(),
   }));
 

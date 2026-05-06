@@ -2,34 +2,34 @@
     <div class="container-custom">
         <nav class="flex h-24 items-center justify-between gap-4">
             <a routerLink="/" class="group flex items-center gap-4">
-                <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-transform duration-300 group-hover:scale-[1.03]">
+                <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-surface-200 bg-white shadow-sm transition-transform duration-300 group-hover:scale-[1.03]">
                     <img src="logo.png" alt="DevMenteStudio" class="h-10 w-auto object-contain" />
                 </span>
                 <span class="hidden sm:block">
-                    <span class="block text-[0.68rem] uppercase tracking-[0.28em] text-surface-400">{{ copy().studioLabel }}</span>
-                    <span class="block font-display text-xl font-semibold text-surface-100">DevMenteStudio</span>
+                    <span class="block text-[0.68rem] uppercase tracking-[0.28em] text-surface-500">{{ copy().studioLabel }}</span>
+                    <span class="block font-display text-xl font-semibold text-surface-900">DevMenteStudio</span>
                 </span>
             </a>
 
-            <div class="hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
+            <div class="hidden lg:flex items-center gap-2 rounded-full border border-surface-200 bg-white/50 p-2 backdrop-blur-xl">
                 @for (item of navItems(); track item.href) {
-                <a [routerLink]="item.href" routerLinkActive="text-primary-300 bg-white/10"
+                <a [routerLink]="item.href" routerLinkActive="text-primary-700 bg-white shadow-sm"
                     [routerLinkActiveOptions]="{ exact: item.href === '/' }"
-                    class="rounded-full px-4 py-2 text-sm font-medium text-surface-300 transition-all hover:bg-white/5 hover:text-surface-100">
+                    class="rounded-full px-4 py-2 text-sm font-medium text-surface-600 transition-all hover:bg-white hover:text-surface-900">
                     {{ item.label }}
                 </a>
                 }
             </div>
 
             <div class="hidden lg:flex items-center gap-3">
-                <div class="flex items-center rounded-full border border-white/10 bg-white/5 p-1">
+                <div class="flex items-center rounded-full border border-surface-200 bg-surface-50 p-1">
                     <button type="button" class="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
-                        [ngClass]="language() === 'es' ? 'bg-white/10 text-surface-100' : 'text-surface-400 hover:text-surface-100'"
+                        [ngClass]="language() === 'es' ? 'bg-white shadow-sm text-surface-900' : 'text-surface-500 hover:text-surface-900'"
                         (click)="setLanguage('es')">
                         ES
                     </button>
                     <button type="button" class="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
-                        [ngClass]="language() === 'en' ? 'bg-white/10 text-surface-100' : 'text-surface-400 hover:text-surface-100'"
+                        [ngClass]="language() === 'en' ? 'bg-white shadow-sm text-surface-900' : 'text-surface-500 hover:text-surface-900'"
                         (click)="setLanguage('en')">
                         EN
                     </button>
@@ -39,7 +39,7 @@
                 </a>
             </div>
 
-            <button type="button" class="lg:hidden rounded-full border border-white/10 bg-white/5 p-3 text-surface-300 transition-colors hover:text-surface-100"
+            <button type="button" class="lg:hidden rounded-full border border-surface-200 bg-white p-3 text-surface-600 transition-colors hover:text-surface-900"
                 (click)="toggleMobileMenu()" [attr.aria-expanded]="mobileMenuOpen()" aria-label="Toggle menu">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     @if (mobileMenuOpen()) {
@@ -53,19 +53,19 @@
     </div>
 
     @if (mobileMenuOpen()) {
-    <div class="absolute left-0 right-0 top-full border-t border-white/10 bg-surface-950/95 backdrop-blur-2xl lg:hidden">
+    <div class="absolute left-0 right-0 top-full border-t border-surface-200 bg-white/95 backdrop-blur-2xl lg:hidden">
         <div class="container-custom py-6">
             <div class="surface-panel flex flex-col gap-4 p-5">
-                <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-surface-400">{{ copy().languageLabel }}</span>
-                    <div class="flex items-center rounded-full border border-white/10 bg-surface-950/70 p-1">
+                <div class="flex items-center justify-between rounded-2xl border border-surface-200 bg-surface-50 px-4 py-3">
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-surface-500">{{ copy().languageLabel }}</span>
+                    <div class="flex items-center rounded-full border border-surface-200 bg-surface-100/50 p-1">
                         <button type="button" class="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
-                            [ngClass]="language() === 'es' ? 'bg-white/10 text-surface-100' : 'text-surface-400 hover:text-surface-100'"
+                            [ngClass]="language() === 'es' ? 'bg-white shadow-sm text-surface-900' : 'text-surface-500 hover:text-surface-900'"
                             (click)="setLanguage('es')">
                             ES
                         </button>
                         <button type="button" class="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
-                            [ngClass]="language() === 'en' ? 'bg-white/10 text-surface-100' : 'text-surface-400 hover:text-surface-100'"
+                            [ngClass]="language() === 'en' ? 'bg-white shadow-sm text-surface-900' : 'text-surface-500 hover:text-surface-900'"
                             (click)="setLanguage('en')">
                             EN
                         </button>
@@ -73,14 +73,14 @@
                 </div>
 
                 @for (item of navItems(); track item.href) {
-                <a [routerLink]="item.href" routerLinkActive="text-primary-300"
+                <a [routerLink]="item.href" routerLinkActive="text-primary-700 font-semibold"
                     [routerLinkActiveOptions]="{ exact: item.href === '/' }"
-                    class="rounded-2xl px-4 py-3 text-surface-300 transition-colors hover:bg-white/5 hover:text-surface-100"
+                    class="rounded-2xl px-4 py-3 text-surface-600 transition-colors hover:bg-surface-50 hover:text-surface-900"
                     (click)="closeMobileMenu()">
                     {{ item.label }}
                 </a>
                 }
-                <div class="border-t border-white/10 pt-4">
+                <div class="border-t border-surface-200 pt-4">
                     <a routerLink="/contacto" class="btn-primary w-full text-center" (click)="closeMobileMenu()">
                         {{ copy().cta }}
                     </a>
