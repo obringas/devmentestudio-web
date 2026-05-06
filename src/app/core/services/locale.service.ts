@@ -34,7 +34,7 @@ export class LocaleService {
 
   private getInitialLanguage(): AppLanguage {
     if (!isPlatformBrowser(this.platformId)) {
-      return 'es';
+      return 'en';
     }
 
     const storedLanguage = window.localStorage.getItem(this.storageKey);
@@ -43,6 +43,6 @@ export class LocaleService {
     }
 
     const browserLanguage = window.navigator.language.toLowerCase();
-    return browserLanguage.startsWith('en') ? 'en' : 'es';
+    return browserLanguage.startsWith('es') ? 'es' : 'en';
   }
 }

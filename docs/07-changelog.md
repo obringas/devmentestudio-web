@@ -3,6 +3,29 @@
 ## [2026-05-06] - Agente: Gemini
 
 ### Cambios
+- Se modificó la configuración de internacionalización para establecer el inglés (`en`) como idioma predeterminado de la aplicación.
+- Se ajustaron los bordes y sombras de las tarjetas y paneles (`styles.scss`) para darles mayor relieve y definición.
+
+### Motivo
+El usuario solicitó que el idioma por defecto sea el inglés y mejorar el contorno de las tarjetas para destacarlas más sobre el nuevo fondo claro.
+
+### Archivos afectados
+- `src/app/core/services/locale.service.ts`
+- `src/styles.scss`
+- `docs/07-changelog.md`
+
+### Decisiones tomadas
+Se invirtió la lógica de fallback en el `LocaleService`. Ahora devuelve `'en'` en SSR y como fallback del navegador, a menos que se detecte explícitamente `'es'`. Además, se incrementó la opacidad y tamaño de las sombras y bordes en el CSS global.
+
+### Validaciones realizadas
+- Se verificó que el servicio compile correctamente y la página cargue con la configuración.
+
+### Pendientes / Follow-ups
+- Ninguno por el momento.
+
+## [2026-05-06] - Agente: Gemini
+
+### Cambios
 - Se migró toda la aplicación de un diseño oscuro a un tema claro.
 - Se invirtió la paleta base (`--color-surface`) en `styles.scss` y se aclararon las utilidades de los componentes.
 - Se actualizaron el `header` y `footer` para usar fondos claros (`bg-white/80`, `bg-surface-50`) en lugar de oscuros.
