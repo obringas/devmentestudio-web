@@ -1,29 +1,24 @@
-<!-- Botón flotante para abrir el chat -->
 @if (isBrowser()) {
   <button
     class="chat-toggle"
     [class.chat-open]="isOpen()"
     (click)="toggleChat()"
-    aria-label="Abrir chat de asistencia"
+    [attr.aria-label]="copy().toggleLabel"
   >
     @if (isOpen()) {
-      <!-- Icono cerrar -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     } @else {
-      <!-- Icono chat -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
       </svg>
     }
   </button>
 
-  <!-- Panel de chat -->
   @if (isOpen()) {
-    <div class="chat-panel" role="dialog" aria-label="Chat de asistencia">
-      <!-- Header -->
+    <div class="chat-panel" role="dialog" [attr.aria-label]="copy().dialogLabel">
       <div class="chat-header">
         <div class="chat-header-info">
           <div class="chat-avatar">
@@ -36,11 +31,11 @@
             </svg>
           </div>
           <div>
-            <h3 class="chat-title">Asistente DevMente</h3>
-            <p class="chat-subtitle">Respondo tus dudas al instante</p>
+            <h3 class="chat-title">{{ copy().title }}</h3>
+            <p class="chat-subtitle">{{ copy().subtitle }}</p>
           </div>
         </div>
-        <button class="chat-clear" (click)="clearChat()" title="Limpiar chat">
+        <button class="chat-clear" (click)="clearChat()" [title]="copy().clear">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="23 4 23 10 17 10"></polyline>
             <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
@@ -48,11 +43,10 @@
         </button>
       </div>
 
-      <!-- Mensajes -->
       <div class="chat-messages" #messagesContainer>
         @for (message of messages(); track trackByMessage($index, message)) {
-          <div 
-            class="chat-message" 
+          <div
+            class="chat-message"
             [class.chat-message-user]="message.role === 'user'"
             [class.chat-message-assistant]="message.role === 'assistant'"
           >
@@ -69,7 +63,7 @@
             </div>
           </div>
         }
-        
+
         @if (isLoading()) {
           <div class="chat-message chat-message-assistant">
             <div class="message-avatar">
@@ -87,23 +81,22 @@
         }
       </div>
 
-      <!-- Input -->
       <div class="chat-input-container">
         <input
           #messageInput
           type="text"
           class="chat-input"
-          placeholder="Escribe tu mensaje..."
+          [placeholder]="copy().placeholder"
           [value]="inputMessage()"
           (input)="onInput($event)"
           (keydown)="onKeyDown($event)"
           [disabled]="isLoading()"
         />
-        <button 
-          class="chat-send" 
-          (click)="sendMessage()" 
+        <button
+          class="chat-send"
+          (click)="sendMessage()"
           [disabled]="isLoading() || !inputMessage().trim()"
-          title="Enviar mensaje"
+          [title]="copy().send"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>

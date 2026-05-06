@@ -1,29 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ========================================
-   CSS Variables & Theme Configuration
-   ======================================== */
 :root {
-  --color-primary: 99 102 241;
-  --color-primary-light: 129 140 248;
-  --color-primary-dark: 67 56 202;
-  --color-accent: 16 185 129;
-  --color-accent-light: 52 211 153;
-  --color-surface: 9 9 11;
-  --color-surface-elevated: 24 24 27;
-  --color-surface-overlay: 39 39 42;
-  --color-text-primary: 250 250 250;
-  --color-text-secondary: 161 161 170;
-  --color-text-muted: 113 113 122;
+  --color-primary: 14 165 233;
+  --color-primary-light: 56 189 248;
+  --color-primary-dark: 8 47 73;
+  --color-accent: 249 115 22;
+  --color-accent-light: 251 146 60;
+  --color-surface: 7 17 31;
+  --color-surface-elevated: 13 24 43;
+  --color-surface-overlay: 20 35 58;
+  --color-text-primary: 244 247 251;
+  --color-text-secondary: 186 198 214;
+  --color-text-muted: 109 124 145;
   --gradient-primary: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-accent)) 100%);
-  --shadow-glow: 0 0 40px -10px rgba(99, 102, 241, 0.4);
+  --shadow-glow: 0 28px 80px -28px rgba(14, 165, 233, 0.35);
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light theme override */
 .light {
   --color-surface: 250 250 250;
   --color-surface-elevated: 255 255 255;
@@ -32,9 +30,6 @@
   --color-text-secondary: 82 82 91;
 }
 
-/* ========================================
-   Base Styles
-   ======================================== */
 @layer base {
   *, *::before, *::after {
     @apply border-surface-700;
@@ -48,6 +43,10 @@
   body {
     @apply bg-surface-950 text-surface-100 font-sans min-h-screen;
     @apply selection:bg-primary-500/30 selection:text-white;
+    background:
+      radial-gradient(circle at top left, rgba(14, 165, 233, 0.2), transparent 28%),
+      radial-gradient(circle at 85% 12%, rgba(249, 115, 22, 0.16), transparent 24%),
+      linear-gradient(180deg, #07111f 0%, #081221 42%, #0b1730 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -66,9 +65,6 @@
   }
 }
 
-/* ========================================
-   Component Styles
-   ======================================== */
 @layer components {
   .container-custom {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
@@ -77,37 +73,47 @@
   .section { @apply py-16 md:py-24 lg:py-32; }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #f8fbff 0%, #7dd3fc 45%, #fdba74 100%);
+    @apply bg-clip-text text-transparent;
   }
 
   .glass {
-    @apply bg-surface-900/60 backdrop-blur-xl border border-surface-700/50;
+    @apply bg-surface-900/55 backdrop-blur-xl border border-white/10;
   }
 
   .card {
-    @apply rounded-2xl bg-surface-900/50 border border-surface-800 p-6;
-    @apply transition-all duration-300;
-    @apply hover:border-surface-700 hover:bg-surface-900/70;
+    @apply rounded-[1.75rem] border p-6 transition-all duration-300;
+    background: linear-gradient(180deg, rgba(12, 24, 44, 0.92), rgba(8, 17, 31, 0.88));
+    border-color: rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 48px rgba(2, 6, 23, 0.28);
+    @apply hover:border-white/20;
   }
 
   .card-interactive {
-    @apply card cursor-pointer hover:shadow-glow hover:-translate-y-1;
+    @apply card cursor-pointer hover:-translate-y-1.5 hover:shadow-glow;
   }
 
   .btn {
     @apply inline-flex items-center justify-center gap-2;
-    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200;
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-200;
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-500 hover:shadow-glow active:bg-primary-700;
+    @apply btn text-surface-950 active:scale-[0.99];
+    background: linear-gradient(135deg, #f8fbff 0%, #d9f0ff 50%, #f7d4b1 100%);
+    box-shadow: 0 20px 60px -24px rgba(248, 251, 255, 0.75);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
   }
 
   .btn-secondary {
-    @apply btn bg-surface-800 text-surface-100 border border-surface-700;
-    @apply hover:bg-surface-700 hover:border-surface-600;
+    @apply btn text-surface-100 border border-white/10;
+    background: rgba(255, 255, 255, 0.04);
+    @apply hover:bg-white/10 hover:border-white/20;
   }
 
   .btn-ghost {
@@ -115,13 +121,13 @@
   }
 
   .btn-outline {
-    @apply btn border border-primary-500/50 text-primary-400;
-    @apply hover:bg-primary-500/10 hover:border-primary-400;
+    @apply btn border border-primary-400/35 text-primary-300;
+    @apply hover:bg-primary-500/10 hover:border-primary-300 hover:text-primary-200;
   }
 
   .input {
-    @apply w-full px-4 py-3 rounded-xl;
-    @apply bg-surface-900/50 border border-surface-700;
+    @apply w-full px-4 py-3 rounded-2xl border border-white/10;
+    background: rgba(10, 20, 36, 0.82);
     @apply text-surface-100 placeholder:text-surface-500;
     @apply transition-all duration-200;
     @apply focus:border-primary-500 focus:ring-1 focus:ring-primary-500/50 focus:outline-none;
@@ -144,11 +150,42 @@
   .divider {
     @apply h-px bg-gradient-to-r from-transparent via-surface-700 to-transparent;
   }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-surface-300;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .section-intro {
+    @apply max-w-3xl;
+  }
+
+  .surface-panel {
+    @apply rounded-[2rem] border border-white/10;
+    background:
+      linear-gradient(180deg, rgba(16, 28, 49, 0.96), rgba(7, 17, 31, 0.9)),
+      rgba(7, 17, 31, 0.9);
+    box-shadow: 0 28px 90px -42px rgba(15, 23, 42, 0.75);
+  }
+
+  .metric-tile {
+    @apply rounded-[1.5rem] border border-white/10 p-5;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .page-shell {
+    @apply relative isolate;
+  }
+
+  .page-shell::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 -z-10;
+    background:
+      radial-gradient(circle at 10% 15%, rgba(14, 165, 233, 0.1), transparent 24%),
+      radial-gradient(circle at 90% 10%, rgba(249, 115, 22, 0.08), transparent 20%);
+  }
 }
 
-/* ========================================
-   Utilities
-   ======================================== */
 @layer utilities {
   .noise::before {
     content: '';
@@ -160,7 +197,7 @@
   .glow::after {
     content: '';
     @apply absolute -inset-px rounded-[inherit] opacity-0 transition-opacity duration-500;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(16, 185, 129, 0.4));
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(249, 115, 22, 0.35));
     filter: blur(20px);
     z-index: -1;
   }
@@ -174,11 +211,12 @@
   .animation-delay-300 { animation-delay: 300ms; }
   .animation-delay-400 { animation-delay: 400ms; }
   .animation-delay-500 { animation-delay: 500ms; }
+
+  .mask-bottom-fade {
+    mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+  }
 }
 
-/* ========================================
-   Animations
-   ======================================== */
 .fade-in-up {
   opacity: 0;
   transform: translateY(30px);
@@ -202,4 +240,13 @@
 
 @keyframes slideUp {
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

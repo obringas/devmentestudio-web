@@ -1,0 +1,85 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#07111F"/>
+  <rect width="1200" height="1500" fill="url(#paint0_radial)"/>
+  <rect width="1200" height="1500" fill="url(#paint1_radial)"/>
+  <g opacity="0.4">
+    <path d="M88 188H1112" stroke="url(#paint2_linear)" stroke-width="1.5"/>
+    <path d="M88 340H1112" stroke="url(#paint3_linear)" stroke-width="1.5"/>
+    <path d="M88 492H1112" stroke="url(#paint4_linear)" stroke-width="1.5"/>
+    <path d="M88 644H1112" stroke="url(#paint5_linear)" stroke-width="1.5"/>
+    <path d="M88 796H1112" stroke="url(#paint6_linear)" stroke-width="1.5"/>
+    <path d="M88 948H1112" stroke="url(#paint7_linear)" stroke-width="1.5"/>
+    <path d="M88 1100H1112" stroke="url(#paint8_linear)" stroke-width="1.5"/>
+    <path d="M88 1252H1112" stroke="url(#paint9_linear)" stroke-width="1.5"/>
+  </g>
+  <g opacity="0.22">
+    <path d="M206 118V1382" stroke="url(#paint10_linear)" stroke-width="1.5"/>
+    <path d="M420 118V1382" stroke="url(#paint11_linear)" stroke-width="1.5"/>
+    <path d="M634 118V1382" stroke="url(#paint12_linear)" stroke-width="1.5"/>
+    <path d="M848 118V1382" stroke="url(#paint13_linear)" stroke-width="1.5"/>
+    <path d="M1062 118V1382" stroke="url(#paint14_linear)" stroke-width="1.5"/>
+  </g>
+  <rect x="112" y="122" width="976" height="1256" rx="42" fill="#0B1730" fill-opacity="0.76" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2"/>
+  <rect x="156" y="168" width="300" height="44" rx="22" fill="#0F243E" stroke="#223B5D"/>
+  <circle cx="188" cy="190" r="7" fill="#F97316"/>
+  <text x="210" y="197" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3">STUDIO REEL</text>
+  <text x="156" y="322" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="4">DEVMENTESTUDIO</text>
+  <text x="156" y="418" fill="#F8FBFF" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700">
+    <tspan x="156" dy="0">Interfaces con</tspan>
+    <tspan x="156" dy="94">presencia real</tspan>
+  </text>
+  <text x="156" y="648" fill="#B6C2D3" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    <tspan x="156" dy="0">Landing pages, e-commerce y software a medida</tspan>
+    <tspan x="156" dy="44">con criterio de marca, claridad comercial y base tecnica.</tspan>
+  </text>
+  <rect x="156" y="760" width="888" height="400" rx="32" fill="#09182D" stroke="#1D3556"/>
+  <rect x="196" y="806" width="370" height="248" rx="24" fill="url(#paint15_linear)"/>
+  <rect x="604" y="806" width="400" height="76" rx="22" fill="#0E233C"/>
+  <rect x="604" y="898" width="400" height="76" rx="22" fill="#0E233C"/>
+  <rect x="604" y="990" width="400" height="76" rx="22" fill="#0E233C"/>
+  <circle cx="1026" cy="222" r="118" fill="url(#paint16_radial)" opacity="0.55"/>
+  <circle cx="954" cy="1194" r="164" fill="url(#paint17_radial)" opacity="0.4"/>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(188 162) rotate(45.79) scale(692.648 826.717)">
+      <stop stop-color="#0EA5E9" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1044 1308) rotate(-133.436) scale(608.934 702.196)">
+      <stop stop-color="#F97316" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paint2_linear" x1="88" y1="188.5" x2="1112" y2="188.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#94A3B8"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint3_linear" x1="88" y1="340.5" x2="1112" y2="340.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint4_linear" x1="88" y1="492.5" x2="1112" y2="492.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint5_linear" x1="88" y1="644.5" x2="1112" y2="644.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint6_linear" x1="88" y1="796.5" x2="1112" y2="796.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint7_linear" x1="88" y1="948.5" x2="1112" y2="948.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint8_linear" x1="88" y1="1100.5" x2="1112" y2="1100.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint9_linear" x1="88" y1="1252.5" x2="1112" y2="1252.5" xlink:href="#paint2_linear"/>
+    <linearGradient id="paint10_linear" x1="206.5" y1="118" x2="206.5" y2="1382" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#CBD5E1"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint11_linear" x1="420.5" y1="118" x2="420.5" y2="1382" xlink:href="#paint10_linear"/>
+    <linearGradient id="paint12_linear" x1="634.5" y1="118" x2="634.5" y2="1382" xlink:href="#paint10_linear"/>
+    <linearGradient id="paint13_linear" x1="848.5" y1="118" x2="848.5" y2="1382" xlink:href="#paint10_linear"/>
+    <linearGradient id="paint14_linear" x1="1062.5" y1="118" x2="1062.5" y2="1382" xlink:href="#paint10_linear"/>
+    <linearGradient id="paint15_linear" x1="196" y1="806" x2="566" y2="1054" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+    <radialGradient id="paint16_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1026 222) rotate(90) scale(118)">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint17_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(954 1194) rotate(90) scale(164)">
+      <stop stop-color="#F97316"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

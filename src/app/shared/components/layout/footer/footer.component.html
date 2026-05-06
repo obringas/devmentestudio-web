@@ -1,24 +1,36 @@
-<footer class="bg-surface-950 border-t border-surface-800">
-    <!-- Main Footer -->
-    <div class="container-custom py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-            <!-- Brand Column -->
+<footer class="relative overflow-hidden border-t border-white/10 bg-surface-950">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.12),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(249,115,22,0.12),transparent_24%)]"></div>
+
+    <div class="container-custom relative py-16">
+        <div class="surface-panel grid grid-cols-1 gap-12 px-6 py-10 md:grid-cols-2 lg:grid-cols-5 lg:px-10">
             <div class="lg:col-span-2">
-                <a routerLink="/" class="flex items-center gap-2 mb-6">
-                    <img src="logo.png" alt="DevMenteStudio" class="h-10 w-auto object-contain" />
-                    <span class="font-display font-bold text-xl text-surface-100">
-                        DevMenteStudio
+                <span class="eyebrow mb-5">{{ copy().eyebrow }}</span>
+
+                <a routerLink="/" class="mb-6 flex items-center gap-4">
+                    <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+                        <img src="logo.png" alt="DevMenteStudio" class="h-10 w-auto object-contain" />
+                    </span>
+                    <span>
+                        <span class="block text-[0.7rem] uppercase tracking-[0.28em] text-surface-400">{{ copy().studioLabel }}</span>
+                        <span class="font-display text-2xl font-semibold text-surface-100">DevMenteStudio</span>
                     </span>
                 </a>
-                <p class="text-surface-400 mb-6 max-w-sm">
-                    Transformamos ideas en software de calidad. Desarrollo web,
-                    e-commerce y consultoría para impulsar tu negocio.
-                </p>
-                <!-- Social Links -->
+
+                <p class="mb-6 max-w-md text-surface-300">{{ copy().description }}</p>
+
+                <div class="mb-8 grid gap-3 text-sm text-surface-300">
+                    <a [href]="'mailto:' + contact.email" class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-white/20 hover:text-surface-100">
+                        {{ contact.email }}
+                    </a>
+                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors hover:border-white/20 hover:text-surface-100">
+                        {{ contact.phone }}
+                    </a>
+                </div>
+
                 <div class="flex items-center gap-4">
                     @for (social of socialLinks; track social.platform) {
                     <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label"
-                        class="w-10 h-10 rounded-lg bg-surface-800 flex items-center justify-center text-surface-400 hover:bg-surface-700 hover:text-primary-400 transition-all">
+                        class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-surface-400 transition-all hover:-translate-y-0.5 hover:border-white/20 hover:text-primary-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path [attr.d]="getSocialIconPath(social.platform)"></path>
                         </svg>
@@ -27,16 +39,15 @@
                 </div>
             </div>
 
-            <!-- Footer Sections -->
-            @for (section of footerSections; track section.title) {
+            @for (section of footerSections(); track section.title) {
             <div>
-                <h4 class="font-display font-semibold text-surface-100 mb-4">
+                <h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-surface-400">
                     {{ section.title }}
                 </h4>
                 <ul class="space-y-3">
                     @for (link of section.links; track link.href) {
                     <li>
-                        <a [routerLink]="link.href" class="text-surface-400 hover:text-primary-400 transition-colors">
+                        <a [routerLink]="link.href" class="text-surface-300 transition-colors hover:text-surface-100">
                             {{ link.label }}
                         </a>
                     </li>
@@ -47,16 +58,11 @@
         </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="border-t border-surface-800">
+    <div class="border-t border-white/10">
         <div class="container-custom py-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-surface-500 text-sm">
-                    © {{ currentYear }} {{ siteName }}. Todos los derechos reservados.
-                </p>
-                <p class="text-surface-500 text-sm">
-                    Hecho con 💜 en Salta, Argentina
-                </p>
+            <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+                <p class="text-sm text-surface-500">{{ copy().copyright }}</p>
+                <p class="text-sm text-surface-500">{{ copy().footerNote }}</p>
             </div>
         </div>
     </div>

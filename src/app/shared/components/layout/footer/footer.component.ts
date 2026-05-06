@@ -1,10 +1,13 @@
 import {
   Component,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  computed,
+  inject
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FOOTER_SECTIONS, SOCIAL_LINKS } from '../../../../data';
+import { getFooterContent, getFooterSections, SOCIAL_LINKS } from '../../../../data';
 import { siteConfig } from '../../../../config/site.config';
+import { LocaleService } from '../../../../core/services/locale.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,10 +18,22 @@ import { siteConfig } from '../../../../config/site.config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  readonly footerSections = FOOTER_SECTIONS;
+  private readonly locale = inject(LocaleService);
+
+  readonly language = this.locale.language;
+  readonly footerSections = computed(() => getFooterSections(this.language()));
   readonly socialLinks = SOCIAL_LINKS;
   readonly siteName = siteConfig.name;
+  readonly contact = siteConfig.contact;
   readonly currentYear = new Date().getFullYear();
+
+  readonly copy = computed(() => {
+    const content = getFooterContent(this.language());
+    return {
+      ...content,
+      copyright: `Copyright ${this.currentYear} ${this.siteName}. ${content.copyrightSuffix}`,
+    };
+  });
 
   getSocialIconPath(platform: string): string {
     const iconPaths: Record<string, string> = {

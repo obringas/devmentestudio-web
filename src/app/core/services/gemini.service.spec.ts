@@ -51,7 +51,7 @@ describe('GeminiService', () => {
     req.flush({ error: 'boom' }, { status: 500, statusText: 'Server Error' });
     const responseText = await responsePromise;
 
-    expect(responseText).toContain('presupuestos personalizados');
+    expect(responseText).toContain('contacto@devmentestudio.com');
     expect(service.messages().at(-1)?.role).toBe('assistant');
     expect(service.isLoading()).toBe(false);
     httpMock.verify();

@@ -45,5 +45,13 @@ export const TECH_CATEGORIES: Record<TechCategory, string> = {
   tools: 'Herramientas',
 };
 
+export const TECH_CATEGORIES_EN: Record<TechCategory, string> = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  database: 'Database',
+  devops: 'DevOps & Cloud',
+  tools: 'Tools',
+};
+
 export const getTechByCategory = (category: TechCategory): readonly TechItem[] =>
   TECH_STACK.filter(tech => tech.category === category);

@@ -1,41 +1,86 @@
-import { NavItem, FooterSection } from '../models';
+import { FooterSection, NavItem } from '../models';
+import { AppLanguage } from '../core/services/locale.service';
 
-export const MAIN_NAV: readonly NavItem[] = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Servicios', href: '/servicios' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Nosotros', href: '/nosotros' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contacto', href: '/contacto' },
-] as const;
+const navLabels: Record<AppLanguage, readonly NavItem[]> = {
+  es: [
+    { label: 'Inicio', href: '/' },
+    { label: 'Servicios', href: '/servicios' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Nosotros', href: '/nosotros' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contacto', href: '/contacto' },
+  ],
+  en: [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/servicios' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'About', href: '/nosotros' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contacto' },
+  ],
+};
 
-export const FOOTER_SECTIONS: readonly FooterSection[] = [
-  {
-    title: 'Servicios',
-    links: [
-      { label: 'Landing Pages', href: '/servicios/landing-pages' },
-      { label: 'E-commerce', href: '/servicios/ecommerce' },
-      { label: 'Desarrollo a Medida', href: '/servicios/desarrollo-a-medida' },
-      { label: 'Consultoría', href: '/servicios/consultoria' },
-    ],
-  },
-  {
-    title: 'Empresa',
-    links: [
-      { label: 'Nosotros', href: '/nosotros' },
-      { label: 'Portfolio', href: '/portfolio' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contacto', href: '/contacto' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Términos y Condiciones', href: '/terminos' },
-      { label: 'Política de Privacidad', href: '/privacidad' },
-    ],
-  },
-] as const;
+const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = {
+  es: [
+    {
+      title: 'Servicios',
+      links: [
+        { label: 'Landing Pages', href: '/servicios/landing-pages' },
+        { label: 'E-commerce', href: '/servicios/ecommerce' },
+        { label: 'Desarrollo a Medida', href: '/servicios/desarrollo-a-medida' },
+        { label: 'Consultoria', href: '/servicios/consultoria' },
+      ],
+    },
+    {
+      title: 'Empresa',
+      links: [
+        { label: 'Nosotros', href: '/nosotros' },
+        { label: 'Portfolio', href: '/portfolio' },
+        { label: 'Blog', href: '/blog' },
+        { label: 'Contacto', href: '/contacto' },
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
+        { label: 'Terminos y Condiciones', href: '/terminos' },
+        { label: 'Politica de Privacidad', href: '/privacidad' },
+      ],
+    },
+  ],
+  en: [
+    {
+      title: 'Services',
+      links: [
+        { label: 'Landing Pages', href: '/servicios/landing-pages' },
+        { label: 'E-commerce', href: '/servicios/ecommerce' },
+        { label: 'Custom Development', href: '/servicios/desarrollo-a-medida' },
+        { label: 'Consulting', href: '/servicios/consultoria' },
+      ],
+    },
+    {
+      title: 'Company',
+      links: [
+        { label: 'About', href: '/nosotros' },
+        { label: 'Portfolio', href: '/portfolio' },
+        { label: 'Blog', href: '/blog' },
+        { label: 'Contact', href: '/contacto' },
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
+        { label: 'Terms and Conditions', href: '/terminos' },
+        { label: 'Privacy Policy', href: '/privacidad' },
+      ],
+    },
+  ],
+};
+
+export const getMainNav = (language: AppLanguage): readonly NavItem[] => navLabels[language];
+
+export const getFooterSections = (language: AppLanguage): readonly FooterSection[] =>
+  footerSectionsByLanguage[language];
 
 export const SOCIAL_LINKS = [
   {

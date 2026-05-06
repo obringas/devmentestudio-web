@@ -18,15 +18,18 @@ describe('app routes', () => {
     expect(wildcard?.redirectTo).toBe('');
   });
 
-  it('should define title and seo description for top-level routes', () => {
+  it('should define seo metadata for top-level routes', () => {
     const topLevel = routes.filter((route) => route.path !== '**');
     for (const route of topLevel) {
-      if (route.path === 'servicios' || route.path === 'portfolio') {
-        continue;
+      if (route.children?.length) {
+        for (const child of route.children) {
+          expect(child.data?.['pageKey']).toBeTruthy();
+          expect(child.data?.['description']).toBeTruthy();
+        }
+      } else {
+        expect(route.data?.['pageKey']).toBeTruthy();
+        expect(route.data?.['description']).toBeTruthy();
       }
-
-      expect(route.title).toBeTruthy();
-      expect(route.data?.['description']).toBeTruthy();
     }
   });
 });
