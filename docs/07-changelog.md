@@ -5,6 +5,7 @@
 ### Cambios
 - Se modificó la configuración de internacionalización para establecer el inglés (`en`) como idioma predeterminado de la aplicación.
 - Se ajustaron los bordes y sombras de las tarjetas y paneles (`styles.scss`) para darles mayor relieve y definición.
+- Se cambió el favicon por defecto de Angular por el logo de DevMenteStudio (`logo.png`) en `index.html`.
 
 ### Motivo
 El usuario solicitó que el idioma por defecto sea el inglés y mejorar el contorno de las tarjetas para destacarlas más sobre el nuevo fondo claro.
