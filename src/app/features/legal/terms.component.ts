@@ -91,12 +91,12 @@ export class TermsComponent {
           contactPrefix: 'For legal or commercial inquiries, email us at ',
         }
       : {
-          title: 'Terminos y Condiciones',
-          updatedAt: 'Ultima actualizacion: 12 de febrero de 2026.',
+          title: 'Términos y Condiciones',
+          updatedAt: 'Última actualización: 12 de febrero de 2026.',
           sections: [
             {
-              title: '1. Aceptacion de los terminos',
-              body: 'Al acceder y utilizar este sitio web, aceptas estos Terminos y Condiciones. Si no estas de acuerdo, no utilices el sitio.',
+              title: '1. Aceptación de los términos',
+              body: 'Al acceder y utilizar este sitio web, aceptás estos Términos y Condiciones. Si no estás de acuerdo, no utilices el sitio.',
             },
             {
               title: '2. Uso del sitio',
@@ -104,23 +104,23 @@ export class TermsComponent {
             },
             {
               title: '3. Propiedad intelectual',
-              body: 'Los contenidos del sitio, como textos, imagenes, diseño y marca, pertenecen a DevMenteStudio o a sus titulares correspondientes. No esta permitido su uso comercial sin autorizacion previa y por escrito.',
+              body: 'Los contenidos del sitio, como textos, imágenes, diseño y marca, pertenecen a DevMenteStudio o a sus titulares correspondientes. No está permitido su uso comercial sin autorización previa y por escrito.',
             },
             {
               title: '4. Formulario de contacto',
-              body: 'La informacion enviada mediante formularios se usa para responder consultas y potenciales propuestas comerciales. El envio no crea relacion contractual automatica.',
+              body: 'La información enviada mediante formularios se usa para responder consultas y potenciales propuestas comerciales. El envío no crea relación contractual automática.',
             },
             {
-              title: '5. Limitacion de responsabilidad',
-              body: 'Hacemos esfuerzos razonables para mantener la informacion actualizada y disponible, pero no garantizamos ausencia total de errores ni interrupciones del servicio.',
+              title: '5. Limitación de responsabilidad',
+              body: 'Hacemos esfuerzos razonables para mantener la información actualizada y disponible, pero no garantizamos ausencia total de errores ni interrupciones del servicio.',
             },
             {
               title: '6. Enlaces a terceros',
-              body: 'El sitio puede incluir enlaces externos. DevMenteStudio no controla ni asume responsabilidad por contenidos o politicas de terceros.',
+              body: 'El sitio puede incluir enlaces externos. DevMenteStudio no controla ni asume responsabilidad por contenidos o políticas de terceros.',
             },
             {
-              title: '7. Cambios en estos terminos',
-              body: 'Podemos actualizar estos terminos en cualquier momento. La version vigente sera la publicada en esta pagina.',
+              title: '7. Cambios en estos términos',
+              body: 'Podemos actualizar estos términos en cualquier momento. La versión vigente será la publicada en esta página.',
             },
           ],
           contactTitle: '8. Contacto',

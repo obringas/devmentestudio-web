@@ -4,6 +4,7 @@ describe('app routes', () => {
   it('should include the main public routes', () => {
     const paths = routes.map((route) => route.path);
     expect(paths).toContain('');
+    expect(paths).toContain('modernizacion');
     expect(paths).toContain('servicios');
     expect(paths).toContain('portfolio');
     expect(paths).toContain('nosotros');

@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   computed,
   inject,
   signal
@@ -13,6 +14,7 @@ import {
   Validators
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { SOCIAL_LINKS } from '../../data/navigation.data';
 import { LocaleService } from '../../core/services/locale.service';
 
@@ -237,7 +239,7 @@ type ContactFormControls = {
                     <button type="submit" class="btn-primary w-full" [disabled]="loading()">
                       @if (loading()) {
                         <svg class="-ml-1 mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"></circle>
                           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                         {{ copy().sending }}
@@ -259,9 +261,10 @@ type ContactFormControls = {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly locale = inject(LocaleService);
+  private readonly route = inject(ActivatedRoute, { optional: true });
 
   readonly loading = signal(false);
   readonly submitted = signal(false);
@@ -312,6 +315,7 @@ export class ContactComponent {
             message: 'Message is required (minimum 10 characters)',
           },
           serviceOptions: [
+            { value: 'modernizacion', label: 'Legacy system modernization' },
             { value: 'landing-page', label: 'Landing Page' },
             { value: 'ecommerce', label: 'E-commerce' },
             { value: 'desarrollo-medida', label: 'Custom Development' },
@@ -319,8 +323,6 @@ export class ContactComponent {
             { value: 'otro', label: 'Other' },
           ],
           budgetOptions: [
-            { value: 'menos-500', label: 'Less than USD 500' },
-            { value: '500-1000', label: 'USD 500 - 1,000' },
             { value: '1000-5000', label: 'USD 1,000 - 5,000' },
             { value: '5000-10000', label: 'USD 5,000 - 10,000' },
             { value: 'mas-10000', label: 'More than USD 10,000' },
@@ -329,11 +331,11 @@ export class ContactComponent {
       : {
           eyebrow: 'Contacto',
           title: 'Hablemos de tu proyecto',
-          description: 'Contanos tu idea y te ayudamos a convertirla en un producto digital solido. Respondemos en menos de 24 horas.',
-          contactInfoTitle: 'Informacion de contacto',
-          locationLabel: 'Ubicacion',
+          description: 'Contanos tu idea y te ayudamos a convertirla en un producto digital sólido. Respondemos en menos de 24 horas.',
+          contactInfoTitle: 'Información de contacto',
+          locationLabel: 'Ubicación',
           socialTitle: 'Seguinos en redes',
-          successTitle: 'Mensaje enviado!',
+          successTitle: '¡Mensaje enviado!',
           successDescription: 'Gracias por contactarnos. Te responderemos pronto.',
           sendAnother: 'Enviar otro mensaje',
           sending: 'Enviando...',
@@ -343,7 +345,7 @@ export class ContactComponent {
             name: 'Nombre completo',
             email: 'Email',
             company: 'Empresa',
-            service: 'Servicio de interes',
+            service: 'Servicio de interés',
             budget: 'Presupuesto estimado',
             message: 'Mensaje',
           },
@@ -355,25 +357,41 @@ export class ContactComponent {
           },
           errors: {
             name: 'El nombre es requerido',
-            email: 'Ingresa un email valido',
-            message: 'El mensaje es requerido (minimo 10 caracteres)',
+            email: 'Ingresá un email válido',
+            message: 'El mensaje es requerido (mínimo 10 caracteres)',
           },
           serviceOptions: [
+            { value: 'modernizacion', label: 'Modernización de sistema existente' },
             { value: 'landing-page', label: 'Landing Page' },
             { value: 'ecommerce', label: 'E-commerce' },
             { value: 'desarrollo-medida', label: 'Desarrollo a Medida' },
-            { value: 'consultoria', label: 'Consultoria' },
+            { value: 'consultoria', label: 'Consultoría' },
             { value: 'otro', label: 'Otro' },
           ],
           budgetOptions: [
-            { value: 'menos-500', label: 'Menos de USD 500' },
-            { value: '500-1000', label: 'USD 500 - 1.000' },
             { value: '1000-5000', label: 'USD 1.000 - 5.000' },
             { value: '5000-10000', label: 'USD 5.000 - 10.000' },
-            { value: 'mas-10000', label: 'Mas de USD 10.000' },
+            { value: 'mas-10000', label: 'Más de USD 10.000' },
           ],
         }
   ));
+
+  ngOnInit(): void {
+    const serviceParam = this.route?.snapshot?.queryParamMap?.get('servicio');
+    if (serviceParam) {
+      if (serviceParam === 'modernizacion' || serviceParam === 'modernizacion-sistemas-legacy') {
+        this.contactForm.patchValue({ service: 'modernizacion' });
+      } else if (['landing-pages', 'landing-page'].includes(serviceParam)) {
+        this.contactForm.patchValue({ service: 'landing-page' });
+      } else if (['ecommerce'].includes(serviceParam)) {
+        this.contactForm.patchValue({ service: 'ecommerce' });
+      } else if (['desarrollo-medida', 'desarrollo-a-medida'].includes(serviceParam)) {
+        this.contactForm.patchValue({ service: 'desarrollo-medida' });
+      } else if (['consultoria'].includes(serviceParam)) {
+        this.contactForm.patchValue({ service: 'consultoria' });
+      }
+    }
+  }
 
   getSocialIconPath(platform: string): string {
     const iconPaths: Record<string, string> = {

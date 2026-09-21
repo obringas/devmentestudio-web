@@ -35,16 +35,24 @@ import { LocaleService } from '../../../../core/services/locale.service';
         <div class="grid gap-6 lg:grid-cols-2">
           @for (service of services(); track service.id; let i = $index) {
             <a
-              [routerLink]="['/servicios', service.slug]"
+              [routerLink]="service.slug === 'modernizacion' ? '/modernizacion' : ['/servicios', service.slug]"
               class="card-interactive group relative overflow-hidden p-7 sm:p-8"
+              [class.lg:col-span-2]="service.slug === 'modernizacion'"
             >
               <div class="absolute right-0 top-0 h-36 w-36 rounded-full bg-primary-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100"></div>
               <div class="relative flex h-full flex-col">
                 <div class="flex items-start justify-between gap-6">
                   <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-surface-500">
-                      0{{ i + 1 }}
-                    </p>
+                    <div class="flex items-center gap-3">
+                      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-surface-500">
+                        0{{ i + 1 }}
+                      </p>
+                      @if (service.slug === 'modernizacion') {
+                        <span class="rounded-full bg-primary-500/15 px-2.5 py-0.5 text-xs font-semibold text-primary-700 uppercase tracking-wider">
+                          Especialidad Core
+                        </span>
+                      }
+                    </div>
                     <h3 class="mt-4 text-2xl font-display font-semibold text-surface-900">
                       {{ service.title }}
                     </h3>
@@ -54,28 +62,28 @@ import { LocaleService } from '../../../../core/services/locale.service';
                   </span>
                 </div>
 
-                <p class="mt-5 max-w-xl text-surface-600">
+                <p class="mt-5 max-w-2xl text-surface-600">
                   {{ service.shortDescription }}
                 </p>
 
                 <div class="mt-6 flex flex-wrap gap-2">
-                  @for (tech of service.technologies.slice(0, 3); track tech.name) {
+                  @for (tech of service.technologies.slice(0, 4); track tech.name) {
                     <span class="rounded-full border border-surface-200 bg-white px-3 py-2 text-xs uppercase tracking-[0.16em] text-surface-500">
                       {{ tech.name }}
                     </span>
                   }
                 </div>
 
-                <div class="mt-8 grid gap-3 sm:grid-cols-2">
-                  @for (feature of service.features.slice(0, 4); track feature) {
+                <div class="mt-8 grid gap-3 sm:grid-cols-2" [class.lg:grid-cols-3]="service.slug === 'modernizacion'">
+                  @for (feature of service.features.slice(0, service.slug === 'modernizacion' ? 6 : 4); track feature) {
                     <div class="rounded-2xl border border-surface-200 bg-white px-4 py-3 text-sm text-surface-600">
                       {{ feature }}
                     </div>
                   }
                 </div>
 
-                <div class="mt-8 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-primary-300">
-                  <span>{{ copy().explore }}</span>
+                <div class="mt-8 flex items-center gap-3 text-sm font-medium uppercase tracking-[0.18em] text-primary-600">
+                  <span>{{ service.slug === 'modernizacion' ? 'Ver página de modernización' : copy().explore }}</span>
                   <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                   </svg>
@@ -103,6 +111,6 @@ export class ServicesPreviewComponent {
   private readonly locale = inject(LocaleService);
 
   readonly language = this.locale.language;
-  readonly services = computed(() => getFeaturedServices(this.language(), 4));
+  readonly services = computed(() => getFeaturedServices(this.language(), 5));
   readonly copy = computed(() => getServicesPreviewContent(this.language()));
 }

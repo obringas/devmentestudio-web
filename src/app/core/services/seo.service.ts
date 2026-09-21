@@ -11,6 +11,10 @@ const PAGE_TITLES: Record<string, Record<AppLanguage, string>> = {
     es: 'DevMenteStudio - Desarrollo de Software Profesional',
     en: 'DevMenteStudio - Professional Software Development',
   },
+  modernizacion: {
+    es: 'Modernización de sistemas legacy | DevMenteStudio',
+    en: 'Legacy Systems Modernization | DevMenteStudio',
+  },
   services: {
     es: 'Servicios | DevMenteStudio',
     en: 'Services | DevMenteStudio',

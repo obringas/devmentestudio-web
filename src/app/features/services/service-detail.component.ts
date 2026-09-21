@@ -154,10 +154,10 @@ export class ServiceDetailComponent {
         }
       : {
           back: 'Volver a servicios',
-          includes: 'Qué incluye?',
+          includes: '¿Qué incluye?',
           benefits: 'Beneficios',
           technologies: 'Tecnologías',
-          ctaTitle: 'Listo para empezar?',
+          ctaTitle: '¿Listo para empezar?',
           ctaButton: 'Solicitar presupuesto',
           notFoundTitle: 'Servicio no encontrado',
           notFoundButton: 'Ver servicios',

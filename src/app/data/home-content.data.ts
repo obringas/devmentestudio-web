@@ -101,13 +101,13 @@ const HERO_CONTENT: Record<AppLanguage, HeroContent> = {
     titleAccent: 'premium',
     titleEnd: 'desde la primera visita.',
     description:
-      'Disenamos sitios, experiencias y software a medida con criterio visual, performance real y foco comercial. Menos template generico. Mas presencia de marca, confianza y conversion.',
+      'Diseñamos sitios, experiencias y software a medida con criterio visual, performance real y foco comercial. Menos template genérico. Más presencia de marca, confianza y conversión.',
     primaryCta: 'Quiero elevar mi sitio',
     secondaryCta: 'Ver trabajos y enfoque',
     tags: ['SSR y SEO real', 'UI con criterio comercial', 'Angular, .NET, Node y cloud'],
     metrics: [
       { value: '50+', label: 'entregas entre sitios, e-commerce y sistemas.' },
-      { value: '3 capas', label: 'marca, producto y tecnologia alineadas en una sola propuesta.' },
+      { value: '3 capas', label: 'marca, producto y tecnología alineadas en una sola propuesta.' },
       { value: '24 hs', label: 'de respuesta inicial para evaluar el alcance del proyecto.' },
     ],
     reelTitle: 'Reel del estudio',
@@ -115,24 +115,24 @@ const HERO_CONTENT: Record<AppLanguage, HeroContent> = {
     reelChip: 'autoplay silencioso',
     reelPill: 'Sistemas de marca',
     floatingA: {
-      title: 'Direccion UI',
-      subtitle: 'claridad + conversion',
+      title: 'Dirección UI',
+      subtitle: 'claridad + conversión',
     },
     floatingB: {
       title: 'Build SSR',
-      subtitle: 'rapido, estable, premium',
+      subtitle: 'rápido, estable, premium',
     },
-    reelFooterEyebrow: 'Reel dinamico',
-    reelFooterText: 'Si queres, despues de esto puedo reemplazarlo por un video MP4 real del mismo estilo.',
+    reelFooterEyebrow: 'Reel dinámico',
+    reelFooterText: 'Si querés, después de esto puedo reemplazarlo por un video MP4 real del mismo estilo.',
     experienceCard: {
       label: 'Experiencia',
       title: 'Interfaces sobrias',
-      description: 'Menos artificio. Mas claridad, ritmo y jerarquia visual.',
+      description: 'Menos artificio. Más claridad, ritmo y jerarquía visual.',
     },
     techCard: {
-      label: 'Tecnologia',
+      label: 'Tecnología',
       title: 'SSR + performance',
-      description: 'Diseno potente sin descuidar carga, SEO ni mantenibilidad.',
+      description: 'Diseño potente sin descuidar carga, SEO ni mantenibilidad.',
     },
   },
 };
@@ -166,27 +166,27 @@ const SERVICES_PREVIEW_CONTENT: Record<AppLanguage, ServicesPreviewContent> = {
   },
   es: {
     eyebrow: 'Servicios principales',
-    title: 'Una propuesta visual fuerte no sirve si el producto no esta bien resuelto.',
+    title: 'Una propuesta visual fuerte no sirve si el producto no está bien resuelto.',
     description:
-      'Combinamos direccion de diseno, arquitectura y ejecucion para que el sitio guste, cargue bien y convierta.',
+      'Combinamos dirección de diseño, arquitectura y ejecución para que el sitio guste, cargue bien y convierta.',
     allServices: 'Ver alcance completo',
-    techLabel: 'tecnologias',
+    techLabel: 'tecnologías',
     explore: 'Explorar servicio',
     pillars: [
       {
-        label: 'Diseno',
-        title: 'Identidad y jerarquia',
+        label: 'Diseño',
+        title: 'Identidad y jerarquía',
         description: 'Cada pantalla debe comunicar una marca seria, no una plantilla intercambiable.',
       },
       {
-        label: 'Codigo',
+        label: 'Código',
         title: 'Componentes mantenibles',
-        description: 'UI expresiva sin perder orden estructural, performance ni capacidad de evolucion.',
+        description: 'UI expresiva sin perder orden estructural, performance ni capacidad de evolución.',
       },
       {
         label: 'Negocio',
         title: 'Mensajes que convierten',
-        description: 'El contenido y la disposicion ayudan a vender antes de que empiece la reunion.',
+        description: 'El contenido y la disposición ayudan a vender antes de que empiece la reunión.',
       },
     ],
   },
@@ -211,16 +211,16 @@ const TECH_STACK_CONTENT: Record<AppLanguage, TechStackContent> = {
     coverageAreas: 'coordinated areas',
   },
   es: {
-    eyebrow: 'Sistema tecnico',
-    title: 'El buen diseno se sostiene con tecnologia elegida con criterio.',
+    eyebrow: 'Sistema técnico',
+    title: 'El buen diseño se sostiene con tecnología elegida con criterio.',
     description:
       'No elegimos herramientas por moda. Armamos stacks coherentes con el negocio, el equipo y el crecimiento esperado.',
     sideNote: 'Arquitectura, frontend, backend, datos y deploy pensados como una sola experiencia de producto.',
-    workflowEyebrow: 'Como trabajamos',
-    workflowTitle: 'Diseno con mentalidad de producto. Codigo con mentalidad de sistema.',
+    workflowEyebrow: 'Cómo trabajamos',
+    workflowTitle: 'Diseño con mentalidad de producto. Código con mentalidad de sistema.',
     steps: [
       { label: '01 Descubrimiento', title: 'Descubrimiento', description: 'Definimos mensaje, propuesta de valor, recorrido del usuario y prioridades visuales.' },
-      { label: '02 Construccion', title: 'Construccion', description: 'Desarrollamos componentes, paginas y backend con foco en claridad, conversion y mantenibilidad.' },
+      { label: '02 Construcción', title: 'Construcción', description: 'Desarrollamos componentes, páginas y backend con foco en claridad, conversión y mantenibilidad.' },
       { label: '03 Entrega', title: 'Entrega', description: 'Validamos performance, responsive, SEO y experiencia final antes de publicar.' },
     ],
     coverageEyebrow: 'Cobertura actual',
@@ -257,21 +257,21 @@ const CTA_SECTION_CONTENT: Record<AppLanguage, CtaSectionContent> = {
   },
   es: {
     eyebrow: 'Siguiente paso',
-    title: 'Si queres una pagina que guste de verdad, empecemos por la direccion correcta.',
+    title: 'Si querés una página que guste de verdad, empecemos por la dirección correcta.',
     description:
-      'Podemos redisenar tu presencia digital, mejorar el mensaje, elevar la UI y dejar una base tecnica solida para crecer sin rehacer todo en seis meses.',
+      'Podemos rediseñar tu presencia digital, mejorar el mensaje, elevar la UI y dejar una base técnica sólida para crecer sin rehacer todo en seis meses.',
     primaryCta: 'Quiero una propuesta',
     secondaryCta: 'WhatsApp directo',
     cards: [
       {
         label: 'Entrega',
         title: 'Primer direccionamiento visual',
-        description: 'Aterrizamos referencias, tono, jerarquia y estructura para que el sitio deje de verse generico.',
+        description: 'Aterrizamos referencias, tono, jerarquía y estructura para que el sitio deje de verse genérico.',
       },
       {
-        label: 'Ejecucion',
+        label: 'Ejecución',
         title: 'UI profesional y consistente',
-        description: 'Composicion, espaciado, tipografia y componentes pensados como sistema, no como bloques sueltos.',
+        description: 'Composición, espaciado, tipografía y componentes pensados como sistema, no como bloques sueltos.',
       },
       {
         label: 'Escalabilidad',

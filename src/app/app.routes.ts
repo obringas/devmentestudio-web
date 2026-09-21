@@ -14,6 +14,18 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'modernizacion',
+    loadComponent: () =>
+      import('./features/modernization/modernization.component').then(m => m.ModernizationComponent),
+    data: {
+      pageKey: 'modernizacion',
+      description: {
+        es: 'Migración de sistemas Visual FoxPro, Visual Basic y Clipper hacia .NET 8 y SQL Server, de forma gradual y reversible. Facturación electrónica ARCA. Salta, Argentina.',
+        en: 'Migration of Visual FoxPro, Visual Basic and Clipper systems to .NET 8 and SQL Server, gradually and reversibly. ARCA electronic invoicing. Salta, Argentina.',
+      },
+    },
+  },
+  {
     path: 'servicios',
     children: [
       {

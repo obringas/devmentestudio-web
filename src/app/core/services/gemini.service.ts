@@ -41,8 +41,8 @@ export class GeminiService {
       role: 'assistant',
       content:
         this.locale.language() === 'en'
-          ? 'Hi! I am the DevMenteStudio assistant. I can tell you about our services, technologies or how to contact us.'
-          : 'Hola! Soy el asistente de DevMenteStudio. Puedo contarte sobre nuestros servicios, tecnologias o como contactarnos.',
+          ? 'Hi! I am the DevMenteStudio assistant. I can tell you about our legacy modernization services, web development, technologies or how to contact us.'
+          : '¡Hola! Soy el asistente de DevMenteStudio. Puedo contarte sobre modernización de sistemas legacy, desarrollo de software, tecnologías o cómo contactarnos.',
       timestamp: new Date(),
     };
   }
@@ -109,48 +109,48 @@ export class GeminiService {
 
   private localFallback(msg: string, language: AppLanguage): string {
     const lowerMsg = msg.toLowerCase();
-    const asksAboutServices = lowerMsg.includes('service') || lowerMsg.includes('servicios') || lowerMsg.includes('hacen') || lowerMsg.includes('do you do');
-    const asksAboutPrice = lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('precio') || lowerMsg.includes('costo');
-    const asksAboutStack = lowerMsg.includes('stack') || lowerMsg.includes('technolog') || lowerMsg.includes('tecnolog');
+    const asksAboutServices = lowerMsg.includes('service') || lowerMsg.includes('servicios') || lowerMsg.includes('hacen') || lowerMsg.includes('do you do') || lowerMsg.includes('moderniz');
+    const asksAboutPrice = lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('precio') || lowerMsg.includes('costo') || lowerMsg.includes('presupuesto');
+    const asksAboutStack = lowerMsg.includes('stack') || lowerMsg.includes('technolog') || lowerMsg.includes('tecnolog') || lowerMsg.includes('foxpro') || lowerMsg.includes('sql');
     const asksAboutContact = lowerMsg.includes('contact') || lowerMsg.includes('email') || lowerMsg.includes('contacto') || lowerMsg.includes('mail');
 
     if (language === 'en') {
       if (asksAboutServices) {
-        return 'We offer Landing Pages, E-commerce, Custom Development and Consulting. Do you want details about one of them?';
+        return 'We specialize in Legacy Systems Modernization (Visual FoxPro, Visual Basic and Clipper to .NET 8 and SQL Server), Landing Pages, E-commerce, Custom Development and Consulting. Would you like details on any of these?';
       }
 
       if (asksAboutPrice) {
-        return 'For a tailored quote, please contact us through /contacto or email contacto@devmentestudio.com.';
+        return 'For a tailored quote or technical diagnosis, please reach out through /contacto or email contacto@devmentestudio.com.';
       }
 
       if (asksAboutStack) {
-        return 'We mainly work with Angular, .NET Core, Node.js and Azure.';
+        return 'We specialize in .NET 8, C#, SQL Server, Visual FoxPro modernization, Angular, Next.js and Microsoft Azure.';
       }
 
       if (asksAboutContact) {
         return 'You can email us at contacto@devmentestudio.com or reach us from Salta, Argentina.';
       }
 
-      return 'I am handling a lot of requests right now. In the meantime, ask me about services, pricing or contact details and I will answer from my local knowledge base.';
+      return 'I am handling high request traffic right now. Feel free to ask about modernization, services, pricing or contact details and I will assist you!';
     }
 
     if (asksAboutServices) {
-      return 'Ofrecemos Landing Pages, E-commerce, Desarrollo a Medida y Consultoria. Te interesa alguno en particular?';
+      return 'Nos especializamos en Modernización de Sistemas Legacy (Visual FoxPro, Visual Basic y Clipper hacia .NET 8 y SQL Server), Landing Pages, E-commerce, Desarrollo a Medida y Consultoría. ¿Te interesa conocer más detalles sobre alguno?';
     }
 
     if (asksAboutPrice) {
-      return 'Para presupuestos personalizados, por favor contactanos a traves de /contacto o escribinos a contacto@devmentestudio.com.';
+      return 'Para un diagnóstico técnico o presupuesto a medida, por favor contactanos a través de /contacto o escribinos a contacto@devmentestudio.com.';
     }
 
     if (asksAboutStack) {
-      return 'Trabajamos principalmente con Angular, .NET Core, Node.js y Azure.';
+      return 'Trabajamos con .NET 8, C#, SQL Server, modernización de Visual FoxPro, Angular, Next.js y Microsoft Azure.';
     }
 
     if (asksAboutContact) {
-      return 'Podes escribirnos a contacto@devmentestudio.com o visitarnos desde Salta, Argentina.';
+      return 'Podés escribirnos a contacto@devmentestudio.com o contactarnos directamente desde Salta, Argentina.';
     }
 
-    return 'Estoy recibiendo muchas consultas ahora. Mientras me recupero, podes preguntarme por servicios, precios o contacto y te respondo con mi base local.';
+    return 'Estoy recibiendo muchas consultas en este momento. Podés preguntarme sobre modernización, servicios, tecnologías o contacto y con gusto te respondo.';
   }
 
   private getErrorMessage(language: AppLanguage): string {

@@ -4,18 +4,18 @@ import { AppLanguage } from '../core/services/locale.service';
 const navLabels: Record<AppLanguage, readonly NavItem[]> = {
   es: [
     { label: 'Inicio', href: '/' },
+    { label: 'Modernización', href: '/modernizacion' },
     { label: 'Servicios', href: '/servicios' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'Nosotros', href: '/nosotros' },
-    { label: 'Blog', href: '/blog' },
     { label: 'Contacto', href: '/contacto' },
   ],
   en: [
     { label: 'Home', href: '/' },
+    { label: 'Modernization', href: '/modernizacion' },
     { label: 'Services', href: '/servicios' },
     { label: 'Portfolio', href: '/portfolio' },
     { label: 'About', href: '/nosotros' },
-    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contacto' },
   ],
 };
@@ -25,10 +25,11 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
     {
       title: 'Servicios',
       links: [
+        { label: 'Modernización Legacy', href: '/modernizacion' },
         { label: 'Landing Pages', href: '/servicios/landing-pages' },
         { label: 'E-commerce', href: '/servicios/ecommerce' },
         { label: 'Desarrollo a Medida', href: '/servicios/desarrollo-a-medida' },
-        { label: 'Consultoria', href: '/servicios/consultoria' },
+        { label: 'Consultoría', href: '/servicios/consultoria' },
       ],
     },
     {
@@ -36,15 +37,14 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
       links: [
         { label: 'Nosotros', href: '/nosotros' },
         { label: 'Portfolio', href: '/portfolio' },
-        { label: 'Blog', href: '/blog' },
         { label: 'Contacto', href: '/contacto' },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Terminos y Condiciones', href: '/terminos' },
-        { label: 'Politica de Privacidad', href: '/privacidad' },
+        { label: 'Términos y Condiciones', href: '/terminos' },
+        { label: 'Política de Privacidad', href: '/privacidad' },
       ],
     },
   ],
@@ -52,6 +52,7 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
     {
       title: 'Services',
       links: [
+        { label: 'Legacy Modernization', href: '/modernizacion' },
         { label: 'Landing Pages', href: '/servicios/landing-pages' },
         { label: 'E-commerce', href: '/servicios/ecommerce' },
         { label: 'Custom Development', href: '/servicios/desarrollo-a-medida' },
@@ -63,7 +64,6 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
       links: [
         { label: 'About', href: '/nosotros' },
         { label: 'Portfolio', href: '/portfolio' },
-        { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contacto' },
       ],
     },

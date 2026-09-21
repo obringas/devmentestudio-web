@@ -24,6 +24,90 @@ type LocalizedService = Omit<Service, 'title' | 'shortDescription' | 'fullDescri
 
 const LOCALIZED_SERVICES: readonly LocalizedService[] = [
   {
+    id: 'modernizacion',
+    slug: 'modernizacion',
+    title: {
+      es: 'Modernización de Sistemas Legacy',
+      en: 'Legacy Systems Modernization',
+    },
+    shortDescription: {
+      es: 'Migración gradual de sistemas Visual FoxPro, Visual Basic y Clipper a .NET 8 y SQL Server sin frenar la operación diaria.',
+      en: 'Gradual migration of Visual FoxPro, Visual Basic and Clipper systems to .NET 8 and SQL Server without halting daily operations.',
+    },
+    fullDescription: {
+      es: 'Migramos sistemas críticos de gestión hacia arquitecturas modernas .NET 8 y bases de datos SQL Server. Convivencia entre el sistema histórico y la nueva plataforma, migración de datos DBF y avance por etapas con vuelta atrás en cada paso.',
+      en: 'We migrate mission-critical business systems to modern .NET 8 architectures and SQL Server databases. Coexistence between legacy software and the new platform, DBF data migration, and phased modular execution with full rollback capabilities.',
+    },
+    icon: 'refresh-cw',
+    features: {
+      es: [
+        'Migración gradual sin big bang',
+        'Convivencia de datos DBF y SQL Server',
+        'Reescritura por módulos con Clean Architecture',
+        'Facturación electrónica ARCA',
+        'Replicación transaccional hacia Azure',
+        'Reversibilidad técnica en cada etapa',
+      ],
+      en: [
+        'Gradual migration without big bang',
+        'DBF and SQL Server data coexistence',
+        'Modular rewrite with Clean Architecture',
+        'ARCA electronic invoicing integration',
+        'Transactional replication and Azure',
+        'Technical rollback at each stage',
+      ],
+    },
+    technologies: [
+      { name: '.NET 8', icon: 'dotnet' },
+      { name: 'SQL Server', icon: 'database' },
+      { name: 'Visual FoxPro', icon: 'code' },
+      { name: 'Azure', icon: 'cloud' },
+    ],
+    benefits: {
+      es: [
+        {
+          title: 'Continuidad operativa',
+          description: 'Tu empresa sigue operando mientras los nuevos módulos se prueban y habilitan.',
+          icon: 'shield',
+        },
+        {
+          title: 'Vuelta atrás garantizada',
+          description: 'Si un módulo nuevo no responde como se esperaba, se puede retroceder.',
+          icon: 'refresh-cw',
+        },
+        {
+          title: 'Transferible y documentado',
+          description: 'Arquitectura limpia para que cualquier equipo .NET pueda darle continuidad.',
+          icon: 'file-text',
+        },
+      ],
+      en: [
+        {
+          title: 'Operational continuity',
+          description: 'Your business continues operating while new modules are validated.',
+          icon: 'shield',
+        },
+        {
+          title: 'Guaranteed rollback',
+          description: 'If a new module does not behave as expected, you can safely revert.',
+          icon: 'refresh-cw',
+        },
+        {
+          title: 'Transferable & documented',
+          description: 'Clean architecture so any professional .NET engineering team can maintain it.',
+          icon: 'file-text',
+        },
+      ],
+    },
+    cta: {
+      text: {
+        es: 'Pedir diagnóstico técnico',
+        en: 'Request technical diagnosis',
+      },
+      href: '/modernizacion',
+    },
+  },
+  {
     id: 'landing-pages',
     slug: 'landing-pages',
     title: {
@@ -31,19 +115,19 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
       en: 'Landing Pages',
     },
     shortDescription: {
-      es: 'Paginas de aterrizaje optimizadas para conversion que capturan leads y generan resultados.',
+      es: 'Páginas de aterrizaje optimizadas para conversión que capturan leads y generan resultados.',
       en: 'Conversion-focused landing pages built to capture leads and drive measurable results.',
     },
     fullDescription: {
-      es: 'Disenamos y desarrollamos landing pages de alto impacto, optimizadas para SEO y conversion. Cada pagina esta estrategicamente pensada para guiar a tus visitantes hacia la accion deseada.',
+      es: 'Diseñamos y desarrollamos landing pages de alto impacto, optimizadas para SEO y conversión. Cada página está estratégicamente pensada para guiar a tus visitantes hacia la acción deseada.',
       en: 'We design and build high-impact landing pages optimized for SEO and conversion. Every page is strategically crafted to guide visitors toward the action you want them to take.',
     },
     icon: 'rocket',
     features: {
       es: [
-        'Diseno responsive y moderno',
-        'Optimizacion SEO on-page',
-        'Integracion con herramientas de analytics',
+        'Diseño responsive y moderno',
+        'Optimización SEO on-page',
+        'Integración con herramientas de analytics',
         'Formularios de contacto optimizados',
         'Velocidad de carga optimizada',
         'Preparadas para A/B testing',
@@ -66,17 +150,17 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     benefits: {
       es: [
         {
-          title: 'Mayor conversion',
-          description: 'Diseno enfocado en convertir visitas en oportunidades reales.',
+          title: 'Mayor conversión',
+          description: 'Diseño enfocado en convertir visitas en oportunidades reales.',
           icon: 'trending-up',
         },
         {
           title: 'SEO optimizado',
-          description: 'Base tecnica preparada para posicionamiento organico.',
+          description: 'Base técnica preparada para posicionamiento orgánico.',
           icon: 'search',
         },
         {
-          title: 'Carga rapida',
+          title: 'Carga rápida',
           description: 'Mejor experiencia para usuarios y mejor performance general.',
           icon: 'zap',
         },
@@ -119,18 +203,18 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
       en: 'Complete, scalable online stores designed to grow your sales.',
     },
     fullDescription: {
-      es: 'Desarrollamos plataformas de comercio electronico robustas y escalables, con las funcionalidades necesarias para gestionar tu negocio online de manera eficiente.',
+      es: 'Desarrollamos plataformas de comercio electrónico robustas y escalables, con las funcionalidades necesarias para gestionar tu negocio online de manera eficiente.',
       en: 'We build robust, scalable e-commerce platforms with the features your team needs to run and grow your online business efficiently.',
     },
     icon: 'shopping-cart',
     features: {
       es: [
-        'Catalogo de productos flexible',
+        'Catálogo de productos flexible',
         'Carrito de compras optimizado',
-        'Multiples metodos de pago',
-        'Gestion de inventario',
-        'Panel de administracion intuitivo',
-        'Integracion con sistemas de envio',
+        'Múltiples métodos de pago',
+        'Gestión de inventario',
+        'Panel de administración intuitivo',
+        'Integración con sistemas de envío',
         'Reportes y analytics',
       ],
       en: [
@@ -159,12 +243,12 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
         },
         {
           title: 'Escalabilidad',
-          description: 'Arquitectura lista para crecer junto con tu operacion.',
+          description: 'Arquitectura lista para crecer junto con tu operación.',
           icon: 'layers',
         },
         {
           title: 'Control total',
-          description: 'Gestion centralizada de catalogo, pagos y pedidos.',
+          description: 'Gestión centralizada de catálogo, pagos y pedidos.',
           icon: 'settings',
         },
       ],
@@ -206,17 +290,17 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
       en: 'Custom software tailored to the real workflows and needs of your business.',
     },
     fullDescription: {
-      es: 'Creamos soluciones de software unicas, disenadas especificamente para resolver los desafios particulares de tu organizacion. Desde aplicaciones web hasta sistemas empresariales complejos.',
+      es: 'Creamos soluciones de software únicas, diseñadas específicamente para resolver los desafíos particulares de tu organización. Desde aplicaciones web hasta sistemas empresariales complejos.',
       en: 'We build unique software solutions designed to solve the specific challenges of your organization, from web apps to complex business systems.',
     },
     icon: 'code',
     features: {
       es: [
-        'Analisis de requerimientos detallado',
+        'Análisis de requerimientos detallado',
         'Arquitectura escalable y mantenible',
-        'Desarrollo agil con entregas incrementales',
+        'Desarrollo ágil con entregas incrementales',
         'Testing automatizado',
-        'Documentacion tecnica completa',
+        'Documentación técnica completa',
         'Soporte y mantenimiento continuo',
       ],
       en: [
@@ -239,18 +323,18 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     benefits: {
       es: [
         {
-          title: 'Solucion unica',
-          description: 'Software alineado con tus procesos y objetivos especificos.',
+          title: 'Solución única',
+          description: 'Software alineado con tus procesos y objetivos específicos.',
           icon: 'puzzle',
         },
         {
-          title: 'Integracion total',
-          description: 'Conexion con sistemas existentes sin fricciones innecesarias.',
+          title: 'Integración total',
+          description: 'Conexión con sistemas existentes sin fricciones innecesarias.',
           icon: 'link',
         },
         {
           title: 'Propiedad completa',
-          description: 'La solucion queda bajo tu control, sin dependencia de terceros.',
+          description: 'La solución queda bajo tu control, sin dependencia de terceros.',
           icon: 'shield',
         },
       ],
@@ -284,26 +368,26 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'consultoria',
     slug: 'consultoria',
     title: {
-      es: 'Consultoria',
+      es: 'Consultoría',
       en: 'Consulting',
     },
     shortDescription: {
-      es: 'Asesoramiento experto en arquitectura de software y mejores practicas de desarrollo.',
+      es: 'Asesoramiento experto en arquitectura de software y mejores prácticas de desarrollo.',
       en: 'Expert guidance on software architecture, delivery processes and engineering best practices.',
     },
     fullDescription: {
-      es: 'Ofrecemos consultoria especializada para optimizar procesos de desarrollo, mejorar la arquitectura de tus sistemas y fortalecer a tu equipo con mejores practicas.',
+      es: 'Ofrecemos consultoría especializada para optimizar procesos de desarrollo, mejorar la arquitectura de tus sistemas y fortalecer a tu equipo con mejores prácticas.',
       en: 'We provide consulting to optimize delivery processes, improve system architecture and strengthen your team with better engineering practices.',
     },
     icon: 'lightbulb',
     features: {
       es: [
-        'Auditoria de codigo y arquitectura',
-        'Definicion de stack tecnologico',
-        'Implementacion de CI/CD',
-        'Capacitacion en mejores practicas',
+        'Auditoría de código y arquitectura',
+        'Definición de stack tecnológico',
+        'Implementación de CI/CD',
+        'Capacitación en mejores prácticas',
         'Code review y mentoring',
-        'Migracion de sistemas legacy',
+        'Migración de sistemas legacy',
       ],
       en: [
         'Code and architecture audits',
@@ -325,17 +409,17 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
       es: [
         {
           title: 'Experiencia probada',
-          description: 'Acompanamiento basado en experiencias reales de implementacion.',
+          description: 'Acompañamiento basado en experiencias reales de implementación.',
           icon: 'award',
         },
         {
-          title: 'Mejores practicas',
-          description: 'Estandares tecnicos que reducen deuda y mejoran calidad.',
+          title: 'Mejores prácticas',
+          description: 'Estándares técnicos que reducen deuda y mejoran calidad.',
           icon: 'check-square',
         },
         {
           title: 'Transferencia de conocimiento',
-          description: 'Tu equipo gana criterio, autonomia y mejores procesos.',
+          description: 'Tu equipo gana criterio, autonomía y mejores procesos.',
           icon: 'book-open',
         },
       ],
@@ -359,7 +443,7 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     },
     cta: {
       text: {
-        es: 'Solicitar consultoria',
+        es: 'Solicitar consultoría',
         en: 'Request consulting',
       },
       href: '/contacto?servicio=consultoria',
@@ -386,7 +470,7 @@ const mapService = (service: LocalizedService, language: AppLanguage): Service =
 export const getServices = (language: AppLanguage): readonly Service[] =>
   LOCALIZED_SERVICES.map((service) => mapService(service, language));
 
-export const getFeaturedServices = (language: AppLanguage, count = 4): readonly Service[] =>
+export const getFeaturedServices = (language: AppLanguage, count = 5): readonly Service[] =>
   getServices(language).slice(0, count);
 
 export const getServiceBySlug = (slug: string, language: AppLanguage): Service | undefined => {

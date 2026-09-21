@@ -30,7 +30,7 @@ describe('ContactComponent', () => {
       email: 'test@example.com',
       company: 'ACME',
       service: 'landing-page',
-      budget: '500-1000',
+      budget: '1000-5000',
       message: 'Necesito una landing para mi negocio',
     });
 

@@ -22,7 +22,7 @@ const HEADER_CONTENT: Record<AppLanguage, HeaderContent> = {
   },
   es: {
     studioLabel: 'Estudio de Software',
-    cta: 'Agendar reunion',
+    cta: 'Agendar reunión',
     languageLabel: 'Idioma',
   },
 };
@@ -40,7 +40,7 @@ const FOOTER_CONTENT: Record<AppLanguage, FooterContent> = {
     studioLabel: 'Estudio de Software',
     eyebrow: 'Hacemos software con criterio de negocio',
     description:
-      'Disenamos sitios, experiencias y productos digitales que hacen ver a tu negocio serio, claro y listo para vender.',
+      'Diseñamos sitios, experiencias y productos digitales que hacen ver a tu negocio serio, claro y listo para vender.',
     footerNote: 'Hecho en Salta, Argentina para marcas que quieren verse profesionales.',
     copyrightSuffix: 'Todos los derechos reservados.',
   },
