@@ -34,13 +34,16 @@ Medio
 ### Recomendacion
 Definir una unica fuente de verdad para el endpoint de chat y documentar claramente el rol de cada archivo en deploy y desarrollo.
 
-## Formulario de contacto sin persistencia real
+## Formulario de contacto sin persistencia real (resuelto)
 
 ### Fecha
 2026-04-24
 
+### Estado
+Resuelto el 2026-09-21.
+
 ### Descripcion
-El formulario de contacto valida datos del lado cliente pero hoy simula el envio con `setTimeout`, sin integracion backend ni auditoria del resultado.
+El formulario de contacto validaba datos del lado cliente pero simulaba el envio con `setTimeout`, sin integración real ni comprobación del resultado.
 
 ### Impacto
 Medio
@@ -49,4 +52,4 @@ Medio
 `src/app/features/contact/contact.component.ts`
 
 ### Recomendacion
-Implementar un endpoint backend o integracion externa para envio real, con estados de error y exito persistentes.
+Se integró Web3Forms mediante un servicio tipado, con estados reales de éxito, error y carga. Resta validar la entrega extremo a extremo con un envío desde producción después del deploy.

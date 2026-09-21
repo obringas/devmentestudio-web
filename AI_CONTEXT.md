@@ -172,7 +172,9 @@ Rutas SSR (`app.routes.server.ts`):
 
 ### Contacto
 - Formulario reactivo con validaciones.
-- Estado de envio simulado.
+- Envio real mediante `ContactService` y Web3Forms.
+- Estados de carga, éxito y error basados en la respuesta real del proveedor.
+- Honeypot `botcheck` y alternativas directas por email y WhatsApp ante fallas.
 - Bloques de contacto y redes.
 
 ### Blog

@@ -15,6 +15,9 @@ import {
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { siteConfig } from '../../config/site.config';
+import { ContactService, ContactSubmission } from '../../core/services/contact.service';
 import { SOCIAL_LINKS } from '../../data/navigation.data';
 import { LocaleService } from '../../core/services/locale.service';
 
@@ -25,6 +28,7 @@ type ContactFormControls = {
   service: FormControl<string>;
   budget: FormControl<string>;
   message: FormControl<string>;
+  botcheck: FormControl<boolean>;
 };
 
 @Component({
@@ -143,7 +147,19 @@ type ContactFormControls = {
                     </button>
                   </div>
                 } @else {
-                  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                  <form
+                    [formGroup]="contactForm"
+                    (ngSubmit)="onSubmit()"
+                    [attr.aria-busy]="loading()"
+                  >
+                    <input
+                      type="checkbox"
+                      formControlName="botcheck"
+                      class="hidden"
+                      tabindex="-1"
+                      autocomplete="off"
+                      aria-hidden="true"
+                    />
                     <div class="mb-6 grid gap-6 sm:grid-cols-2">
                       <div>
                         <label for="name" class="mb-2 block text-sm font-medium text-surface-600">
@@ -236,9 +252,41 @@ type ContactFormControls = {
                       }
                     </div>
 
-                    <button type="submit" class="btn-primary w-full" [disabled]="loading()">
+                    @if (submissionFailed()) {
+                      <div
+                        class="mb-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+                        role="alert"
+                        aria-live="assertive"
+                      >
+                        <p class="font-semibold">{{ copy().submissionErrorTitle }}</p>
+                        <p class="mt-1 leading-relaxed">{{ copy().submissionErrorDescription }}</p>
+                        <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 font-semibold">
+                          <a
+                            [href]="'mailto:' + contactEmail"
+                            class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
+                          >
+                            {{ contactEmail }}
+                          </a>
+                          <a
+                            [href]="whatsappUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
+                          >
+                            WhatsApp
+                          </a>
+                        </div>
+                      </div>
+                    }
+
+                    <button
+                      type="submit"
+                      class="btn-primary w-full"
+                      [disabled]="loading()"
+                      [attr.aria-disabled]="loading()"
+                    >
                       @if (loading()) {
-                        <svg class="-ml-1 mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg class="-ml-1 mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                           <circle class="opacity-25" cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"></circle>
                           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -264,11 +312,15 @@ type ContactFormControls = {
 export class ContactComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly locale = inject(LocaleService);
+  private readonly contactService = inject(ContactService);
   private readonly route = inject(ActivatedRoute, { optional: true });
 
   readonly loading = signal(false);
   readonly submitted = signal(false);
+  readonly submissionFailed = signal(false);
   readonly language = this.locale.language;
+  readonly contactEmail = siteConfig.contact.email;
+  readonly whatsappUrl = siteConfig.contact.whatsappUrl;
 
   readonly contactForm: FormGroup<ContactFormControls> = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -277,6 +329,7 @@ export class ContactComponent implements OnInit {
     service: [''],
     budget: [''],
     message: ['', [Validators.required, Validators.minLength(10)]],
+    botcheck: [false],
   });
 
   readonly socials = SOCIAL_LINKS;
@@ -294,6 +347,9 @@ export class ContactComponent implements OnInit {
           sendAnother: 'Send another message',
           sending: 'Sending...',
           submit: 'Send message',
+          submissionErrorTitle: 'We could not send your message.',
+          submissionErrorDescription:
+            'Your information is still in the form. Please try again or contact us directly:',
           selectOption: 'Select...',
           fields: {
             name: 'Full name',
@@ -340,6 +396,9 @@ export class ContactComponent implements OnInit {
           sendAnother: 'Enviar otro mensaje',
           sending: 'Enviando...',
           submit: 'Enviar mensaje',
+          submissionErrorTitle: 'No pudimos enviar tu consulta.',
+          submissionErrorDescription:
+            'Tus datos siguen en el formulario. Intentá nuevamente o contactanos directamente:',
           selectOption: 'Seleccionar...',
           fields: {
             name: 'Nombre completo',
@@ -417,21 +476,46 @@ export class ContactComponent implements OnInit {
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.loading.set(true);
+  async onSubmit(): Promise<void> {
+    if (this.loading()) {
+      return;
+    }
 
-      setTimeout(() => {
-        this.loading.set(false);
-        this.submitted.set(true);
-      }, 1500);
-    } else {
+    if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
+      return;
+    }
+
+    this.loading.set(true);
+    this.submissionFailed.set(false);
+
+    try {
+      await firstValueFrom(this.contactService.submit(this.buildSubmission()));
+      this.submitted.set(true);
+    } catch {
+      this.submissionFailed.set(true);
+    } finally {
+      this.loading.set(false);
     }
   }
 
   resetForm(): void {
     this.contactForm.reset();
     this.submitted.set(false);
+    this.submissionFailed.set(false);
+  }
+
+  private buildSubmission(): ContactSubmission {
+    const formValue = this.contactForm.getRawValue();
+
+    return {
+      ...formValue,
+      service: this.getOptionLabel(this.copy().serviceOptions, formValue.service),
+      budget: this.getOptionLabel(this.copy().budgetOptions, formValue.budget),
+    };
+  }
+
+  private getOptionLabel(options: { value: string; label: string }[], value: string): string {
+    return options.find((option) => option.value === value)?.label ?? '';
   }
 }

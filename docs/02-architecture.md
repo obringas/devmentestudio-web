@@ -71,6 +71,15 @@ El endpoint de chat:
 3. El backend consulta Gemini usando la API key del servidor.
 4. Si falla, el frontend devuelve respuestas de fallback local.
 
+## Flujo de contacto
+
+1. El usuario completa el formulario reactivo en `/contacto`.
+2. `ContactComponent` valida la entrada y delega el envío a `ContactService`.
+3. `ContactService` construye el payload tipado y hace `POST` desde el navegador a Web3Forms.
+4. La UI muestra éxito únicamente ante HTTP 200 con `success: true`; cualquier otro resultado conserva los datos y ofrece email y WhatsApp como alternativas.
+
+La access key de Web3Forms es un identificador público requerido por el proveedor en el cliente. La configuración se centraliza en `site.config.ts` y no se trata como una credencial de backend.
+
 ## SEO
 
 La metadata se define por ruta (`title` y `data.description`) y `SeoService` actualiza:
@@ -91,10 +100,10 @@ La metadata se define por ruta (`title` y `data.description`) y `SeoService` act
 ## Integraciones externas
 
 - Google Gemini para el chat.
+- Web3Forms para el envío del formulario de contacto.
 - Vercel para despliegue.
 
 ## Riesgos arquitectonicos actuales
 
-- El formulario de contacto no persiste ni integra backend.
 - Hay una carpeta `api/` con `chat.js` y tambien existe `src/server.ts`; cualquier cambio futuro debe evitar duplicar la logica del endpoint.
 - Faltan headers HTTP de seguridad endurecidos.

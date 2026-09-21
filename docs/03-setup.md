@@ -25,6 +25,12 @@ Consideraciones:
 - Debe comenzar con `AIza`.
 - Si cambia la variable, reiniciar el servidor.
 
+## Formulario de contacto
+
+El formulario usa Web3Forms directamente desde el navegador, como recomienda el proveedor. Su endpoint, asunto y access key pública están centralizados en `src/app/config/site.config.ts`; no requieren una variable secreta del servidor.
+
+Para validar el flujo completo, primero desplegar y luego realizar un único envío real desde producción. Confirmar tanto el mensaje de éxito en la UI como la recepción en `contacto@devmentestudio.com`.
+
 ## Comandos principales
 
 ```bash
