@@ -408,7 +408,7 @@ Una página nueva pertenece a este sistema sólo si cumple todos estos puntos:
 - **Foto profesional de Oscar:** pendiente. El monograma actual es un placeholder honesto; reemplazarlo sólo por una foto aprobada y optimizada, conservando relación 4:5 y evitando layout shift.
 - **Ilustración final:** pendiente. El diagrama code-first es la implementación vigente y completa; cualquier reemplazo debe preservar su significado, accesibilidad, proporción y bajo peso.
 - **Web3Forms:** la integración visual y técnica está implementada, pero requiere una prueba real post-deploy y confirmación en el buzón antes de considerarse cerrada de extremo a extremo.
-- **Performance móvil:** los últimos resultados de laboratorio fueron 72 en Home y 66 en Modernización. Son riesgos no bloqueantes; repetir medición con hosting productivo y evaluar self-hosting de los pesos/subconjuntos tipográficos usados si el objetivo sigue incumplido.
+- **Performance móvil:** la medición final sobre SSR local con la marca nueva fue 74 en Home y 73 en Modernización; accesibilidad, buenas prácticas y SEO obtuvieron 100 en ambas. Son riesgos no bloqueantes; repetir medición con hosting productivo y evaluar self-hosting de los pesos/subconjuntos tipográficos usados si el objetivo sigue incumplido.
 
 ### Veredicto independiente
 

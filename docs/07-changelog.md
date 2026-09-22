@@ -49,7 +49,7 @@ Se adoptó azure `#0078D4` como único acento primario y una implementación vis
 - Test de `ContactService` que comprueba cuerpo `FormData`, honeypot vacío y ausencia de `Content-Type` manual.
 - Verificación por `curl` y HTML prerenderizado de contenido por ruta, `lang`, canonical, hreflang, JSON-LD y contrato visual.
 - Verificación visual y en DOM del nuevo logo en header/footer (`320×208`) y de los enlaces del favicon/Apple touch icon.
-- Lighthouse móvil sobre SSR local: Home 72/100/100/100 y Modernización 66/100/100/100 en Performance/Accesibilidad/Buenas prácticas/SEO; CLS 0 en ambas.
+- Lighthouse final sobre SSR local con la marca nueva: Home móvil 74/100/100/100 y Modernización móvil 73/100/100/100 en Performance/Accesibilidad/Buenas prácticas/SEO; CLS 0 y 0,009 respectivamente. Home desktop alcanzó 98/100/100/100 y CLS 0,001.
 - Lighthouse focalizado tras las correcciones: Servicios y Contacto 100/100/100 en Accesibilidad/Buenas prácticas/SEO.
 
 ### Pendientes / Follow-ups
