@@ -1,5 +1,39 @@
 # 08-known-issues.md
 
+## Activos editoriales definitivos pendientes
+
+### Fecha
+2026-09-22
+
+### Descripcion
+La sección de Oscar usa un monograma neutral y el diagrama de convivencia es una implementación code-first. Todavía no se incorporaron la foto profesional definitiva ni una ilustración final producida por diseño.
+
+### Impacto
+Bajo
+
+### Modulo afectado
+Home, `/modernizacion` y `/nosotros`.
+
+### Recomendacion
+Reemplazar el monograma sólo cuando exista una foto aprobada y optimizada. Mantener las medidas actuales para evitar cambios de layout. La ilustración final puede reemplazar al diagrama actual si conserva el mismo mensaje, proporción y peso liviano.
+
+## Rendimiento móvil condicionado por fuentes remotas
+
+### Fecha
+2026-09-22
+
+### Descripcion
+Lighthouse móvil sobre el bundle SSR local obtuvo Performance 72 en Home y 66 en Modernización. Accesibilidad, buenas prácticas y SEO alcanzaron 100. El principal recurso bloqueante es la hoja de Google Fonts; el servidor local tampoco aplica la compresión propia del hosting productivo.
+
+### Impacto
+Medio
+
+### Modulo afectado
+`src/index.html`, carga inicial global.
+
+### Recomendacion
+Medir nuevamente después del deploy y, si Performance sigue por debajo del objetivo, self-hostear únicamente los subconjuntos y pesos usados o evaluar una pila tipográfica local equivalente.
+
 ## Headers de seguridad HTTP pendientes (resuelto)
 
 ### Fecha
@@ -55,4 +89,4 @@ Medio
 `src/app/features/contact/contact.component.ts`
 
 ### Recomendacion
-Se integró Web3Forms mediante un servicio tipado, con estados reales de éxito, error y carga. Resta validar la entrega extremo a extremo con un envío desde producción después del deploy.
+Se integró Web3Forms mediante un servicio tipado y transporte `FormData`, con estados reales de éxito, error y carga. Resta validar la entrega extremo a extremo con un envío desde producción después del deploy.

@@ -31,19 +31,19 @@ export class ContactService {
       .pipe(map((response) => this.validateResponse(response)));
   }
 
-  private buildPayload(submission: ContactSubmission): Record<string, string | boolean> {
-    return {
-      access_key: this.formConfig.accessKey,
-      subject: this.formConfig.subject,
-      from_name: submission.name,
-      botcheck: submission.botcheck,
-      name: submission.name,
-      email: submission.email,
-      Empresa: submission.company || 'No informada',
-      Servicio: submission.service || 'No informado',
-      Presupuesto: submission.budget || 'No informado',
-      message: submission.message,
-    };
+  private buildPayload(submission: ContactSubmission): FormData {
+    const payload = new FormData();
+    payload.append('access_key', this.formConfig.accessKey);
+    payload.append('subject', this.formConfig.subject);
+    payload.append('from_name', submission.name);
+    payload.append('botcheck', submission.botcheck ? 'true' : '');
+    payload.append('name', submission.name);
+    payload.append('email', submission.email);
+    payload.append('Empresa', submission.company || 'No informada');
+    payload.append('Servicio', submission.service || 'No informado');
+    payload.append('Presupuesto', submission.budget || 'No informado');
+    payload.append('message', submission.message);
+    return payload;
   }
 
   private validateResponse(response: HttpResponse<Web3FormsResponse>): void {

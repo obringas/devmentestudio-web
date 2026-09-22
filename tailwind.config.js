@@ -7,29 +7,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Brand colors - Deep tech luxury palette
-        // Brand colors based on Logo
-        // Dark Blue Background: #1a1f3c
-        // Cyan/Blue Gradient: #00b4d8 -> #0ea5e9
-        // Orange/Yellow Gradient: #ff9f1c -> #eab308
+        // Brand colors: navy and Azure blue, with green reserved for continuity states.
         brand: {
-          dark: '#0f172a', // Slate 900 (Background)
-          primary: '#0ea5e9', // Sky 500 (Cyan-ish Blue)
-          secondary: '#f97316', // Orange 500
-          accent: '#eab308', // Yellow 500
+          dark: '#0f172a',
+          primary: '#0078d4',
+          secondary: '#0067b8',
+          accent: '#10b981',
         },
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9', // Sky 500 - Matches logic left side
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          50: '#eef7ff',
+          100: '#d8edff',
+          200: '#b9ddff',
+          300: '#89c8ff',
+          400: '#50aaff',
+          500: '#0078d4',
+          600: '#0067b8',
+          700: '#075794',
+          800: '#0b4978',
+          900: '#103e63',
+          950: '#092740',
         },
         accent: {
           50: '#ecfdf5',
@@ -60,7 +56,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Outfit', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'Consolas', 'monospace'],
       },
       fontSize: {
@@ -124,9 +120,6 @@ module.exports = {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
-      },
-      transitionTimingFunction: {
-        'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       },
     },
   },

@@ -14,7 +14,7 @@ import { LocaleService } from '../../core/services/locale.service';
   template: `
     <div class="min-h-screen py-24 lg:py-32">
       <div class="container-custom max-w-3xl text-center">
-        <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
+        <span class="mb-4 block font-medium text-primary-700">{{ copy().eyebrow }}</span>
         <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl">
           {{ copy().title }}
         </h1>
@@ -42,7 +42,7 @@ export class BlogComponent {
       : {
           eyebrow: 'Blog',
           title: 'Estamos preparando contenido tecnico',
-          description: 'Muy pronto vas a encontrar articulos sobre arquitectura, desarrollo web y buenas practicas.',
+          description: 'Muy pronto vas a encontrar artículos sobre arquitectura, desarrollo web y buenas prácticas.',
           cta: 'Quiero que me avisen',
         }
   ));

@@ -27,12 +27,12 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'modernizacion',
     slug: 'modernizacion',
     title: {
-      es: 'Modernización de Sistemas Legacy',
-      en: 'Legacy Systems Modernization',
+      es: 'Modernización de sistemas de gestión',
+      en: 'Management system modernization',
     },
     shortDescription: {
-      es: 'Migración gradual de sistemas Visual FoxPro, Visual Basic y Clipper a .NET 8 y SQL Server sin frenar la operación diaria.',
-      en: 'Gradual migration of Visual FoxPro, Visual Basic and Clipper systems to .NET 8 and SQL Server without halting daily operations.',
+      es: 'Renovamos tu sistema actual por partes, sin frenar la operación diaria.',
+      en: 'We renew your current system in stages without stopping daily operations.',
     },
     fullDescription: {
       es: 'Migramos sistemas críticos de gestión hacia arquitecturas modernas .NET 8 y bases de datos SQL Server. Convivencia entre el sistema histórico y la nueva plataforma, migración de datos DBF y avance por etapas con vuelta atrás en cada paso.',
@@ -71,7 +71,7 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
           icon: 'shield',
         },
         {
-          title: 'Vuelta atrás garantizada',
+          title: 'Vuelta atrás en cada etapa',
           description: 'Si un módulo nuevo no responde como se esperaba, se puede retroceder.',
           icon: 'refresh-cw',
         },
@@ -88,7 +88,7 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
           icon: 'shield',
         },
         {
-          title: 'Guaranteed rollback',
+          title: 'Rollback at every stage',
           description: 'If a new module does not behave as expected, you can safely revert.',
           icon: 'refresh-cw',
         },
@@ -101,8 +101,8 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     },
     cta: {
       text: {
-        es: 'Pedir diagnóstico técnico',
-        en: 'Request technical diagnosis',
+        es: 'Quiero saber cómo está mi sistema',
+        en: 'Assess my current system',
       },
       href: '/modernizacion',
     },
@@ -111,8 +111,8 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'landing-pages',
     slug: 'landing-pages',
     title: {
-      es: 'Landing Pages',
-      en: 'Landing Pages',
+      es: 'Sitios para captar consultas',
+      en: 'Websites that generate enquiries',
     },
     shortDescription: {
       es: 'Páginas de aterrizaje optimizadas para conversión que capturan leads y generan resultados.',
@@ -195,8 +195,8 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'ecommerce',
     slug: 'ecommerce',
     title: {
-      es: 'E-commerce',
-      en: 'E-commerce',
+      es: 'Tiendas online',
+      en: 'Online stores',
     },
     shortDescription: {
       es: 'Tiendas online completas y escalables que impulsan tus ventas.',
@@ -282,8 +282,8 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'desarrollo-medida',
     slug: 'desarrollo-a-medida',
     title: {
-      es: 'Desarrollo a Medida',
-      en: 'Custom Development',
+      es: 'Software a medida',
+      en: 'Custom software',
     },
     shortDescription: {
       es: 'Software personalizado que se adapta a los procesos reales de tu negocio.',
@@ -368,8 +368,8 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     id: 'consultoria',
     slug: 'consultoria',
     title: {
-      es: 'Consultoría',
-      en: 'Consulting',
+      es: 'Diagnóstico y estrategia',
+      en: 'Assessment and strategy',
     },
     shortDescription: {
       es: 'Asesoramiento experto en arquitectura de software y mejores prácticas de desarrollo.',

@@ -37,15 +37,15 @@ type ContactFormControls = {
   imports: [ReactiveFormsModule, NgClass],
   template: `
     <div class="min-h-screen">
-      <section class="relative overflow-hidden py-24 lg:py-32">
+      <section class="relative overflow-hidden py-12 lg:py-16">
         <div class="absolute inset-0 -z-10">
           <div class="absolute right-1/4 top-0 h-96 w-96 rounded-full bg-primary-500/10 blur-3xl"></div>
-          <div class="absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-accent-500/10 blur-3xl"></div>
+          <div class="absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-primary-300/10 blur-3xl"></div>
         </div>
 
         <div class="container-custom">
           <div class="max-w-3xl">
-            <span class="mb-4 block font-medium text-primary-400">{{ copy().eyebrow }}</span>
+            <span class="mb-4 block font-medium text-primary-700">{{ copy().eyebrow }}</span>
             <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl lg:text-6xl">
               {{ copy().title }}
             </h1>
@@ -59,7 +59,7 @@ type ContactFormControls = {
       <section class="py-16 lg:py-24">
         <div class="container-custom">
           <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
-            <div class="lg:col-span-2">
+            <div class="order-last lg:order-none lg:col-span-2">
               <h2 class="mb-8 text-2xl font-display font-bold text-surface-900">
                 {{ copy().contactInfoTitle }}
               </h2>
@@ -67,27 +67,27 @@ type ContactFormControls = {
               <div class="mb-12 space-y-6">
                 <div class="flex items-start gap-4">
                   <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
-                    <svg class="h-6 w-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="h-6 w-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="mb-1 font-medium text-surface-200">Email</h3>
-                    <a href="mailto:contacto@devmentestudio.com" class="text-surface-500 transition-colors hover:text-primary-400">
+                    <h3 class="mb-1 font-medium text-surface-900">Email</h3>
+                    <a href="mailto:contacto@devmentestudio.com" class="text-surface-600 transition-colors hover:text-primary-700">
                       contacto&#64;devmentestudio.com
                     </a>
                   </div>
                 </div>
 
                 <div class="flex items-start gap-4">
-                  <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent-500/10">
-                    <svg class="h-6 w-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
+                    <svg class="h-6 w-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="mb-1 font-medium text-surface-200">{{ copy().locationLabel }}</h3>
+                    <h3 class="mb-1 font-medium text-surface-900">{{ copy().locationLabel }}</h3>
                     <p class="text-surface-500">Salta, Argentina</p>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ type ContactFormControls = {
                     </svg>
                   </div>
                   <div>
-                    <h3 class="mb-1 font-medium text-surface-200">WhatsApp</h3>
+                    <h3 class="mb-1 font-medium text-surface-900">WhatsApp</h3>
                     <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="text-surface-500 transition-colors hover:text-green-400">
                       +54 9 387 451-3777
                     </a>
@@ -108,14 +108,14 @@ type ContactFormControls = {
               </div>
 
               <div>
-                <h3 class="mb-4 font-medium text-surface-200">{{ copy().socialTitle }}</h3>
+                <h3 class="mb-4 font-medium text-surface-900">{{ copy().socialTitle }}</h3>
                 <div class="flex flex-wrap gap-4">
                   @for (social of socials; track social.label) {
                     <a
                       [href]="social.url"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-50 text-surface-500 transition-all hover:bg-surface-700 hover:text-primary-400"
+                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-50 text-surface-600 transition-all hover:bg-surface-700 hover:text-primary-200"
                       [attr.aria-label]="social.label"
                     >
                       <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -127,12 +127,12 @@ type ContactFormControls = {
               </div>
             </div>
 
-            <div class="lg:col-span-3">
+            <div class="order-first lg:order-none lg:col-span-3">
               <div class="rounded-2xl border border-surface-200 bg-surface-50 p-6 sm:p-8">
                 @if (submitted()) {
                   <div class="py-12 text-center">
                     <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
-                      <svg class="h-8 w-8 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="h-8 w-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                       </svg>
                     </div>
@@ -337,13 +337,13 @@ export class ContactComponent implements OnInit {
     this.language() === 'en'
       ? {
           eyebrow: 'Contact',
-          title: "Let's talk about your project",
-          description: 'Tell us about your idea and we will help you shape it into a strong digital product. We usually reply within 24 hours.',
+          title: "Let's talk about your system",
+          description: 'Tell us which system your company relies on. We reply within 24 business hours.',
           contactInfoTitle: 'Contact information',
           locationLabel: 'Location',
           socialTitle: 'Follow us',
           successTitle: 'Message sent!',
-          successDescription: 'Thanks for reaching out. We will get back to you soon.',
+          successDescription: 'We received your enquiry. We will reply within the next 24 business hours.',
           sendAnother: 'Send another message',
           sending: 'Sending...',
           submit: 'Send message',
@@ -386,13 +386,13 @@ export class ContactComponent implements OnInit {
         }
       : {
           eyebrow: 'Contacto',
-          title: 'Hablemos de tu proyecto',
-          description: 'Contanos tu idea y te ayudamos a convertirla en un producto digital sólido. Respondemos en menos de 24 horas.',
+          title: 'Hablemos de tu sistema',
+          description: 'Contanos qué sistema usa tu empresa. Respondemos dentro de las próximas 24 horas hábiles.',
           contactInfoTitle: 'Información de contacto',
           locationLabel: 'Ubicación',
           socialTitle: 'Seguinos en redes',
           successTitle: '¡Mensaje enviado!',
-          successDescription: 'Gracias por contactarnos. Te responderemos pronto.',
+          successDescription: 'Recibimos tu consulta. Te respondemos dentro de las próximas 24 horas hábiles.',
           sendAnother: 'Enviar otro mensaje',
           sending: 'Enviando...',
           submit: 'Enviar mensaje',
@@ -446,8 +446,10 @@ export class ContactComponent implements OnInit {
         this.contactForm.patchValue({ service: 'ecommerce' });
       } else if (['desarrollo-medida', 'desarrollo-a-medida'].includes(serviceParam)) {
         this.contactForm.patchValue({ service: 'desarrollo-medida' });
-      } else if (['consultoria'].includes(serviceParam)) {
+      } else if (['consultoria', 'diagnostico-continuidad', 'facturacion-arca', 'datos-seguros'].includes(serviceParam)) {
         this.contactForm.patchValue({ service: 'consultoria' });
+      } else if (['sitios-tiendas'].includes(serviceParam)) {
+        this.contactForm.patchValue({ service: 'landing-page' });
       }
     }
   }

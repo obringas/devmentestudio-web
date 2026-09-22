@@ -35,7 +35,7 @@ import { LocaleService } from '../../core/services/locale.service';
             </h2>
             <p>
               {{ copy().contactPrefix }}
-              <a href="mailto:contacto@devmentestudio.com" class="text-primary-400 hover:text-primary-300">
+              <a href="mailto:contacto@devmentestudio.com" class="text-primary-700 hover:text-primary-800">
                 contacto@devmentestudio.com
               </a>.
             </p>

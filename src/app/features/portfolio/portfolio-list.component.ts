@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LocaleService } from '../../core/services/locale.service';
 import { getPortfolioCases } from '../../data/portfolio.data';
@@ -13,149 +8,67 @@ import { getPortfolioCases } from '../../data/portfolio.data';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <div class="min-h-screen">
-      <!-- HERO -->
-      <section class="relative overflow-hidden py-20 lg:py-28">
-        <div class="absolute inset-0 -z-10">
-          <div class="absolute right-1/4 top-0 h-96 w-96 rounded-full bg-accent-500/10 blur-3xl"></div>
-          <div class="absolute left-1/4 bottom-0 h-96 w-96 rounded-full bg-primary-500/10 blur-3xl"></div>
-        </div>
-
-        <div class="container-custom">
-          <div class="max-w-3xl">
-            <span class="mb-4 inline-block rounded-full border border-accent-500/20 bg-accent-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
-              {{ copy().eyebrow }}
-            </span>
-            <h1 class="mb-6 text-4xl font-display font-bold leading-tight text-surface-900 md:text-5xl lg:text-6xl">
-              {{ copy().title }}
-            </h1>
-            <p class="text-lg leading-relaxed text-surface-600 md:text-xl">
-              {{ copy().description }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASOS DE PORTFOLIO -->
-      <section class="pb-24 lg:pb-32">
-        <div class="container-custom">
-          <div class="space-y-16 lg:space-y-20">
-            @for (item of cases(); track item.id; let i = $index) {
-              <article class="overflow-hidden rounded-3xl border-2 border-surface-200/80 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div class="grid gap-8 lg:grid-cols-12 lg:items-center">
-                  <!-- IMAGEN DE PORTADA -->
-                  <div class="lg:col-span-6 overflow-hidden bg-surface-100 p-4 sm:p-6 lg:p-8">
-                    <div class="relative overflow-hidden rounded-2xl border border-surface-200/60 shadow-inner bg-surface-900/5 aspect-video">
-                      <img
-                        [src]="item.coverImage"
-                        [alt]="item.title"
-                        loading="lazy"
-                        class="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- CONTENIDO -->
-                  <div class="p-6 sm:p-8 lg:col-span-6 lg:py-8 lg:pr-10 lg:pl-0">
-                    <div class="mb-4 flex flex-wrap items-center gap-2">
-                      <span class="rounded-full bg-primary-500/10 px-3 py-1 text-xs font-semibold text-primary-700">
-                        {{ item.industry }}
-                      </span>
-                      <span class="rounded-full bg-surface-100 px-3 py-1 text-xs font-medium text-surface-600">
-                        {{ item.role }}
-                      </span>
-                    </div>
-
-                    <h2 class="mb-4 text-2xl font-display font-bold text-surface-900 md:text-3xl">
-                      {{ item.title }}
-                    </h2>
-
-                    <div class="space-y-3 text-sm leading-relaxed text-surface-600 sm:text-base mb-6">
-                      <p>
-                        {{ item.summary }}
-                      </p>
-                      <p class="border-l-2 border-primary-500 pl-4 text-surface-700 font-medium">
-                        {{ item.solution }}
-                      </p>
-                    </div>
-
-                    <!-- TECNOLOGÍAS -->
-                    <div class="mb-8">
-                      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-surface-500">
-                        {{ copy().techLabel }}
-                      </p>
-                      <div class="flex flex-wrap gap-2">
-                        @for (tech of item.technologies; track tech) {
-                          <span class="rounded-full border border-surface-200 bg-surface-50 px-3 py-1 text-xs font-medium text-surface-700">
-                            {{ tech }}
-                          </span>
-                        }
-                      </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-4">
-                      <a routerLink="/contacto" [queryParams]="{ servicio: 'modernizacion' }" class="btn-primary">
-                        {{ copy().ctaCase }}
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            }
-          </div>
-
-          <!-- BANNER CIERRE -->
-          <div class="mt-20 rounded-3xl border-2 border-surface-200/80 bg-surface-50 p-8 sm:p-12 text-center">
-            <h3 class="mb-4 text-2xl font-display font-bold text-surface-900 md:text-3xl">
-              {{ copy().bottomTitle }}
-            </h3>
-            <p class="mx-auto mb-8 max-w-2xl text-surface-600">
-              {{ copy().bottomDescription }}
-            </p>
-            <a routerLink="/contacto" [queryParams]="{ servicio: 'modernizacion' }" class="btn-primary">
-              {{ copy().bottomCta }}
+    <header class="portfolio-head">
+      <div class="container-custom">
+        <h1>{{ copy().title }}</h1>
+        <p>{{ copy().description }}</p>
+      </div>
+    </header>
+    <main class="portfolio-cases">
+      <div class="container-custom">
+        @for (item of cases(); track item.id) {
+          <article class="portfolio-case">
+            <a [routerLink]="['/portfolio', item.slug]" class="portfolio-case__image">
+              <img [src]="item.coverImage" [alt]="item.title" width="1600" height="900" loading="lazy" />
             </a>
-          </div>
-        </div>
-      </section>
-    </div>
+            <div>
+              <span>{{ item.industry }}</span>
+              <h2><a [routerLink]="['/portfolio', item.slug]">{{ item.title }}</a></h2>
+              <dl>
+                <div><dt>{{ copy().situation }}</dt><dd>{{ item.situation }}</dd></div>
+                <div><dt>{{ copy().work }}</dt><dd>{{ item.work }}</dd></div>
+                <div><dt>{{ copy().result }}</dt><dd>{{ item.result }}</dd></div>
+              </dl>
+              <div class="portfolio-case__tech">
+                <small>{{ copy().technologies }}</small>
+                <p>{{ item.technologies.join(' · ') }}</p>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </main>
+    <section class="portfolio-close">
+      <div class="container-custom">
+        <h2>{{ copy().closingTitle }}</h2>
+        <p>{{ copy().closingText }}</p>
+        <a routerLink="/contacto" [queryParams]="{ servicio: 'modernizacion' }" class="btn-primary">{{ copy().closingCta }}</a>
+      </div>
+    </section>
+  `,
+  styles: `
+    :host{display:block}.portfolio-head{padding-block:clamp(3rem,6vw,5rem);background:#fff}.portfolio-head h1{max-width:13ch;color:#1c2a3c;font-size:clamp(3.2rem,7vw,6rem);letter-spacing:-.035em;line-height:.92}.portfolio-head p{max-width:48rem;margin-top:1.5rem;color:#526274;font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.7}.portfolio-cases{padding-bottom:clamp(5rem,9vw,8rem);background:#fff}.portfolio-case{display:grid;grid-template-columns:minmax(18rem,.88fr) minmax(0,1.12fr);gap:clamp(2rem,7vw,6rem);align-items:center;padding-block:clamp(3rem,6vw,5rem);border-top:1px solid #c7d3dd}.portfolio-case:nth-child(even){grid-template-columns:minmax(0,1.12fr) minmax(18rem,.88fr)}.portfolio-case:nth-child(even) .portfolio-case__image{order:2}.portfolio-case__image{overflow:hidden;border-radius:1rem;box-shadow:0 28px 60px -38px rgba(28,42,60,.75)}.portfolio-case__image img{display:block;width:100%;height:auto;transition:transform 500ms cubic-bezier(.22,1,.36,1)}.portfolio-case__image:hover img{transform:scale(1.025)}.portfolio-case>div>span{color:#0067b8;font-size:.78rem;font-weight:800}.portfolio-case h2{margin-top:.55rem;color:#1c2a3c;font-size:clamp(2rem,4vw,3.3rem);line-height:1}.portfolio-case h2 a:hover{text-decoration:underline;text-underline-offset:.18em}.portfolio-case dl{display:grid;gap:1.2rem;margin-top:1.8rem}.portfolio-case dl div{display:grid;grid-template-columns:7rem 1fr;gap:1rem}.portfolio-case dt,.portfolio-case__tech small{color:#1c2a3c;font-size:.72rem;font-weight:800;text-transform:uppercase}.portfolio-case dd{color:#526274;line-height:1.65}.portfolio-case__tech{margin-top:1.7rem;padding-top:1rem;border-top:1px solid #d4dde4}.portfolio-case__tech p{margin-top:.35rem;color:#687787;font-size:.82rem}.portfolio-close{padding-block:clamp(5rem,9vw,8rem);background:#1c2a3c;text-align:center}.portfolio-close h2{max-width:16ch;margin:auto;color:#fff;font-size:clamp(2.4rem,5vw,4.5rem);line-height:.98}.portfolio-close p{max-width:44rem;margin:1.4rem auto 2rem;color:#d4e0e9;font-size:1.1rem}@media(max-width:800px){.portfolio-case,.portfolio-case:nth-child(even){grid-template-columns:1fr}.portfolio-case:nth-child(even) .portfolio-case__image{order:0}.portfolio-case dl div{grid-template-columns:1fr;gap:.3rem}}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortfolioListComponent {
   private readonly locale = inject(LocaleService);
-
-  readonly language = this.locale.language;
-  readonly cases = computed(() => getPortfolioCases(this.language()));
-
-  readonly copy = computed(() => (
-    this.language() === 'en'
-      ? {
-          eyebrow: 'Portfolio',
-          title: 'Case Studies & Production Solutions',
-          description:
-            'Real-world systems, mission-critical operations, and enterprise modernization architectures in active production.',
-          techLabel: 'Technologies used',
-          ctaCase: 'Discuss a similar project',
-          bottomTitle: 'Have an active system needing evolution or modernization?',
-          bottomDescription:
-            'Tell us about your current stack, database or integration challenges, and we will prepare a phased technical approach.',
-          bottomCta: 'Contact us for a diagnosis',
-        }
-      : {
-          eyebrow: 'Portfolio',
-          title: 'Casos reales y sistemas en producción',
-          description:
-            'Proyectos reales de modernización gradual, integración fiscal y arquitectura de bases de datos operando en entornos críticos.',
-          techLabel: 'Tecnologías utilizadas',
-          ctaCase: 'Consultar por un proyecto similar',
-          bottomTitle: '¿Tenés un sistema en funcionamiento que necesita evolucionar?',
-          bottomDescription:
-            'Contanos sobre tu arquitectura actual, base de datos o desafío técnico, y evaluamos juntos un plan por etapas.',
-          bottomCta: 'Pedir un diagnóstico técnico',
-        }
-  ));
+  readonly cases = computed(() => getPortfolioCases(this.locale.language()));
+  readonly copy = computed(() => this.locale.language() === 'en'
+    ? {
+        title: 'Real work, running in production',
+        description: 'Three anonymized cases where the business problem came first and technology served continuity.',
+        situation: 'Situation', work: 'What we did', result: 'What changed', technologies: 'Technologies',
+        closingTitle: 'Do you have a system that needs to evolve?',
+        closingText: 'Tell us what your company depends on today and we will help you identify the safest first step.',
+        closingCta: 'Assess my current system',
+      }
+    : {
+        title: 'Trabajo real, en producción',
+        description: 'Tres casos anonimizados donde el problema del negocio estuvo primero y la tecnología sirvió para cuidar la continuidad.',
+        situation: 'Situación', work: 'Qué hicimos', result: 'Qué cambió', technologies: 'Tecnologías',
+        closingTitle: '¿Tenés un sistema que necesita evolucionar?',
+        closingText: 'Contanos de qué depende hoy tu empresa y te ayudamos a identificar el primer paso más seguro.',
+        closingCta: 'Quiero saber cómo está mi sistema',
+      });
 }

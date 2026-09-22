@@ -7,144 +7,104 @@ export interface PortfolioCase {
   readonly industry: string;
   readonly role: string;
   readonly coverImage: string;
-  readonly summary: string;
-  readonly solution: string;
+  readonly situation: string;
+  readonly work: string;
+  readonly result: string;
   readonly technologies: readonly string[];
 }
 
-interface LocalizedPortfolioCase {
-  readonly id: string;
-  readonly slug: string;
+interface LocalizedPortfolioCase extends Omit<PortfolioCase, 'title' | 'industry' | 'role' | 'situation' | 'work' | 'result'> {
   readonly title: Record<AppLanguage, string>;
   readonly industry: Record<AppLanguage, string>;
   readonly role: Record<AppLanguage, string>;
-  readonly coverImage: string;
-  readonly summary: Record<AppLanguage, string>;
-  readonly solution: Record<AppLanguage, string>;
-  readonly technologies: readonly string[];
+  readonly situation: Record<AppLanguage, string>;
+  readonly work: Record<AppLanguage, string>;
+  readonly result: Record<AppLanguage, string>;
 }
 
 const PORTFOLIO_CASES: readonly LocalizedPortfolioCase[] = [
   {
     id: 'case-vfp-dotnet',
     slug: 'modernizacion-visual-foxpro-dotnet',
-    title: {
-      es: 'Modernización de un sistema Visual FoxPro hacia .NET 8',
-      en: 'Visual FoxPro to .NET 8 System Modernization',
-    },
-    industry: {
-      es: 'Agroindustria / cooperativa',
-      en: 'Agroindustry / cooperative',
-    },
-    role: {
-      es: 'Líder técnico',
-      en: 'Technical Lead',
-    },
+    title: { es: 'Modernización de un sistema de gestión histórico', en: 'Modernizing a historical management system' },
+    industry: { es: 'Agroindustria / cooperativa', en: 'Agroindustry / cooperative' },
+    role: { es: 'Líder técnico', en: 'Technical Lead' },
     coverImage: '/images/portfolio/visual-foxpro-modernization-es.png',
-    summary: {
-      es: 'Sistema de gestión desarrollado en Visual FoxPro, con más de una década en producción y reglas de negocio críticas sin documentar. El objetivo no era reescribirlo de cero, sino modernizarlo sin interrumpir la operación diaria.',
-      en: 'Management system built in Visual FoxPro, with over a decade in production and critical undocumented business rules. The objective was not a risky rewrite from scratch, but modernizing it without halting daily operations.',
+    situation: {
+      es: 'Más de diez años en producción, reglas críticas sin documentar y una sola persona que entendía el sistema.',
+      en: 'More than ten years in production, critical undocumented rules and only one person who understood the system.',
     },
-    solution: {
-      es: 'Se relevaron las reglas existentes, se migraron los datos desde archivos DBF hacia SQL Server y se diseñó una arquitectura de convivencia que permite que el sistema histórico y la nueva plataforma .NET 8 operen sobre la misma información. Los módulos se reemplazan por etapas, empezando por los de menor riesgo, con posibilidad de volver atrás en cada una.',
-      en: 'Existing business rules were discovered and mapped, data was migrated from DBF files to SQL Server, and a coexistence architecture was designed allowing the legacy system and the new .NET 8 platform to operate concurrently over shared data. Modules are replaced in phases starting with the lowest risk, with full rollback capability at each step.',
+    work: {
+      es: 'Relevamos las reglas, aseguramos los datos y construimos el sistema nuevo al lado del viejo, reemplazando módulos por etapas.',
+      en: 'We mapped the rules, secured the data and built the new system alongside the old one, replacing modules in stages.',
     },
-    technologies: [
-      'Visual FoxPro',
-      '.NET 8',
-      'C#',
-      'SQL Server',
-      'Next.js',
-      'Clean Architecture',
-    ],
+    result: {
+      es: 'La operación no se detuvo ni un día y la empresa dejó de depender de una persona.',
+      en: 'Operations did not stop for a single day and the company stopped depending on one person.',
+    },
+    technologies: ['Visual FoxPro', '.NET 8', 'SQL Server', 'Next.js'],
   },
   {
     id: 'case-facturacion-electronica',
     slug: 'middleware-facturacion-electronica',
-    title: {
-      es: 'Middleware de facturación electrónica',
-      en: 'Electronic Invoicing Middleware',
-    },
-    industry: {
-      es: 'Seguros',
-      en: 'Insurance',
-    },
-    role: {
-      es: 'Desarrollador senior',
-      en: 'Senior Developer',
-    },
+    title: { es: 'Facturación electrónica confiable', en: 'Reliable electronic invoicing' },
+    industry: { es: 'Seguros', en: 'Insurance' },
+    role: { es: 'Desarrollador senior', en: 'Senior Developer' },
     coverImage: '/images/portfolio/insurance-e-invoicing-architecture-es.png',
-    summary: {
-      es: 'Integración entre los sistemas internos de una compañía de seguros y los webservices de facturación electrónica del organismo fiscal. El desafío: emitir comprobantes de forma confiable sin acoplar la lógica fiscal a las aplicaciones de negocio.',
-      en: 'Integration between the internal core systems of an insurance company and the fiscal authority electronic invoicing webservices. The challenge: reliably issuing receipts without coupling fiscal logic to core business apps.',
+    situation: {
+      es: 'Varios sistemas internos emitían comprobantes cada uno a su manera; cada cambio normativo había que hacerlo en todos.',
+      en: 'Several internal systems issued receipts differently, so every regulatory change had to be repeated in all of them.',
     },
-    solution: {
-      es: 'Se construyó una capa intermedia responsable de la comunicación con el organismo, el manejo de reintentos y la trazabilidad de cada comprobante, de modo que un cambio normativo se resuelva en un solo lugar y no en cada sistema.',
-      en: 'An intermediate middleware layer was built to manage external fiscal communication, automatic retries, and end-to-end receipt traceability, ensuring regulatory changes are resolved in a single place rather than inside every subsystem.',
+    work: {
+      es: 'Construimos una capa única que habla con el organismo fiscal, reintenta cuando algo falla y deja rastro de cada comprobante.',
+      en: 'We built one layer that communicates with the fiscal authority, retries failures and traces every receipt.',
     },
-    technologies: ['.NET', 'C#', 'SQL Server', 'API REST', 'Facturación electrónica'],
+    result: {
+      es: 'Un cambio de ARCA se resuelve en un solo lugar.',
+      en: 'An ARCA change is now resolved in one place.',
+    },
+    technologies: ['.NET', 'SQL Server', 'API REST'],
   },
   {
     id: 'case-replicacion-sql-azure',
     slug: 'replicacion-transaccional-sql-azure',
-    title: {
-      es: 'Replicación transaccional SQL Server hacia Azure',
-      en: 'SQL Server Transactional Replication to Azure',
-    },
-    industry: {
-      es: 'Agroindustria',
-      en: 'Agroindustry',
-    },
-    role: {
-      es: 'Administrador de bases de datos y arquitecto',
-      en: 'Database Administrator & Architect',
-    },
+    title: { es: 'Información disponible en la nube sin frenar la operación', en: 'Cloud data without disrupting operations' },
+    industry: { es: 'Agroindustria', en: 'Agroindustry' },
+    role: { es: 'Administrador de bases de datos y arquitecto', en: 'Database Administrator and Architect' },
     coverImage: '/images/portfolio/sql-transactional-replication-monitoring-es.png',
-    summary: {
-      es: 'Necesidad de disponer en la nube de información generada en servidores locales, sin afectar el rendimiento de los sistemas que operan sobre ellos.',
-      en: 'Need for real-time cloud availability of data generated on local on-premise servers, without impacting the operational performance of transactional systems.',
+    situation: {
+      es: 'La información se generaba en servidores locales y hacía falta disponerla fuera sin afectar los sistemas.',
+      en: 'Information was generated on local servers and had to be available elsewhere without affecting operational systems.',
     },
-    solution: {
-      es: 'Se implementaron dos flujos de replicación transaccional independientes y unidireccionales desde publicadores locales hacia suscriptores en Azure, con monitoreo de ambos flujos y alertas por correo ante demoras o interrupciones, para detectar los problemas antes que los usuarios.',
-      en: 'Two independent, unidirectional transactional replication pipelines were deployed from local publishers to Azure subscribers, accompanied by automated health monitoring and email alerts for latency or interruptions to detect issues before users do.',
+    work: {
+      es: 'Implementamos dos flujos de replicación independientes hacia la nube, con monitoreo y alertas por correo.',
+      en: 'We implemented two independent cloud replication flows with monitoring and email alerts.',
     },
-    technologies: [
-      'SQL Server',
-      'Replicación transaccional',
-      'Microsoft Azure',
-      'Monitoreo y alertas',
-    ],
+    result: {
+      es: 'Los problemas se detectan antes de que los note un usuario.',
+      en: 'Problems are detected before a user notices them.',
+    },
+    technologies: ['SQL Server', 'Replicación transaccional', 'Azure'],
   },
 ];
 
-export const getPortfolioCases = (language: AppLanguage): readonly PortfolioCase[] =>
-  PORTFOLIO_CASES.map((item) => ({
-    id: item.id,
-    slug: item.slug,
-    title: item.title[language],
-    industry: item.industry[language],
-    role: item.role[language],
-    coverImage: item.coverImage,
-    summary: item.summary[language],
-    solution: item.solution[language],
-    technologies: item.technologies,
-  }));
+const localize = (item: LocalizedPortfolioCase, language: AppLanguage): PortfolioCase => ({
+  id: item.id,
+  slug: item.slug,
+  title: item.title[language],
+  industry: item.industry[language],
+  role: item.role[language],
+  coverImage: item.coverImage,
+  situation: item.situation[language],
+  work: item.work[language],
+  result: item.result[language],
+  technologies: item.technologies,
+});
 
-export const getPortfolioCaseBySlug = (
-  slug: string,
-  language: AppLanguage,
-): PortfolioCase | undefined => {
-  const item = PORTFOLIO_CASES.find((c) => c.slug === slug);
-  if (!item) return undefined;
-  return {
-    id: item.id,
-    slug: item.slug,
-    title: item.title[language],
-    industry: item.industry[language],
-    role: item.role[language],
-    coverImage: item.coverImage,
-    summary: item.summary[language],
-    solution: item.solution[language],
-    technologies: item.technologies,
-  };
+export const getPortfolioCases = (language: AppLanguage): readonly PortfolioCase[] =>
+  PORTFOLIO_CASES.map((item) => localize(item, language));
+
+export const getPortfolioCaseBySlug = (slug: string, language: AppLanguage): PortfolioCase | undefined => {
+  const item = PORTFOLIO_CASES.find((portfolioCase) => portfolioCase.slug === slug);
+  return item ? localize(item, language) : undefined;
 };

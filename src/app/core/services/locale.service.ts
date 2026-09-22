@@ -26,6 +26,7 @@ export class LocaleService {
 
   setLanguage(language: AppLanguage): void {
     this._language.set(language);
+    this.persistLanguageInUrl(language);
   }
 
   toggleLanguage(): void {
@@ -33,8 +34,13 @@ export class LocaleService {
   }
 
   private getInitialLanguage(): AppLanguage {
+    const urlLanguage = this.getUrlLanguage();
+    if (urlLanguage) {
+      return urlLanguage;
+    }
+
     if (!isPlatformBrowser(this.platformId)) {
-      return 'en';
+      return 'es';
     }
 
     const storedLanguage = window.localStorage.getItem(this.storageKey);
@@ -44,5 +50,23 @@ export class LocaleService {
 
     const browserLanguage = window.navigator.language.toLowerCase();
     return browserLanguage.startsWith('es') ? 'es' : 'en';
+  }
+
+  private getUrlLanguage(): AppLanguage | null {
+    try {
+      const url = new URL(this.document.location.href);
+      const language = url.searchParams.get('lang');
+      return language === 'es' || language === 'en' ? language : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private persistLanguageInUrl(language: AppLanguage): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', language);
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
   }
 }

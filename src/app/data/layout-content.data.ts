@@ -17,12 +17,12 @@ export type FooterContent = {
 const HEADER_CONTENT: Record<AppLanguage, HeaderContent> = {
   en: {
     studioLabel: 'Software Studio',
-    cta: 'Book a call',
+    cta: 'Start a conversation',
     languageLabel: 'Language',
   },
   es: {
     studioLabel: 'Estudio de Software',
-    cta: 'Agendar reunión',
+    cta: 'Hacer una consulta',
     languageLabel: 'Idioma',
   },
 };
@@ -30,18 +30,18 @@ const HEADER_CONTENT: Record<AppLanguage, HeaderContent> = {
 const FOOTER_CONTENT: Record<AppLanguage, FooterContent> = {
   en: {
     studioLabel: 'Software Studio',
-    eyebrow: 'We build software with business clarity',
+    eyebrow: 'Continuity first. Technology in service of the business.',
     description:
-      'We design websites, experiences and digital products that make your business look serious, clear and ready to sell.',
-    footerNote: 'Made in Salta, Argentina for brands that want to look professional.',
+      'We modernize management systems in stages and build the software your company needs to keep moving forward.',
+    footerNote: 'Based in Salta, working throughout Argentina.',
     copyrightSuffix: 'All rights reserved.',
   },
   es: {
     studioLabel: 'Estudio de Software',
-    eyebrow: 'Hacemos software con criterio de negocio',
+    eyebrow: 'Primero la continuidad. Después, la tecnología.',
     description:
-      'Diseñamos sitios, experiencias y productos digitales que hacen ver a tu negocio serio, claro y listo para vender.',
-    footerNote: 'Hecho en Salta, Argentina para marcas que quieren verse profesionales.',
+      'Modernizamos sistemas de gestión por etapas y construimos el software que tu empresa necesita para seguir avanzando.',
+    footerNote: 'Desde Salta, para empresas de toda la Argentina.',
     copyrightSuffix: 'Todos los derechos reservados.',
   },
 };

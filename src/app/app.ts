@@ -4,11 +4,12 @@ import { HeaderComponent, FooterComponent } from './shared/components/layout';
 import { ChatComponent } from './shared/components/ui/chat/chat.component';
 import { SeoService } from './core/services/seo.service';
 import { LocaleService } from './core/services/locale.service';
+import { WhatsappFabComponent } from './shared/components/ui/whatsapp-fab/whatsapp-fab.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ChatComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ChatComponent, WhatsappFabComponent],
   template: `
     <div class="page-shell min-h-screen flex flex-col overflow-hidden">
       <app-header />
@@ -18,6 +19,7 @@ import { LocaleService } from './core/services/locale.service';
       <app-footer />
     </div>
     <app-chat />
+    <app-whatsapp-fab />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

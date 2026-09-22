@@ -116,7 +116,7 @@ export class GeminiService {
 
     if (language === 'en') {
       if (asksAboutServices) {
-        return 'We specialize in Legacy Systems Modernization (Visual FoxPro, Visual Basic and Clipper to .NET 8 and SQL Server), Landing Pages, E-commerce, Custom Development and Consulting. Would you like details on any of these?';
+        return 'We specialize in gradual management system modernization, websites that generate enquiries, online stores, custom software, and technical assessment. Would you like details on any of these?';
       }
 
       if (asksAboutPrice) {
@@ -135,7 +135,7 @@ export class GeminiService {
     }
 
     if (asksAboutServices) {
-      return 'Nos especializamos en Modernización de Sistemas Legacy (Visual FoxPro, Visual Basic y Clipper hacia .NET 8 y SQL Server), Landing Pages, E-commerce, Desarrollo a Medida y Consultoría. ¿Te interesa conocer más detalles sobre alguno?';
+      return 'Nos especializamos en modernización gradual de sistemas de gestión, sitios para captar consultas, tiendas online, software a medida y diagnóstico técnico. ¿Te interesa conocer más detalles sobre alguno?';
     }
 
     if (asksAboutPrice) {

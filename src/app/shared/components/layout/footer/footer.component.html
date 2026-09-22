@@ -1,5 +1,5 @@
 <footer class="relative overflow-hidden border-t border-surface-200 bg-surface-50">
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.06),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(249,115,22,0.05),transparent_24%)]"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,120,212,0.06),transparent_34%)]"></div>
 
     <div class="container-custom relative py-16">
         <div class="surface-panel grid grid-cols-1 gap-12 px-6 py-10 md:grid-cols-2 lg:grid-cols-5 lg:px-10">
@@ -8,7 +8,7 @@
 
                 <a routerLink="/" class="mb-6 flex items-center gap-4">
                     <span class="flex h-14 w-14 items-center justify-center rounded-2xl border border-surface-200 bg-white">
-                        <img src="logo.png" alt="DevMenteStudio" class="h-10 w-auto object-contain" />
+                        <img src="logo-nuevo-compact.png" alt="DevMenteStudio" width="320" height="208" class="w-10 h-auto object-contain" />
                     </span>
                     <span>
                         <span class="block text-[0.7rem] uppercase tracking-[0.28em] text-surface-500">{{ copy().studioLabel }}</span>
@@ -22,7 +22,7 @@
                     <a [href]="'mailto:' + contact.email" class="rounded-2xl border border-surface-200 bg-white px-4 py-3 transition-colors hover:border-surface-300 hover:text-surface-900">
                         {{ contact.email }}
                     </a>
-                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="rounded-2xl border border-surface-200 bg-white px-4 py-3 transition-colors hover:border-surface-300 hover:text-surface-900">
+                    <a [href]="contact.whatsappUrl" target="_blank" rel="noopener noreferrer" class="rounded-2xl border border-surface-200 bg-white px-4 py-3 transition-colors hover:border-surface-300 hover:text-surface-900">
                         {{ contact.phone }}
                     </a>
                 </div>
@@ -41,9 +41,9 @@
 
             @for (section of footerSections(); track section.title) {
             <div>
-                <h4 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-surface-500">
+                <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-surface-500">
                     {{ section.title }}
-                </h4>
+                </p>
                 <ul class="space-y-3">
                     @for (link of section.links; track link.href) {
                     <li>

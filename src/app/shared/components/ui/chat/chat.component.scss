@@ -1,6 +1,6 @@
 // Variables
-$primary-color: #6366f1;
-$primary-dark: #4f46e5;
+$primary-color: #0078d4;
+$primary-dark: #0067b8;
 $accent-color: #10b981;
 $surface-bg: #18181b;
 $surface-card: #27272a;
@@ -293,21 +293,12 @@ $border-color: #3f3f46;
 }
 
 // Responsive
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .chat-toggle {
-    bottom: 16px;
-    right: 16px;
-    width: 52px;
-    height: 52px;
+    display: none;
   }
 
   .chat-panel {
-    bottom: 80px;
-    right: 16px;
-    left: 16px;
-    width: auto;
-    max-width: none;
-    height: calc(100vh - 120px);
-    max-height: none;
+    display: none;
   }
 }

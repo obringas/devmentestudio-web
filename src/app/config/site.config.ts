@@ -3,14 +3,14 @@
  */
 export const siteConfig = {
   name: 'DevMenteStudio',
-  description: 'Desarrollo de software profesional: Landing Pages, E-commerce, Aplicaciones a Medida y Consultoría en Arquitectura de Software.',
+  description: 'Modernización gradual de sistemas de gestión, software a medida y soluciones digitales para empresas que no pueden parar.',
   url: 'https://devmentestudio.com',
-  ogImage: 'https://devmentestudio.com/og-image.jpg',
+  ogImage: 'https://devmentestudio.com/logo-nuevo.png',
 
   contact: {
     email: 'contacto@devmentestudio.com',
     phone: '+54 9 387 451-3777',
-    whatsappUrl: 'https://wa.me/5493874513777',
+    whatsappUrl: 'https://wa.me/5493874513777?text=Hola%20Oscar%2C%20quiero%20consultar%20por%20la%20modernizaci%C3%B3n%20de%20mi%20sistema.',
     address: 'Salta, Argentina',
     form: {
       endpoint: 'https://api.web3forms.com/submit',
@@ -30,11 +30,11 @@ export const siteConfig = {
 
   seo: {
     titleTemplate: '%s | DevMenteStudio',
-    defaultTitle: 'DevMenteStudio - Desarrollo de Software Profesional',
+    defaultTitle: 'Modernización de sistemas de gestión | DevMenteStudio',
     keywords: [
-      'desarrollo web',
-      'landing page',
-      'ecommerce',
+      'modernización de sistemas',
+      'sistemas de gestión',
+      'continuidad operativa',
       'software a medida',
       'consultoría',
       'arquitectura de software',

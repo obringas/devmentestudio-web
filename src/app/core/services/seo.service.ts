@@ -8,12 +8,12 @@ import { AppLanguage, LocaleService } from './locale.service';
 
 const PAGE_TITLES: Record<string, Record<AppLanguage, string>> = {
   home: {
-    es: 'DevMenteStudio - Desarrollo de Software Profesional',
-    en: 'DevMenteStudio - Professional Software Development',
+    es: 'Modernización de sistemas de gestión | DevMenteStudio',
+    en: 'Management System Modernization | DevMenteStudio',
   },
   modernizacion: {
-    es: 'Modernización de sistemas legacy | DevMenteStudio',
-    en: 'Legacy Systems Modernization | DevMenteStudio',
+    es: 'Modernización gradual de sistemas | DevMenteStudio',
+    en: 'Gradual System Modernization | DevMenteStudio',
   },
   services: {
     es: 'Servicios | DevMenteStudio',
@@ -44,11 +44,11 @@ const PAGE_TITLES: Record<string, Record<AppLanguage, string>> = {
     en: 'Blog | DevMenteStudio',
   },
   terms: {
-    es: 'Terminos y Condiciones | DevMenteStudio',
+    es: 'Términos y Condiciones | DevMenteStudio',
     en: 'Terms and Conditions | DevMenteStudio',
   },
   privacy: {
-    es: 'Politica de Privacidad | DevMenteStudio',
+    es: 'Política de Privacidad | DevMenteStudio',
     en: 'Privacy Policy | DevMenteStudio',
   },
 };
@@ -102,12 +102,17 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: canonicalUrl });
     this.meta.updateTag({ property: 'og:image', content: siteConfig.ogImage });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:locale', content: language === 'es' ? 'es_AR' : 'en_US' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:url', content: canonicalUrl });
     this.meta.updateTag({ name: 'twitter:image', content: siteConfig.ogImage });
 
     this.setCanonical(canonicalUrl);
+    this.setLanguageAlternates(canonicalUrl);
+    this.setStructuredData(language);
   }
 
   private getDescription(
@@ -123,7 +128,7 @@ export class SeoService {
     }
 
     return language === 'en'
-      ? 'Professional software development for modern digital products.'
+      ? 'Gradual management system modernization and custom software for businesses that cannot stop.'
       : siteConfig.description;
   }
 
@@ -133,7 +138,7 @@ export class SeoService {
     }
 
     return language === 'en'
-      ? 'DevMenteStudio - Professional Software Development'
+      ? 'Management System Modernization | DevMenteStudio'
       : siteConfig.seo.defaultTitle;
   }
 
@@ -158,5 +163,62 @@ export class SeoService {
       this.document.head.appendChild(link);
     }
     link.setAttribute('href', url);
+  }
+
+  private setLanguageAlternates(canonicalUrl: string): void {
+    const alternates = [
+      { hreflang: 'es', href: `${canonicalUrl}?lang=es` },
+      { hreflang: 'en', href: `${canonicalUrl}?lang=en` },
+      { hreflang: 'x-default', href: canonicalUrl },
+    ];
+
+    for (const alternate of alternates) {
+      let link = this.document.querySelector(`link[rel="alternate"][hreflang="${alternate.hreflang}"]`);
+      if (!link) {
+        link = this.document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hreflang', alternate.hreflang);
+        this.document.head.appendChild(link);
+      }
+      link.setAttribute('href', alternate.href);
+    }
+  }
+
+  private setStructuredData(language: AppLanguage): void {
+    const identifier = 'devmente-structured-data';
+    let script = this.document.getElementById(identifier) as HTMLScriptElement | null;
+    if (!script) {
+      script = this.document.createElement('script');
+      script.id = identifier;
+      script.type = 'application/ld+json';
+      this.document.head.appendChild(script);
+    }
+
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'ProfessionalService',
+          '@id': `${siteConfig.url}/#business`,
+          name: siteConfig.name,
+          url: siteConfig.url,
+          email: siteConfig.contact.email,
+          telephone: siteConfig.contact.phone,
+          image: siteConfig.ogImage,
+          address: { '@type': 'PostalAddress', addressLocality: 'Salta', addressCountry: 'AR' },
+          areaServed: { '@type': 'Country', name: language === 'es' ? 'Argentina' : 'Argentina' },
+          founder: { '@id': `${siteConfig.url}/#oscar-bringas` },
+        },
+        {
+          '@type': 'Person',
+          '@id': `${siteConfig.url}/#oscar-bringas`,
+          name: 'Oscar Bringas',
+          jobTitle: language === 'es' ? 'Ingeniero en Sistemas de Información' : 'Information Systems Engineer',
+          email: siteConfig.contact.email,
+          worksFor: { '@id': `${siteConfig.url}/#business` },
+          address: { '@type': 'PostalAddress', addressLocality: 'Salta', addressCountry: 'AR' },
+        },
+      ],
+    });
   }
 }

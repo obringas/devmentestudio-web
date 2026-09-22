@@ -36,18 +36,20 @@ describe('ContactService', () => {
 
     const request = httpTesting.expectOne(siteConfig.contact.form.endpoint);
     expect(request.request.method).toBe('POST');
-    expect(request.request.body).toEqual({
-      access_key: siteConfig.contact.form.accessKey,
-      subject: 'Nueva consulta desde devmentestudio.com',
-      from_name: 'Ada Lovelace',
-      botcheck: false,
-      name: 'Ada Lovelace',
-      email: 'ada@example.com',
-      Empresa: 'Analytical Engines',
-      Servicio: 'Modernización de sistema existente',
-      Presupuesto: 'USD 5.000 - 10.000',
-      message: 'Necesito modernizar un sistema crítico.',
-    });
+    expect(request.request.body).toBeInstanceOf(FormData);
+    expect(request.request.headers.has('Content-Type')).toBe(false);
+
+    const body = request.request.body as FormData;
+    expect(body.get('access_key')).toBe(siteConfig.contact.form.accessKey);
+    expect(body.get('subject')).toBe('Nueva consulta desde devmentestudio.com');
+    expect(body.get('from_name')).toBe('Ada Lovelace');
+    expect(body.get('botcheck')).toBe('');
+    expect(body.get('name')).toBe('Ada Lovelace');
+    expect(body.get('email')).toBe('ada@example.com');
+    expect(body.get('Empresa')).toBe('Analytical Engines');
+    expect(body.get('Servicio')).toBe('Modernización de sistema existente');
+    expect(body.get('Presupuesto')).toBe('USD 5.000 - 10.000');
+    expect(body.get('message')).toBe('Necesito modernizar un sistema crítico.');
 
     request.flush({ success: true, message: 'Email sent successfully!' });
     expect(completed).toBe(true);

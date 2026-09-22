@@ -17,12 +17,12 @@ import { LocaleService } from '../../core/services/locale.service';
       <section class="relative overflow-hidden py-20 lg:py-32">
         <div class="absolute inset-0 -z-10">
           <div class="absolute left-1/3 top-0 h-96 w-96 rounded-full bg-primary-500/10 blur-3xl"></div>
-          <div class="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-accent-500/10 blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-primary-300/10 blur-3xl"></div>
         </div>
 
         <div class="container-custom">
           <div class="max-w-3xl">
-            <span class="mb-4 inline-block rounded-full border border-primary-500/20 bg-primary-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">
+            <span class="mb-4 block text-xs font-semibold uppercase tracking-[0.2em] text-primary-700">
               {{ copy().eyebrow }}
             </span>
             <h1 class="mb-6 text-4xl font-display font-bold leading-tight text-surface-900 md:text-5xl lg:text-6xl">
@@ -54,13 +54,12 @@ import { LocaleService } from '../../core/services/locale.service';
             </div>
 
             <div class="lg:col-span-4">
-              <div class="rounded-3xl border-2 border-surface-200/80 bg-white p-8 shadow-md">
-                <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 text-primary-600">
-                  <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                  </svg>
+              <div class="rounded-2xl border border-surface-200 bg-white p-6 shadow-sm">
+                <div class="about-portrait" role="img" [attr.aria-label]="copy().photoPending">
+                  <span>OB</span>
+                  <small>{{ copy().photoPending }}</small>
                 </div>
-                <h3 class="text-xl font-display font-bold text-surface-900">Oscar Bringas</h3>
+                <h3 class="mt-6 text-xl font-display font-bold text-surface-900">Oscar Bringas</h3>
                 <p class="text-sm font-medium text-primary-600 mb-4">{{ copy().profileRole }}</p>
                 <ul class="space-y-2 text-sm text-surface-600">
                   <li class="flex items-center gap-2">
@@ -98,7 +97,7 @@ import { LocaleService } from '../../core/services/locale.service';
       <section class="py-16 lg:py-24">
         <div class="container-custom">
           <div class="mx-auto mb-16 max-w-3xl text-center">
-            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-500">
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-700">
               {{ copy().valuesEyebrow }}
             </span>
             <h2 class="mt-3 mb-4 text-3xl font-display font-bold text-surface-900 md:text-4xl">
@@ -127,7 +126,7 @@ import { LocaleService } from '../../core/services/locale.service';
       <section class="bg-surface-50 py-16 lg:py-24 border-y border-surface-200">
         <div class="container-custom">
           <div class="mx-auto mb-16 max-w-3xl text-center">
-            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-500">
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-700">
               {{ copy().timelineEyebrow }}
             </span>
             <h2 class="mt-3 text-3xl font-display font-bold text-surface-900 md:text-4xl">
@@ -140,7 +139,7 @@ import { LocaleService } from '../../core/services/locale.service';
               @for (milestone of copy().milestones; track milestone.year) {
                 <div class="flex gap-4 sm:gap-6 items-start rounded-2xl border-2 border-surface-200/80 bg-white p-6 shadow-sm">
                   <div class="flex-shrink-0">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/15 to-accent-500/15 text-primary-700 font-display font-bold text-sm sm:text-base border border-primary-500/20">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/15 to-primary-200/30 text-primary-700 font-display font-bold text-sm sm:text-base border border-primary-500/20">
                       {{ milestone.year }}
                     </div>
                   </div>
@@ -190,6 +189,9 @@ import { LocaleService } from '../../core/services/locale.service';
       </section>
     </div>
   `,
+  styles: `
+    .about-portrait{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;border-radius:.85rem;background:#263d56;color:#fff}.about-portrait span{font-family:'Cormorant Garamond',Georgia,serif;font-size:5rem;line-height:1;color:#8bcdfb}.about-portrait small{max-width:12rem;color:#d4e0e9;font-size:.72rem;line-height:1.4;text-align:center}
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent {
@@ -206,6 +208,7 @@ export class AboutComponent {
           bio2: 'Today I lead the IT department of an agroindustrial cooperative in northern Argentina and work as a senior .NET consultant in the insurance industry. That means I know both sides intimately: sustaining an active system that cannot fail, and architecting the new one that replaces it.',
           bio3: 'When I take on projects that exceed what I can handle alone, I bring in trusted senior colleagues. But the technical responsibility, architectural oversight, and primary point of contact always remain with me.',
           profileRole: 'Lead Engineer & Consultant',
+          photoPending: 'Oscar portrait · final photo pending',
           valuesEyebrow: 'Principles',
           valuesTitle: 'How we make decisions',
           valuesDescription: 'The engineering standards behind every line of code shipped in production.',
@@ -258,7 +261,7 @@ export class AboutComponent {
           stats: [
             { value: '20 years', label: 'Professional experience' },
             { value: '50+', label: 'Delivered projects' },
-            { value: '100%', label: 'Systems in production today' },
+            { value: 'Today', label: 'Systems in production' },
             { value: 'Salta', label: 'Argentina' },
           ],
           ctaTitle: 'Want to talk directly about your system?',
@@ -274,6 +277,7 @@ export class AboutComponent {
           bio2: 'Hoy lidero el área de sistemas de una cooperativa agroindustrial del norte argentino y trabajo como consultor senior .NET en el sector seguros. Eso significa que conozco los dos lados: el de quien tiene que sostener un sistema que no puede fallar, y el de quien tiene que construir el que viene.',
           bio3: 'Cuando trabajo en proyectos que exceden lo que puedo hacer solo, sumo profesionales de confianza. Pero la responsabilidad técnica y el interlocutor son siempre los mismos.',
           profileRole: 'Líder Técnico y Consultor',
+          photoPending: 'Retrato de Oscar · foto definitiva pendiente',
           valuesEyebrow: 'Principios',
           valuesTitle: 'Nuestros Valores',
           valuesDescription: 'Criterios claros que guían cada decisión técnica y arquitectónica.',
@@ -326,7 +330,7 @@ export class AboutComponent {
           stats: [
             { value: '20 años', label: 'De experiencia profesional' },
             { value: '50+', label: 'Proyectos entregados' },
-            { value: '100%', label: 'Sistemas en producción hoy' },
+            { value: 'Hoy', label: 'Sistemas en producción' },
             { value: 'Salta', label: 'Argentina' },
           ],
           ctaTitle: '¿Querés hablar directamente sobre tu sistema?',

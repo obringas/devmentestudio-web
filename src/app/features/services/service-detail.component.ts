@@ -23,7 +23,7 @@ import { LocaleService } from '../../core/services/locale.service';
           </div>
 
           <div class="container-custom">
-            <a routerLink="/servicios" class="mb-8 inline-flex items-center gap-2 text-surface-500 transition-colors hover:text-primary-400">
+            <a routerLink="/servicios" class="mb-8 inline-flex items-center gap-2 text-surface-600 transition-colors hover:text-primary-700">
               <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
               </svg>
@@ -49,10 +49,10 @@ import { LocaleService } from '../../core/services/locale.service';
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               @for (feature of srv.features; track feature) {
                 <div class="rounded-xl border border-surface-200 bg-surface-50 p-6">
-                  <svg class="mb-4 h-8 w-8 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="mb-4 h-8 w-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                   </svg>
-                  <p class="text-surface-200">{{ feature }}</p>
+                  <p class="text-surface-700">{{ feature }}</p>
                 </div>
               }
             </div>
@@ -68,7 +68,7 @@ import { LocaleService } from '../../core/services/locale.service';
               @for (benefit of srv.benefits; track benefit.title) {
                 <div class="text-center">
                   <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20">
-                    <svg class="h-8 w-8 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="h-8 w-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
                   </div>
@@ -92,7 +92,7 @@ import { LocaleService } from '../../core/services/locale.service';
             <div class="flex flex-wrap gap-4">
               @for (tech of srv.technologies; track tech.name) {
                 <div class="rounded-xl border border-surface-200 bg-surface-50 px-6 py-3">
-                  <span class="font-medium text-surface-200">{{ tech.name }}</span>
+                  <span class="font-medium text-surface-700">{{ tech.name }}</span>
                 </div>
               }
             </div>

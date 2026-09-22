@@ -25,11 +25,11 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
     {
       title: 'Servicios',
       links: [
-        { label: 'Modernización Legacy', href: '/modernizacion' },
-        { label: 'Landing Pages', href: '/servicios/landing-pages' },
-        { label: 'E-commerce', href: '/servicios/ecommerce' },
-        { label: 'Desarrollo a Medida', href: '/servicios/desarrollo-a-medida' },
-        { label: 'Consultoría', href: '/servicios/consultoria' },
+        { label: 'Modernización de sistemas', href: '/modernizacion' },
+        { label: 'Sitios para captar consultas', href: '/servicios/landing-pages' },
+        { label: 'Tiendas online', href: '/servicios/ecommerce' },
+        { label: 'Software a medida', href: '/servicios/desarrollo-a-medida' },
+        { label: 'Diagnóstico y estrategia', href: '/servicios/consultoria' },
       ],
     },
     {
@@ -52,11 +52,11 @@ const footerSectionsByLanguage: Record<AppLanguage, readonly FooterSection[]> = 
     {
       title: 'Services',
       links: [
-        { label: 'Legacy Modernization', href: '/modernizacion' },
-        { label: 'Landing Pages', href: '/servicios/landing-pages' },
-        { label: 'E-commerce', href: '/servicios/ecommerce' },
+        { label: 'System Modernization', href: '/modernizacion' },
+        { label: 'Websites that generate enquiries', href: '/servicios/landing-pages' },
+        { label: 'Online stores', href: '/servicios/ecommerce' },
         { label: 'Custom Development', href: '/servicios/desarrollo-a-medida' },
-        { label: 'Consulting', href: '/servicios/consultoria' },
+        { label: 'Assessment and strategy', href: '/servicios/consultoria' },
       ],
     },
     {
