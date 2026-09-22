@@ -1,21 +1,24 @@
 # 08-known-issues.md
 
-## Headers de seguridad HTTP pendientes
+## Headers de seguridad HTTP pendientes (resuelto)
 
 ### Fecha
 2026-04-24
 
+### Estado
+Resuelto el 2026-09-22.
+
 ### Descripcion
-El servidor SSR expone `/api/chat` y sirve contenido web, pero no se observa endurecimiento explicito de headers como CSP, `Referrer-Policy` o `Permissions-Policy`.
+Originalmente no se había identificado el endurecimiento de headers. La configuración de Vercel sí define CSP, `Referrer-Policy`, `Permissions-Policy`, HSTS y otros headers defensivos.
 
 ### Impacto
 Medio
 
 ### Modulo afectado
-`src/server.ts`
+`vercel.json`
 
 ### Recomendacion
-Agregar headers de seguridad apropiados para SSR y revisar compatibilidad con recursos externos antes de desplegar.
+Mantener la CSP sincronizada con las integraciones frontend. El 2026-09-22 se agregó `https://api.web3forms.com` a `connect-src` para habilitar el formulario sin ampliar innecesariamente la política.
 
 ## Duplicacion potencial entre `api/chat.js` y `src/server.ts`
 

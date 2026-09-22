@@ -29,6 +29,8 @@ Consideraciones:
 
 El formulario usa Web3Forms directamente desde el navegador, como recomienda el proveedor. Su endpoint, asunto y access key pública están centralizados en `src/app/config/site.config.ts`; no requieren una variable secreta del servidor.
 
+La CSP configurada en `vercel.json` debe incluir `https://api.web3forms.com` dentro de `connect-src`; de lo contrario el navegador bloquea el envío antes de realizar el `POST`.
+
 Para validar el flujo completo, primero desplegar y luego realizar un único envío real desde producción. Confirmar tanto el mensaje de éxito en la UI como la recepción en `contacto@devmentestudio.com`.
 
 ## Comandos principales

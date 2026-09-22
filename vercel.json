@@ -32,7 +32,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; connect-src 'self' https://generativelanguage.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; connect-src 'self' https://api.web3forms.com https://generativelanguage.googleapis.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; object-src 'none'; upgrade-insecure-requests"
         }
       ]
     }

@@ -50,10 +50,11 @@ Aceptada
 El formulario validaba datos pero simulaba el envío con un temporizador y mostraba éxito sin realizar ninguna solicitud. Se necesitaba un envío real con recuperación visible ante fallas, sin acoplar el proveedor al componente.
 
 ### Decision
-Crear un `ContactService` tipado que encapsule el `POST` del navegador a Web3Forms y centralizar la configuración pública del proveedor en `site.config.ts`. El componente conserva exclusivamente la validación y los estados de UI, y considera exitoso sólo un HTTP 200 con `success: true`.
+Crear un `ContactService` tipado que encapsule el `POST` del navegador a Web3Forms y centralizar la configuración pública del proveedor en `site.config.ts`. El componente conserva exclusivamente la validación y los estados de UI, y considera exitoso sólo un HTTP 200 con `success: true`. La CSP de producción debe permitir `https://api.web3forms.com` en `connect-src`.
 
 ### Consecuencias
 - Se elimina el falso positivo de éxito y se preservan los datos ante error.
 - La integración puede probarse y reemplazarse sin reescribir la pantalla.
+- La allowlist CSP queda acotada al endpoint HTTPS específico del proveedor.
 - La access key queda visible en el bundle porque Web3Forms la define como identificador público para integraciones cliente.
 - El cierre requiere una prueba real después del deploy para confirmar la entrega al buzón configurado.

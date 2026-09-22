@@ -80,6 +80,8 @@ El endpoint de chat:
 
 La access key de Web3Forms es un identificador público requerido por el proveedor en el cliente. La configuración se centraliza en `site.config.ts` y no se trata como una credencial de backend.
 
+En producción, la CSP de `vercel.json` autoriza explícitamente `https://api.web3forms.com` en `connect-src`. Toda integración HTTP cliente nueva debe incorporarse a esa allowlist.
+
 ## SEO
 
 La metadata se define por ruta (`title` y `data.description`) y `SeoService` actualiza:
@@ -106,4 +108,4 @@ La metadata se define por ruta (`title` y `data.description`) y `SeoService` act
 ## Riesgos arquitectonicos actuales
 
 - Hay una carpeta `api/` con `chat.js` y tambien existe `src/server.ts`; cualquier cambio futuro debe evitar duplicar la logica del endpoint.
-- Faltan headers HTTP de seguridad endurecidos.
+- La CSP de producción debe mantenerse sincronizada con las integraciones externas utilizadas por el frontend.
