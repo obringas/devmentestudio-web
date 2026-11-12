@@ -48,8 +48,7 @@ export class LocaleService {
       return storedLanguage;
     }
 
-    const browserLanguage = window.navigator.language.toLowerCase();
-    return browserLanguage.startsWith('es') ? 'es' : 'en';
+    return 'es';
   }
 
   private getUrlLanguage(): AppLanguage | null {

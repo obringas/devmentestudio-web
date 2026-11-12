@@ -1,7 +1,9 @@
 import { TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { of, Subject, throwError } from 'rxjs';
 import { vi } from 'vitest';
 import { ContactService } from '../../core/services/contact.service';
+import { getPortfolioCaseBySlug } from '../../data/portfolio.data';
 import { ContactComponent } from './contact.component';
 
 describe('ContactComponent', () => {
@@ -43,7 +45,7 @@ describe('ContactComponent', () => {
       email: 'test@example.com',
       company: 'ACME',
       service: 'Landing Page',
-      budget: 'USD 1,000 - 5,000',
+      budget: 'USD 1.000 - 5.000',
       message: 'Necesito una landing para mi negocio',
       botcheck: false,
     });
@@ -66,7 +68,7 @@ describe('ContactComponent', () => {
     expect(component.submissionFailed()).toBe(true);
     expect(component.contactForm.getRawValue().email).toBe('test@example.com');
     const errorAlert = fixture.nativeElement.querySelector('[role="alert"]');
-    expect(errorAlert.textContent).toContain('We could not send your message.');
+    expect(errorAlert.textContent).toContain('No pudimos enviar tu consulta.');
     expect(errorAlert.querySelector('a[href^="mailto:"]')).toBeTruthy();
     expect(errorAlert.querySelector('a[href^="https://wa.me/"]')).toBeTruthy();
   });
@@ -98,6 +100,47 @@ describe('ContactComponent', () => {
     email?.markAsTouched();
 
     expect(component.isFieldInvalid('email')).toBe(true);
+  });
+
+  it('should preselect excel-a-sistema when queryParam servicio=excel-a-sistema is present', async () => {
+    TestBed.resetTestingModule();
+    await TestBed.configureTestingModule({
+      imports: [ContactComponent],
+      providers: [
+        { provide: ContactService, useValue: contactServiceMock },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              queryParamMap: {
+                get: (key: string) => (key === 'servicio' ? 'excel-a-sistema' : null),
+              },
+            },
+          },
+        },
+      ],
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance.contactForm.getRawValue().service).toBe('excel-a-sistema');
+  });
+
+  it('should expose the anonymized medical supplies Excel-to-web case with screenshots', () => {
+    const esCase = getPortfolioCaseBySlug('de-excel-macros-a-sistema-web-stock', 'es');
+    expect(esCase).toBeDefined();
+    expect(esCase?.industry).toContain('Insumos médicos');
+    expect(esCase?.screenshots?.length).toBe(2);
+  });
+
+  it('should render direct WhatsApp links with the pre-filled commercial message', () => {
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    const whatsappLinks = fixture.nativeElement.querySelectorAll('a[href^="https://wa.me/"]');
+    expect(whatsappLinks.length).toBeGreaterThanOrEqual(2);
+    expect(whatsappLinks[0].getAttribute('href')).toContain(
+      'Hola%20Oscar%2C%20vi%20tu%20web%20y%20te%20quer%C3%ADa%20consultar',
+    );
   });
 });
 

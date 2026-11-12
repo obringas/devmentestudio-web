@@ -10,7 +10,7 @@ export const siteConfig = {
   contact: {
     email: 'contacto@devmentestudio.com',
     phone: '+54 9 387 451-3777',
-    whatsappUrl: 'https://wa.me/5493874513777?text=Hola%20Oscar%2C%20quiero%20consultar%20por%20la%20modernizaci%C3%B3n%20de%20mi%20sistema.',
+    whatsappUrl: 'https://wa.me/5493874513777?text=Hola%20Oscar%2C%20vi%20tu%20web%20y%20te%20quer%C3%ADa%20consultar%20por%20un%20sistema%20%2F%20p%C3%A1gina%20para%20mi%20empresa',
     address: 'Salta, Argentina',
     form: {
       endpoint: 'https://api.web3forms.com/submit',

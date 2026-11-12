@@ -14,15 +14,10 @@ import { LocaleService } from '../../core/services/locale.service';
   template: `
     <div class="min-h-screen">
       <!-- HERO -->
-      <section class="relative overflow-hidden py-20 lg:py-32">
-        <div class="absolute inset-0 -z-10">
-          <div class="absolute left-1/3 top-0 h-96 w-96 rounded-full bg-primary-500/10 blur-3xl"></div>
-          <div class="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-primary-300/10 blur-3xl"></div>
-        </div>
-
+      <section class="border-b border-surface-200 bg-white py-16 lg:py-24">
         <div class="container-custom">
           <div class="max-w-3xl">
-            <span class="mb-4 block text-xs font-semibold uppercase tracking-[0.2em] text-primary-700">
+            <span class="mb-4 block text-xs font-extrabold uppercase tracking-[0.15em] text-primary-700">
               {{ copy().eyebrow }}
             </span>
             <h1 class="mb-6 text-4xl font-display font-bold leading-tight text-surface-900 md:text-5xl lg:text-6xl">
@@ -36,7 +31,7 @@ import { LocaleService } from '../../core/services/locale.service';
       </section>
 
       <!-- HISTORIA Y PRESENTACIÓN -->
-      <section class="bg-surface-50 py-16 lg:py-24 border-y border-surface-200">
+      <section class="bg-surface-50 py-16 lg:py-24 border-b border-surface-200">
         <div class="container-custom">
           <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div class="lg:col-span-8 space-y-6 text-base leading-relaxed text-surface-700 sm:text-lg">
@@ -46,7 +41,7 @@ import { LocaleService } from '../../core/services/locale.service';
               <p>
                 {{ copy().bio2 }}
               </p>
-              <div class="rounded-2xl border-2 border-surface-200 bg-white p-6 shadow-sm">
+              <div class="rounded-2xl border border-surface-200 bg-white p-6">
                 <p class="font-medium text-surface-900">
                   {{ copy().bio3 }}
                 </p>
@@ -54,10 +49,9 @@ import { LocaleService } from '../../core/services/locale.service';
             </div>
 
             <div class="lg:col-span-4">
-              <div class="rounded-2xl border border-surface-200 bg-white p-6 shadow-sm">
-                <div class="about-portrait" role="img" [attr.aria-label]="copy().photoPending">
-                  <span>OB</span>
-                  <small>{{ copy().photoPending }}</small>
+              <div class="rounded-2xl border border-surface-200 bg-white p-6">
+                <div class="about-portrait">
+                  <img src="/images/oscar-bringas.jpg" [alt]="copy().photoPending" width="640" height="800" loading="lazy" />
                 </div>
                 <h3 class="mt-6 text-xl font-display font-bold text-surface-900">Oscar Bringas</h3>
                 <p class="text-sm font-medium text-primary-600 mb-4">{{ copy().profileRole }}</p>
@@ -139,7 +133,7 @@ import { LocaleService } from '../../core/services/locale.service';
               @for (milestone of copy().milestones; track milestone.year) {
                 <div class="flex gap-4 sm:gap-6 items-start rounded-2xl border-2 border-surface-200/80 bg-white p-6 shadow-sm">
                   <div class="flex-shrink-0">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/15 to-primary-200/30 text-primary-700 font-display font-bold text-sm sm:text-base border border-primary-500/20">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-xl border border-[#c7d3dd] bg-[#f4f7f9] text-[#0067b8] font-display font-bold text-sm sm:text-base">
                       {{ milestone.year }}
                     </div>
                   </div>
@@ -190,7 +184,7 @@ import { LocaleService } from '../../core/services/locale.service';
     </div>
   `,
   styles: `
-    .about-portrait{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;border-radius:.85rem;background:#263d56;color:#fff}.about-portrait span{font-family:'Cormorant Garamond',Georgia,serif;font-size:5rem;line-height:1;color:#8bcdfb}.about-portrait small{max-width:12rem;color:#d4e0e9;font-size:.72rem;line-height:1.4;text-align:center}
+    .about-portrait{aspect-ratio:4/5;border-radius:.85rem;background:#263d56;overflow:hidden;border:1px solid #c7d3dd}.about-portrait img{display:block;width:100%;height:100%;object-fit:cover}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -208,7 +202,7 @@ export class AboutComponent {
           bio2: 'Today I lead the IT department of an agroindustrial cooperative in northern Argentina and work as a senior .NET consultant in the insurance industry. That means I know both sides intimately: sustaining an active system that cannot fail, and architecting the new one that replaces it.',
           bio3: 'When I take on projects that exceed what I can handle alone, I bring in trusted senior colleagues. But the technical responsibility, architectural oversight, and primary point of contact always remain with me.',
           profileRole: 'Lead Engineer & Consultant',
-          photoPending: 'Oscar portrait · final photo pending',
+          photoPending: 'Oscar Bringas · Information Systems Engineer (UTN)',
           valuesEyebrow: 'Principles',
           valuesTitle: 'How we make decisions',
           valuesDescription: 'The engineering standards behind every line of code shipped in production.',
@@ -277,7 +271,7 @@ export class AboutComponent {
           bio2: 'Hoy lidero el área de sistemas de una cooperativa agroindustrial del norte argentino y trabajo como consultor senior .NET en el sector seguros. Eso significa que conozco los dos lados: el de quien tiene que sostener un sistema que no puede fallar, y el de quien tiene que construir el que viene.',
           bio3: 'Cuando trabajo en proyectos que exceden lo que puedo hacer solo, sumo profesionales de confianza. Pero la responsabilidad técnica y el interlocutor son siempre los mismos.',
           profileRole: 'Líder Técnico y Consultor',
-          photoPending: 'Retrato de Oscar · foto definitiva pendiente',
+          photoPending: 'Oscar Bringas · Ing. en Sistemas de Información (UTN)',
           valuesEyebrow: 'Principios',
           valuesTitle: 'Nuestros Valores',
           valuesDescription: 'Criterios claros que guían cada decisión técnica y arquitectónica.',

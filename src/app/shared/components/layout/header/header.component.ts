@@ -11,6 +11,7 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { getHeaderContent, getMainNav } from '../../../../data';
 import { LocaleService } from '../../../../core/services/locale.service';
+import { siteConfig } from '../../../../config/site.config';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnDestroy {
   readonly navItems = computed(() => getMainNav(this.language()));
   readonly mobileMenuOpen = signal(false);
   readonly scrolled = signal(false);
+  readonly whatsappUrl = siteConfig.contact.whatsappUrl;
 
   readonly copy = computed(() => getHeaderContent(this.language()));
 

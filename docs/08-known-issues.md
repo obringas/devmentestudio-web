@@ -3,19 +3,19 @@
 ## Activos editoriales definitivos pendientes
 
 ### Fecha
-2026-09-22
+2026-11-12
 
 ### Descripcion
-La sección de Oscar usa un monograma neutral y el diagrama de convivencia es una implementación code-first. Todavía no se incorporaron la foto profesional definitiva ni una ilustración final producida por diseño.
+La foto real de Oscar (`public/images/oscar-bringas.jpg`) ya fue incorporada en Home, `/modernizacion` y `/nosotros`. El diagrama de convivencia sigue siendo una implementación code-first; una ilustración final producida por diseño es opcional.
 
 ### Impacto
 Bajo
 
 ### Modulo afectado
-Home, `/modernizacion` y `/nosotros`.
+Home y `/modernizacion`.
 
 ### Recomendacion
-Reemplazar el monograma sólo cuando exista una foto aprobada y optimizada. Mantener las medidas actuales para evitar cambios de layout. La ilustración final puede reemplazar al diagrama actual si conserva el mismo mensaje, proporción y peso liviano.
+La ilustración final sólo debe reemplazar al diagrama actual si conserva el mismo mensaje, proporción y peso liviano.
 
 ## Rendimiento móvil condicionado por fuentes remotas
 

@@ -36,276 +36,269 @@ type ContactFormControls = {
   standalone: true,
   imports: [ReactiveFormsModule, NgClass],
   template: `
-    <div class="min-h-screen">
-      <section class="relative overflow-hidden py-12 lg:py-16">
-        <div class="absolute inset-0 -z-10">
-          <div class="absolute right-1/4 top-0 h-96 w-96 rounded-full bg-primary-500/10 blur-3xl"></div>
-          <div class="absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-primary-300/10 blur-3xl"></div>
-        </div>
-
+    <div class="contact-page">
+      <header class="contact-head">
         <div class="container-custom">
-          <div class="max-w-3xl">
-            <span class="mb-4 block font-medium text-primary-700">{{ copy().eyebrow }}</span>
-            <h1 class="mb-6 text-4xl font-display font-bold text-surface-900 md:text-5xl lg:text-6xl">
-              {{ copy().title }}
-            </h1>
-            <p class="text-lg text-surface-500">
-              {{ copy().description }}
-            </p>
-          </div>
+          <p class="contact-head__eyebrow">{{ copy().eyebrow }}</p>
+          <h1>{{ copy().title }}</h1>
+          <p class="contact-head__lead">{{ copy().description }}</p>
         </div>
-      </section>
+      </header>
 
-      <section class="py-16 lg:py-24">
-        <div class="container-custom">
-          <div class="grid gap-12 lg:grid-cols-5 lg:gap-16">
-            <div class="order-last lg:order-none lg:col-span-2">
-              <h2 class="mb-8 text-2xl font-display font-bold text-surface-900">
-                {{ copy().contactInfoTitle }}
-              </h2>
-
-              <div class="mb-12 space-y-6">
-                <div class="flex items-start gap-4">
-                  <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
-                    <svg class="h-6 w-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="mb-1 font-medium text-surface-900">Email</h3>
-                    <a href="mailto:contacto@devmentestudio.com" class="text-surface-600 transition-colors hover:text-primary-700">
-                      contacto&#64;devmentestudio.com
-                    </a>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
-                    <svg class="h-6 w-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="mb-1 font-medium text-surface-900">{{ copy().locationLabel }}</h3>
-                    <p class="text-surface-500">Salta, Argentina</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-green-500/10">
-                    <svg class="h-6 w-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="mb-1 font-medium text-surface-900">WhatsApp</h3>
-                    <a href="https://wa.me/5493874513777" target="_blank" rel="noopener noreferrer" class="text-surface-500 transition-colors hover:text-green-400">
-                      +54 9 387 451-3777
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 class="mb-4 font-medium text-surface-900">{{ copy().socialTitle }}</h3>
-                <div class="flex flex-wrap gap-4">
-                  @for (social of socials; track social.label) {
-                    <a
-                      [href]="social.url"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-50 text-surface-600 transition-all hover:bg-surface-700 hover:text-primary-200"
-                      [attr.aria-label]="social.label"
-                    >
-                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path [attr.d]="getSocialIconPath(social.platform)"></path>
-                      </svg>
-                    </a>
-                  }
-                </div>
-              </div>
+      <section class="contact-body">
+        <div class="container-custom contact-body__grid">
+          <aside class="contact-aside">
+            <div class="whatsapp-box">
+              <span class="whatsapp-box__badge">{{ copy().whatsappBadge }}</span>
+              <h2>{{ copy().whatsappBoxTitle }}</h2>
+              <p>{{ copy().whatsappBoxText }}</p>
+              <a
+                [href]="whatsappUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-box__btn"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span>{{ copy().whatsappDirectCta }}</span>
+              </a>
             </div>
 
-            <div class="order-first lg:order-none lg:col-span-3">
-              <div class="rounded-2xl border border-surface-200 bg-surface-50 p-6 sm:p-8">
-                @if (submitted()) {
-                  <div class="py-12 text-center">
-                    <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
-                      <svg class="h-8 w-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                      </svg>
-                    </div>
-                    <h3 class="mb-2 text-xl font-display font-bold text-surface-900">
-                      {{ copy().successTitle }}
-                    </h3>
-                    <p class="mb-6 text-surface-500">
-                      {{ copy().successDescription }}
-                    </p>
-                    <button type="button" class="btn-secondary" (click)="resetForm()">
-                      {{ copy().sendAnother }}
-                    </button>
-                  </div>
-                } @else {
-                  <form
-                    [formGroup]="contactForm"
-                    (ngSubmit)="onSubmit()"
-                    [attr.aria-busy]="loading()"
+            <div class="contact-details">
+              <h2>{{ copy().contactInfoTitle }}</h2>
+              <dl>
+                <div>
+                  <dt>WhatsApp / Teléfono</dt>
+                  <dd>
+                    <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+                      +54 9 387 451-3777
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd>
+                    <a href="mailto:contacto@devmentestudio.com">
+                      contacto&#64;devmentestudio.com
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>{{ copy().locationLabel }}</dt>
+                  <dd>Salta, Argentina</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="contact-socials">
+              <h3>{{ copy().socialTitle }}</h3>
+              <div class="contact-socials__list">
+                @for (social of socials; track social.label) {
+                  <a
+                    [href]="social.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    [attr.aria-label]="social.label"
                   >
-                    <input
-                      type="checkbox"
-                      formControlName="botcheck"
-                      class="hidden"
-                      tabindex="-1"
-                      autocomplete="off"
-                      aria-hidden="true"
-                    />
-                    <div class="mb-6 grid gap-6 sm:grid-cols-2">
-                      <div>
-                        <label for="name" class="mb-2 block text-sm font-medium text-surface-600">
-                          {{ copy().fields.name }} <span class="text-red-400">*</span>
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          formControlName="name"
-                          class="input"
-                          [ngClass]="{'border-red-500': isFieldInvalid('name')}"
-                          [placeholder]="copy().placeholders.name"
-                        />
-                        @if (isFieldInvalid('name')) {
-                          <p class="mt-1 text-sm text-red-400">{{ copy().errors.name }}</p>
-                        }
-                      </div>
-
-                      <div>
-                        <label for="email" class="mb-2 block text-sm font-medium text-surface-600">
-                          {{ copy().fields.email }} <span class="text-red-400">*</span>
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          formControlName="email"
-                          class="input"
-                          [ngClass]="{'border-red-500': isFieldInvalid('email')}"
-                          [placeholder]="copy().placeholders.email"
-                        />
-                        @if (isFieldInvalid('email')) {
-                          <p class="mt-1 text-sm text-red-400">{{ copy().errors.email }}</p>
-                        }
-                      </div>
-                    </div>
-
-                    <div class="mb-6 grid gap-6 sm:grid-cols-2">
-                      <div>
-                        <label for="company" class="mb-2 block text-sm font-medium text-surface-600">
-                          {{ copy().fields.company }}
-                        </label>
-                        <input
-                          id="company"
-                          type="text"
-                          formControlName="company"
-                          class="input"
-                          [placeholder]="copy().placeholders.company"
-                        />
-                      </div>
-
-                      <div>
-                        <label for="service" class="mb-2 block text-sm font-medium text-surface-600">
-                          {{ copy().fields.service }}
-                        </label>
-                        <select id="service" formControlName="service" class="input">
-                          <option value="">{{ copy().selectOption }}</option>
-                          @for (service of copy().serviceOptions; track service.value) {
-                            <option [value]="service.value">{{ service.label }}</option>
-                          }
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="mb-6">
-                      <label for="budget" class="mb-2 block text-sm font-medium text-surface-600">
-                        {{ copy().fields.budget }}
-                      </label>
-                      <select id="budget" formControlName="budget" class="input">
-                        <option value="">{{ copy().selectOption }}</option>
-                        @for (budget of copy().budgetOptions; track budget.value) {
-                          <option [value]="budget.value">{{ budget.label }}</option>
-                        }
-                      </select>
-                    </div>
-
-                    <div class="mb-6">
-                      <label for="message" class="mb-2 block text-sm font-medium text-surface-600">
-                        {{ copy().fields.message }} <span class="text-red-400">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        formControlName="message"
-                        rows="5"
-                        class="input resize-none"
-                        [ngClass]="{'border-red-500': isFieldInvalid('message')}"
-                        [placeholder]="copy().placeholders.message"
-                      ></textarea>
-                      @if (isFieldInvalid('message')) {
-                        <p class="mt-1 text-sm text-red-400">{{ copy().errors.message }}</p>
-                      }
-                    </div>
-
-                    @if (submissionFailed()) {
-                      <div
-                        class="mb-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900"
-                        role="alert"
-                        aria-live="assertive"
-                      >
-                        <p class="font-semibold">{{ copy().submissionErrorTitle }}</p>
-                        <p class="mt-1 leading-relaxed">{{ copy().submissionErrorDescription }}</p>
-                        <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 font-semibold">
-                          <a
-                            [href]="'mailto:' + contactEmail"
-                            class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
-                          >
-                            {{ contactEmail }}
-                          </a>
-                          <a
-                            [href]="whatsappUrl"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
-                          >
-                            WhatsApp
-                          </a>
-                        </div>
-                      </div>
-                    }
-
-                    <button
-                      type="submit"
-                      class="btn-primary w-full"
-                      [disabled]="loading()"
-                      [attr.aria-disabled]="loading()"
-                    >
-                      @if (loading()) {
-                        <svg class="-ml-1 mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"></circle>
-                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        {{ copy().sending }}
-                      } @else {
-                        {{ copy().submit }}
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                      }
-                    </button>
-                  </form>
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path [attr.d]="getSocialIconPath(social.platform)"></path>
+                    </svg>
+                  </a>
                 }
               </div>
             </div>
+          </aside>
+
+          <div class="contact-form-panel">
+            @if (submitted()) {
+              <div class="py-12 text-center">
+                <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#00965f]/30 bg-[#00965f]/10">
+                  <svg class="h-7 w-7 text-[#00965f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <h3 class="mb-2 text-2xl font-display font-bold text-[#1c2a3c]">
+                  {{ copy().successTitle }}
+                </h3>
+                <p class="mb-6 text-[#526274]">
+                  {{ copy().successDescription }}
+                </p>
+                <button type="button" class="btn-outline" (click)="resetForm()">
+                  {{ copy().sendAnother }}
+                </button>
+              </div>
+            } @else {
+              <form
+                [formGroup]="contactForm"
+                (ngSubmit)="onSubmit()"
+                [attr.aria-busy]="loading()"
+              >
+                <input
+                  type="checkbox"
+                  formControlName="botcheck"
+                  class="hidden"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                />
+                <div class="mb-6 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label for="name" class="contact-label">
+                      {{ copy().fields.name }} <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      formControlName="name"
+                      class="input"
+                      [ngClass]="{'border-red-500': isFieldInvalid('name')}"
+                      [placeholder]="copy().placeholders.name"
+                    />
+                    @if (isFieldInvalid('name')) {
+                      <p class="mt-1 text-sm text-red-600">{{ copy().errors.name }}</p>
+                    }
+                  </div>
+
+                  <div>
+                    <label for="email" class="contact-label">
+                      {{ copy().fields.email }} <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      formControlName="email"
+                      class="input"
+                      [ngClass]="{'border-red-500': isFieldInvalid('email')}"
+                      [placeholder]="copy().placeholders.email"
+                    />
+                    @if (isFieldInvalid('email')) {
+                      <p class="mt-1 text-sm text-red-600">{{ copy().errors.email }}</p>
+                    }
+                  </div>
+                </div>
+
+                <div class="mb-6 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label for="company" class="contact-label">
+                      {{ copy().fields.company }}
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      formControlName="company"
+                      class="input"
+                      [placeholder]="copy().placeholders.company"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="service" class="contact-label">
+                      {{ copy().fields.service }}
+                    </label>
+                    <select id="service" formControlName="service" class="input">
+                      <option value="">{{ copy().selectOption }}</option>
+                      @for (service of copy().serviceOptions; track service.value) {
+                        <option [value]="service.value">{{ service.label }}</option>
+                      }
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <label for="budget" class="contact-label">
+                    {{ copy().fields.budget }}
+                  </label>
+                  <select id="budget" formControlName="budget" class="input">
+                    <option value="">{{ copy().selectOption }}</option>
+                    @for (budget of copy().budgetOptions; track budget.value) {
+                      <option [value]="budget.value">{{ budget.label }}</option>
+                    }
+                  </select>
+                </div>
+
+                <div class="mb-6">
+                  <label for="message" class="contact-label">
+                    {{ copy().fields.message }} <span class="text-red-600">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    formControlName="message"
+                    rows="5"
+                    class="input resize-none"
+                    [ngClass]="{'border-red-500': isFieldInvalid('message')}"
+                    [placeholder]="copy().placeholders.message"
+                  ></textarea>
+                  @if (isFieldInvalid('message')) {
+                    <p class="mt-1 text-sm text-red-600">{{ copy().errors.message }}</p>
+                  }
+                </div>
+
+                @if (submissionFailed()) {
+                  <div
+                    class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+                    role="alert"
+                    aria-live="assertive"
+                  >
+                    <p class="font-semibold">{{ copy().submissionErrorTitle }}</p>
+                    <p class="mt-1 leading-relaxed">{{ copy().submissionErrorDescription }}</p>
+                    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 font-semibold">
+                      <a
+                        [href]="'mailto:' + contactEmail"
+                        class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
+                      >
+                        {{ contactEmail }}
+                      </a>
+                      <a
+                        [href]="whatsappUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline decoration-red-300 underline-offset-4 hover:decoration-red-600"
+                      >
+                        WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                }
+
+                <div class="contact-form__actions">
+                  <button
+                    type="submit"
+                    class="btn-primary flex-1"
+                    [disabled]="loading()"
+                    [attr.aria-disabled]="loading()"
+                  >
+                    @if (loading()) {
+                      <svg class="-ml-1 mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke-width="4" stroke="currentColor"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {{ copy().sending }}
+                    } @else {
+                      {{ copy().submit }}
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                      </svg>
+                    }
+                  </button>
+                  <a
+                    [href]="whatsappUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-outline"
+                  >
+                    {{ copy().whatsappDirectCta }}
+                  </a>
+                </div>
+              </form>
+            }
           </div>
         </div>
       </section>
     </div>
+  `,
+  styles: `
+    :host{display:block}.contact-page{background:#fff}.contact-head{padding-block:clamp(3rem,6vw,5rem);border-bottom:1px solid #c7d3dd;background:#fff}.contact-head__eyebrow{color:#0067b8;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.contact-head h1{max-width:15ch;margin-top:.65rem;color:#1c2a3c;font-size:clamp(3rem,6vw,5.4rem);letter-spacing:-.035em;line-height:.94}.contact-head__lead{max-width:48rem;margin-top:1.35rem;color:#526274;font-size:clamp(1.05rem,1.8vw,1.2rem);line-height:1.7}.contact-body{padding-block:clamp(3.5rem,7vw,6rem);background:#f4f7f9}.contact-body__grid{display:grid;grid-template-columns:minmax(19rem,.85fr) minmax(0,1.15fr);gap:clamp(2.5rem,5vw,4.5rem);align-items:start}.contact-aside{display:grid;gap:2rem}.whatsapp-box{padding:1.75rem;background:#1c2a3c;border-radius:1rem;color:#fff}.whatsapp-box__badge{display:inline-block;color:#8bd1ff;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.whatsapp-box h2{margin-top:.55rem;color:#fff;font-size:1.75rem;line-height:1.08}.whatsapp-box p{margin-top:.75rem;color:#d7e2ec;font-size:.96rem;line-height:1.65}.whatsapp-box__btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;width:100%;min-height:2.9rem;margin-top:1.35rem;padding:.75rem 1.25rem;border-radius:9999px;background:#00965f;color:#fff;font-weight:700;transition:background 180ms ease}.whatsapp-box__btn:hover{background:#007d4f}.contact-details{padding-top:1.5rem;border-top:2px solid #1c2a3c}.contact-details h2{color:#1c2a3c;font-size:1.45rem}.contact-details dl{display:grid;gap:1.1rem;margin-top:1.1rem}.contact-details dt{color:#1c2a3c;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.contact-details dd{margin-top:.2rem;color:#526274;font-size:.98rem}.contact-details a{color:#0067b8;font-weight:600;text-decoration:underline;text-underline-offset:.25em}.contact-socials{padding-top:1.25rem;border-top:1px solid #c7d3dd}.contact-socials h3{color:#1c2a3c;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.contact-socials__list{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.85rem}.contact-socials__list a{display:grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid #c7d3dd;border-radius:.65rem;background:#fff;color:#1c2a3c;transition:border-color 180ms ease,color 180ms ease}.contact-socials__list a:hover{border-color:#0067b8;color:#0067b8}.contact-form-panel{padding:clamp(1.5rem,4vw,2.5rem);background:#fff;border:1px solid #c7d3dd;border-radius:1rem}.contact-label{display:block;margin-bottom:.45rem;color:#1c2a3c;font-size:.86rem;font-weight:700}.contact-form__actions{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center}@media(max-width:920px){.contact-body__grid{grid-template-columns:1fr}}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -337,8 +330,12 @@ export class ContactComponent implements OnInit {
     this.language() === 'en'
       ? {
           eyebrow: 'Contact',
-          title: "Let's talk about your system",
-          description: 'Tell us which system your company relies on. We reply within 24 business hours.',
+          title: "Let's talk about your project or system",
+          description: 'Whether you want to leave an unmanageable Excel behind, build a website or modernize a legacy system, we reply within 24 business hours.',
+          whatsappBadge: 'Direct contact with Oscar',
+          whatsappBoxTitle: 'Prefer to send a WhatsApp message or audio?',
+          whatsappBoxText: 'No need to fill out the form if you want to talk right now. Click below to open WhatsApp with a pre-filled message.',
+          whatsappDirectCta: 'Talk on WhatsApp',
           contactInfoTitle: 'Contact information',
           locationLabel: 'Location',
           socialTitle: 'Follow us',
@@ -372,6 +369,7 @@ export class ContactComponent implements OnInit {
           },
           serviceOptions: [
             { value: 'modernizacion', label: 'Legacy system modernization' },
+            { value: 'excel-a-sistema', label: 'From Excel / spreadsheets to a web system' },
             { value: 'landing-page', label: 'Landing Page' },
             { value: 'ecommerce', label: 'E-commerce' },
             { value: 'desarrollo-medida', label: 'Custom Development' },
@@ -379,6 +377,8 @@ export class ContactComponent implements OnInit {
             { value: 'otro', label: 'Other' },
           ],
           budgetOptions: [
+            { value: 'a-definir', label: 'To be defined / Quote by stages' },
+            { value: 'hasta-1000', label: 'Up to USD 1,000 (website / first stage)' },
             { value: '1000-5000', label: 'USD 1,000 - 5,000' },
             { value: '5000-10000', label: 'USD 5,000 - 10,000' },
             { value: 'mas-10000', label: 'More than USD 10,000' },
@@ -386,8 +386,12 @@ export class ContactComponent implements OnInit {
         }
       : {
           eyebrow: 'Contacto',
-          title: 'Hablemos de tu sistema',
-          description: 'Contanos qué sistema usa tu empresa. Respondemos dentro de las próximas 24 horas hábiles.',
+          title: 'Hablemos de tu proyecto o tu sistema',
+          description: 'Ya sea para salir de un Excel que quedó chico, crear una web comercial o modernizar un sistema de gestión, respondemos en 24 horas hábiles.',
+          whatsappBadge: 'Contacto directo con Oscar',
+          whatsappBoxTitle: '¿Preferís mandar un mensaje o un audio por WhatsApp?',
+          whatsappBoxText: 'Muchos dueños de negocios prefieren hablar directo sin llenar formularios. Tocá el botón y se abre el chat con un mensaje listo para enviar.',
+          whatsappDirectCta: 'Hablar por WhatsApp',
           contactInfoTitle: 'Información de contacto',
           locationLabel: 'Ubicación',
           socialTitle: 'Seguinos en redes',
@@ -421,6 +425,7 @@ export class ContactComponent implements OnInit {
           },
           serviceOptions: [
             { value: 'modernizacion', label: 'Modernización de sistema existente' },
+            { value: 'excel-a-sistema', label: 'Pasar de Excel / planillas a sistema web' },
             { value: 'landing-page', label: 'Landing Page' },
             { value: 'ecommerce', label: 'E-commerce' },
             { value: 'desarrollo-medida', label: 'Desarrollo a Medida' },
@@ -428,6 +433,8 @@ export class ContactComponent implements OnInit {
             { value: 'otro', label: 'Otro' },
           ],
           budgetOptions: [
+            { value: 'a-definir', label: 'A definir / Cotizar por etapas' },
+            { value: 'hasta-1000', label: 'Hasta USD 1.000 (sitio web / primera etapa)' },
             { value: '1000-5000', label: 'USD 1.000 - 5.000' },
             { value: '5000-10000', label: 'USD 5.000 - 10.000' },
             { value: 'mas-10000', label: 'Más de USD 10.000' },
@@ -440,6 +447,8 @@ export class ContactComponent implements OnInit {
     if (serviceParam) {
       if (serviceParam === 'modernizacion' || serviceParam === 'modernizacion-sistemas-legacy') {
         this.contactForm.patchValue({ service: 'modernizacion' });
+      } else if (serviceParam === 'excel-a-sistema') {
+        this.contactForm.patchValue({ service: 'excel-a-sistema' });
       } else if (['landing-pages', 'landing-page'].includes(serviceParam)) {
         this.contactForm.patchValue({ service: 'landing-page' });
       } else if (['ecommerce'].includes(serviceParam)) {

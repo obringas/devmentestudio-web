@@ -57,17 +57,17 @@ export class PortfolioListComponent {
   readonly copy = computed(() => this.locale.language() === 'en'
     ? {
         title: 'Real work, running in production',
-        description: 'Three anonymized cases where the business problem came first and technology served continuity.',
+        description: 'Real anonymized cases where the business problem came first and technology served continuity and control.',
         situation: 'Situation', work: 'What we did', result: 'What changed', technologies: 'Technologies',
-        closingTitle: 'Do you have a system that needs to evolve?',
+        closingTitle: 'Do you have a spreadsheet or system that needs to evolve?',
         closingText: 'Tell us what your company depends on today and we will help you identify the safest first step.',
         closingCta: 'Assess my current system',
       }
     : {
         title: 'Trabajo real, en producción',
-        description: 'Tres casos anonimizados donde el problema del negocio estuvo primero y la tecnología sirvió para cuidar la continuidad.',
+        description: 'Casos reales y anonimizados donde el problema del negocio estuvo primero y la tecnología sirvió para ordenar y cuidar la operación.',
         situation: 'Situación', work: 'Qué hicimos', result: 'Qué cambió', technologies: 'Tecnologías',
-        closingTitle: '¿Tenés un sistema que necesita evolucionar?',
+        closingTitle: '¿Tenés una planilla o un sistema que ya quedó chico?',
         closingText: 'Contanos de qué depende hoy tu empresa y te ayudamos a identificar el primer paso más seguro.',
         closingCta: 'Quiero saber cómo está mi sistema',
       });

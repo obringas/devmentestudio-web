@@ -33,10 +33,12 @@ import { TechnicalDetailsComponent } from '../../shared/components/business/tech
           <h1>{{ copy().homeHero.title }}</h1>
           <p class="home-hero__description">{{ copy().homeHero.description }}</p>
           <div class="home-hero__actions">
-            <a routerLink="/contacto" [queryParams]="{ servicio: 'modernizacion' }" class="btn-primary">
+            <a routerLink="/contacto" class="btn-primary">
               {{ copy().homeHero.primaryCta }}
             </a>
-            <a href="#como-trabajamos" class="btn-outline">{{ copy().homeHero.secondaryCta }}</a>
+            <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer" class="btn-outline">
+              {{ copy().homeHero.secondaryCta }}
+            </a>
           </div>
         </div>
 
@@ -53,6 +55,25 @@ import { TechnicalDetailsComponent } from '../../shared/components/business/tech
 
       <div class="container-custom trust-strip" aria-label="Datos de confianza">
         @for (item of copy().trust; track item) { <span>{{ item }}</span> }
+      </div>
+    </section>
+
+    <section class="entry-paths">
+      <div class="container-custom">
+        <div class="entry-paths__head">
+          <h2>{{ copy().entryPaths.title }}</h2>
+          <p>{{ copy().entryPaths.subtitle }}</p>
+        </div>
+        <div class="entry-paths__grid">
+          @for (path of copy().entryPaths.items; track path.href) {
+            <article class="entry-card">
+              <span>{{ path.audience }}</span>
+              <h3>{{ path.title }}</h3>
+              <p>{{ path.description }}</p>
+              <a [routerLink]="path.href">{{ path.ctaLabel }} →</a>
+            </article>
+          }
+        </div>
       </div>
     </section>
 
@@ -87,7 +108,7 @@ import { TechnicalDetailsComponent } from '../../shared/components/business/tech
               <p>{{ service.description }}</p>
               <div class="service-row__actions">
                 @if (service.specialty) {
-                  <a routerLink="/modernizacion">{{ copy().services.detailsCta }}</a>
+                  <a [routerLink]="service.detailsHref ?? '/modernizacion'">{{ service.detailsLabel ?? copy().services.detailsCta }}</a>
                 }
                 <a routerLink="/contacto" [queryParams]="{ servicio: service.slug }">{{ copy().services.cta }}</a>
               </div>
@@ -144,7 +165,7 @@ import { TechnicalDetailsComponent } from '../../shared/components/business/tech
     .home-hero h1{margin-top:1rem!important;font-size:clamp(3.1rem,5.35vw,5.2rem)!important}
     .home-hero__description{margin-top:1.3rem!important;font-size:clamp(1.03rem,1.6vw,1.15rem)!important;line-height:1.65!important}
     .home-hero__actions{margin-top:1.5rem!important}
-    :host{display:block}.home-hero{padding:clamp(4rem,8vw,7rem) 0 0;background:#fff}.home-hero__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(24rem,.95fr);align-items:center;gap:clamp(3rem,7vw,7rem)}.home-hero__label{max-width:40rem;color:#0067b8;font-size:.76rem;font-weight:800;letter-spacing:.13em;line-height:1.5}.home-hero h1{max-width:12ch;margin-top:1.25rem;color:#1c2a3c;font-size:clamp(3.2rem,6vw,6rem);letter-spacing:-.035em;line-height:.92}.home-hero__description{max-width:42rem;margin-top:1.75rem;color:#526274;font-size:clamp(1.05rem,1.8vw,1.22rem);line-height:1.75}.home-hero__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(3rem,7vw,6rem);border-top:1px solid #c7d3dd;border-bottom:1px solid #c7d3dd}.trust-strip span{padding:1.35rem 1rem;color:#1c2a3c;font-size:.84rem;font-weight:700;text-align:center;border-right:1px solid #c7d3dd}.trust-strip span:last-child{border-right:0}.services-section{padding-block:clamp(4.5rem,8vw,7.5rem);background:#1c2a3c}.services-section__heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem;align-items:end;margin-bottom:2.5rem}.services-section h2{color:#fff;font-size:clamp(2.3rem,4.5vw,4rem);line-height:1}.services-section__heading p{max-width:42rem;color:#cbd9e5;font-size:1.12rem}.services-list{border-top:1px solid #52708a}.service-row{display:grid;grid-template-columns:minmax(12rem,.75fr) minmax(0,1.25fr) auto;gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:1.8rem 0;border-bottom:1px solid #52708a}.service-row--specialty{padding-inline:1.2rem;background:#223850}.service-row span{display:inline-block;margin-bottom:.5rem;color:#8bd1ff;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.service-row h3{color:#fff;font-size:clamp(1.35rem,2.2vw,2rem);line-height:1.1}.service-row>p{color:#cbd9e5;line-height:1.7}.service-row__actions{display:flex;flex-direction:column;align-items:flex-end;gap:.55rem}.service-row a{color:#8bd1ff;font-size:.84rem;font-weight:700;text-decoration:underline;text-underline-offset:.3em}@media(max-width:900px){.home-hero__grid{grid-template-columns:1fr}.home-hero h1{font-size:clamp(3rem,10vw,5rem)}.trust-strip{grid-template-columns:repeat(2,1fr)}.trust-strip span:nth-child(2){border-right:0}.trust-strip span:nth-child(-n+2){border-bottom:1px solid #c7d3dd}.services-section__heading,.service-row{grid-template-columns:1fr}.service-row__actions{align-items:flex-start}}@media(max-width:520px){.trust-strip{grid-template-columns:1fr}.trust-strip span{border-right:0;border-bottom:1px solid #c7d3dd}.trust-strip span:last-child{border-bottom:0}}
+    :host{display:block}.home-hero{padding:clamp(4rem,8vw,7rem) 0 0;background:#fff}.home-hero__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(24rem,.95fr);align-items:center;gap:clamp(3rem,7vw,7rem)}.home-hero__label{max-width:40rem;color:#0067b8;font-size:.76rem;font-weight:800;letter-spacing:.13em;line-height:1.5}.home-hero h1{max-width:13ch;margin-top:1.25rem;color:#1c2a3c;font-size:clamp(3.2rem,6vw,6rem);letter-spacing:-.035em;line-height:.92}.home-hero__description{max-width:42rem;margin-top:1.75rem;color:#526274;font-size:clamp(1.05rem,1.8vw,1.22rem);line-height:1.75}.home-hero__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(3rem,7vw,6rem);border-top:1px solid #c7d3dd;border-bottom:1px solid #c7d3dd}.trust-strip span{padding:1.35rem 1rem;color:#1c2a3c;font-size:.84rem;font-weight:700;text-align:center;border-right:1px solid #c7d3dd}.trust-strip span:last-child{border-right:0}.entry-paths{padding-block:clamp(4rem,7vw,6rem);background:#f4f7f9;border-bottom:1px solid #c7d3dd}.entry-paths__head{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem;align-items:end;margin-bottom:2.5rem}.entry-paths__head h2{color:#1c2a3c;font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1}.entry-paths__head p{max-width:42rem;color:#526274;font-size:1.08rem;line-height:1.7}.entry-paths__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}.entry-card{display:flex;flex-direction:column;padding:1.75rem;background:#fff;border:1px solid #c7d3dd;border-radius:1rem}.entry-card span{color:#0067b8;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.entry-card h3{margin-top:.6rem;color:#1c2a3c;font-size:1.55rem;line-height:1.1}.entry-card p{margin-top:.85rem;color:#526274;line-height:1.68;flex:1}.entry-card a{display:inline-block;margin-top:1.4rem;color:#0067b8;font-size:.9rem;font-weight:700;text-decoration:underline;text-underline-offset:.3em}.services-section{padding-block:clamp(4.5rem,8vw,7.5rem);background:#1c2a3c}.services-section__heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem;align-items:end;margin-bottom:2.5rem}.services-section h2{color:#fff;font-size:clamp(2.3rem,4.5vw,4rem);line-height:1}.services-section__heading p{max-width:42rem;color:#cbd9e5;font-size:1.12rem}.services-list{border-top:1px solid #52708a}.service-row{display:grid;grid-template-columns:minmax(12rem,.75fr) minmax(0,1.25fr) auto;gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:1.8rem 0;border-bottom:1px solid #52708a}.service-row--specialty{padding-inline:1.2rem;background:#223850}.service-row span{display:inline-block;margin-bottom:.5rem;color:#8bd1ff;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.service-row h3{color:#fff;font-size:clamp(1.35rem,2.2vw,2rem);line-height:1.1}.service-row>p{color:#cbd9e5;line-height:1.7}.service-row__actions{display:flex;flex-direction:column;align-items:flex-end;gap:.55rem}.service-row a{color:#8bd1ff;font-size:.84rem;font-weight:700;text-decoration:underline;text-underline-offset:.3em}@media(max-width:900px){.home-hero__grid,.entry-paths__head,.entry-paths__grid{grid-template-columns:1fr}.home-hero h1{font-size:clamp(3rem,10vw,5rem)}.trust-strip{grid-template-columns:repeat(2,1fr)}.trust-strip span:nth-child(2){border-right:0}.trust-strip span:nth-child(-n+2){border-bottom:1px solid #c7d3dd}.services-section__heading,.service-row{grid-template-columns:1fr}.service-row__actions{align-items:flex-start}}@media(max-width:520px){.trust-strip{grid-template-columns:1fr}.trust-strip span{border-right:0;border-bottom:1px solid #c7d3dd}.trust-strip span:last-child{border-bottom:0}}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

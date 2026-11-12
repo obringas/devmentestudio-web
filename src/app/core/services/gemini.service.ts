@@ -109,14 +109,14 @@ export class GeminiService {
 
   private localFallback(msg: string, language: AppLanguage): string {
     const lowerMsg = msg.toLowerCase();
-    const asksAboutServices = lowerMsg.includes('service') || lowerMsg.includes('servicios') || lowerMsg.includes('hacen') || lowerMsg.includes('do you do') || lowerMsg.includes('moderniz');
+    const asksAboutServices = lowerMsg.includes('service') || lowerMsg.includes('servicios') || lowerMsg.includes('hacen') || lowerMsg.includes('do you do') || lowerMsg.includes('moderniz') || lowerMsg.includes('excel') || lowerMsg.includes('stock');
     const asksAboutPrice = lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('precio') || lowerMsg.includes('costo') || lowerMsg.includes('presupuesto');
-    const asksAboutStack = lowerMsg.includes('stack') || lowerMsg.includes('technolog') || lowerMsg.includes('tecnolog') || lowerMsg.includes('foxpro') || lowerMsg.includes('sql');
+    const asksAboutStack = lowerMsg.includes('stack') || lowerMsg.includes('technolog') || lowerMsg.includes('tecnolog') || lowerMsg.includes('foxpro') || lowerMsg.includes('sql') || lowerMsg.includes('supabase');
     const asksAboutContact = lowerMsg.includes('contact') || lowerMsg.includes('email') || lowerMsg.includes('contacto') || lowerMsg.includes('mail');
 
     if (language === 'en') {
       if (asksAboutServices) {
-        return 'We specialize in gradual management system modernization, websites that generate enquiries, online stores, custom software, and technical assessment. Would you like details on any of these?';
+        return 'We specialize in gradual management system modernization, turning macro-heavy Excel spreadsheets into professional web systems, websites that generate enquiries, online stores, custom software, and technical assessment. Would you like details on any of these?';
       }
 
       if (asksAboutPrice) {
@@ -124,7 +124,7 @@ export class GeminiService {
       }
 
       if (asksAboutStack) {
-        return 'We specialize in .NET 8, C#, SQL Server, Visual FoxPro modernization, Angular, Next.js and Microsoft Azure.';
+        return 'We specialize in .NET 8, C#, SQL Server, PostgreSQL (Supabase), Visual FoxPro modernization, Angular, Next.js and Microsoft Azure.';
       }
 
       if (asksAboutContact) {
@@ -135,7 +135,7 @@ export class GeminiService {
     }
 
     if (asksAboutServices) {
-      return 'Nos especializamos en modernización gradual de sistemas de gestión, sitios para captar consultas, tiendas online, software a medida y diagnóstico técnico. ¿Te interesa conocer más detalles sobre alguno?';
+      return 'Nos especializamos en modernización gradual de sistemas de gestión, transformación de planillas Excel con macros en sistemas web con panorama financiero, sitios para captar consultas, tiendas online, software a medida y diagnóstico técnico. ¿Te interesa conocer más detalles sobre alguno?';
     }
 
     if (asksAboutPrice) {
@@ -143,7 +143,7 @@ export class GeminiService {
     }
 
     if (asksAboutStack) {
-      return 'Trabajamos con .NET 8, C#, SQL Server, modernización de Visual FoxPro, Angular, Next.js y Microsoft Azure.';
+      return 'Trabajamos con .NET 8, C#, SQL Server, PostgreSQL (Supabase), modernización de Visual FoxPro, Angular, Next.js y Microsoft Azure.';
     }
 
     if (asksAboutContact) {

@@ -8,11 +8,21 @@ export interface ContentItem {
 export interface ServiceItem extends ContentItem {
   readonly slug: string;
   readonly specialty?: boolean;
+  readonly detailsHref?: string;
+  readonly detailsLabel?: string;
 }
 
 export interface TechnicalGroup {
   readonly title: string;
   readonly description: string;
+}
+
+export interface EntryPathItem {
+  readonly audience: string;
+  readonly title: string;
+  readonly description: string;
+  readonly ctaLabel: string;
+  readonly href: string;
 }
 
 export interface BusinessContent {
@@ -22,6 +32,11 @@ export interface BusinessContent {
     readonly description: string;
     readonly primaryCta: string;
     readonly secondaryCta: string;
+  };
+  readonly entryPaths: {
+    readonly title: string;
+    readonly subtitle: string;
+    readonly items: readonly EntryPathItem[];
   };
   readonly modernizationHero: {
     readonly label: string;
@@ -93,12 +108,42 @@ export interface BusinessContent {
 
 const ES_CONTENT: BusinessContent = {
   homeHero: {
-    label: 'SISTEMAS DE GESTIÓN PARA EMPRESAS QUE NO PUEDEN PARAR',
-    title: 'Tu empresa funciona sobre un sistema que nadie quiere tocar.',
+    label: 'SISTEMAS WEB, SOFTWARE A MEDIDA Y MODERNIZACIÓN PARA PYMES Y EMPRESAS',
+    title: 'Del Excel que te quedó chico al sistema que ordena tu empresa.',
     description:
-      'Modernizamos sistemas de gestión viejos por partes, sin frenar la operación ni un día. Y cuando hace falta, construimos lo nuevo: software a medida, sitios y tiendas online.',
-    primaryCta: 'Quiero saber cómo está mi sistema',
-    secondaryCta: 'Ver cómo trabajamos',
+      'Transformamos planillas inmanejables en sistemas web con panorama financiero, creamos sitios y tiendas online para vender más, y modernizamos sistemas de gestión históricos sin frenar la operación ni un día.',
+    primaryCta: 'Contame qué necesita tu negocio',
+    secondaryCta: 'Hablar por WhatsApp',
+  },
+  entryPaths: {
+    title: '¿En qué etapa está hoy tu negocio?',
+    subtitle: 'Trabajamos tanto con PyMEs y comercios que buscan dar su primer salto digital como con empresas que necesitan renovar sistemas críticos.',
+    items: [
+      {
+        audience: 'PyMEs · Distribuidoras · Depósitos',
+        title: 'Quiero salir de un Excel inmanejable',
+        description:
+          'Pasamos tu planilla con macros a un sistema web profesional: control de stock, alertas de vencimiento, trazabilidad por usuario y un tablero Panorama para ver cuánta plata tenés en juego.',
+        ctaLabel: 'Ver caso real en producción',
+        href: '/portfolio/de-excel-macros-a-sistema-web-stock',
+      },
+      {
+        audience: 'Comercios · Profesionales · Nuevos proyectos',
+        title: 'Necesito una web comercial, tienda o sistema a medida',
+        description:
+          'Diseñamos sitios rápidos pensados para captar consultas, tiendas online listas para cobrar y software hecho desde cero sobre la forma real en que trabaja tu negocio.',
+        ctaLabel: 'Ver servicios y soluciones',
+        href: '/servicios',
+      },
+      {
+        audience: 'Cooperativas · Agro · Industria · Seguros',
+        title: 'Tengo un sistema viejo que nadie quiere tocar',
+        description:
+          'Modernizamos sistemas históricos (Visual FoxPro, VB6, SQL Server) por partes, mientras el actual sigue operando y con vuelta atrás en cada etapa.',
+        ctaLabel: 'Ver modernización gradual',
+        href: '/modernizacion',
+      },
+    ],
   },
   modernizationHero: {
     label: 'MODERNIZACIÓN DE SISTEMAS DE GESTIÓN',
@@ -185,6 +230,15 @@ const ES_CONTENT: BusinessContent = {
           'Tu sistema actual sigue funcionando mientras construimos el nuevo al lado. Se reemplaza por partes, empezando por lo de menor riesgo, y cada paso se puede deshacer.',
       },
       {
+        slug: 'excel-a-sistema',
+        specialty: true,
+        detailsHref: '/portfolio/de-excel-macros-a-sistema-web-stock',
+        detailsLabel: 'Ver caso real',
+        title: 'De planillas Excel con macros a un sistema web',
+        description:
+          'Cuando el Excel que controla tu stock, tus vencimientos o tus pedidos se vuelve inmanejable, lo transformamos en un sistema web profesional: con trazabilidad por usuario, alertas y un tablero Panorama para que el dueño vea cuánta plata hay en depósito.',
+      },
+      {
         slug: 'diagnostico-continuidad',
         specialty: true,
         title: 'Diagnóstico de continuidad',
@@ -253,7 +307,7 @@ const ES_CONTENT: BusinessContent = {
     body:
       'Soy Oscar Bringas, ingeniero en sistemas de información (UTN). Hace más de 15 años lidero equipos de desarrollo y hace 20 trabajo con las bases de datos que sostienen empresas reales. Hoy estoy a cargo de los sistemas de una cooperativa agroindustrial del norte argentino, donde conviven a diario un sistema histórico y una plataforma moderna. La modernización gradual no es una metodología que leí: es la que ejecuto todos los días sobre un sistema del que depende una empresa.',
     link: 'Conocer más',
-    photoPending: 'Retrato de Oscar · foto definitiva pendiente',
+    photoPending: 'Oscar Bringas · Ing. en Sistemas de Información (UTN)',
   },
   technical: {
     title: 'Para tu equipo de sistemas',
@@ -263,12 +317,12 @@ const ES_CONTENT: BusinessContent = {
       {
         title: 'Stack',
         description:
-          '.NET 8, C#, Angular, Blazor, Next.js, SQL Server, PostgreSQL, Azure (Entra ID, Data Factory, DevOps) y Docker.',
+          '.NET 8, C#, Angular, Blazor, Next.js, SQL Server, PostgreSQL (Supabase), Azure (Entra ID, Data Factory, DevOps) y Docker.',
       },
       {
         title: 'Legacy que trabajamos',
         description:
-          'Visual FoxPro, Visual Basic 6, Clipper y sistemas de escritorio con archivos DBF.',
+          'Planillas Excel críticas con macros (VBA), Visual FoxPro, Visual Basic 6, Clipper y sistemas de escritorio con archivos DBF.',
       },
       {
         title: 'Método',
@@ -340,6 +394,12 @@ const ES_CONTENT: BusinessContent = {
           'El sistema actual y el nuevo conviven mientras reemplazamos módulos de menor a mayor riesgo, con vuelta atrás.',
       },
       {
+        slug: 'excel-a-sistema',
+        title: 'De planillas Excel con macros a sistema web',
+        description:
+          'Pasamos el control de stock, vencimientos y movimientos desde planillas frágiles a una plataforma web con trazabilidad y panorama financiero en USD/ARS para dirección.',
+      },
+      {
         slug: 'datos-seguros',
         title: 'Datos seguros y disponibles',
         description:
@@ -357,12 +417,42 @@ const ES_CONTENT: BusinessContent = {
 
 const EN_CONTENT: BusinessContent = {
   homeHero: {
-    label: 'MANAGEMENT SYSTEMS FOR BUSINESSES THAT CANNOT STOP',
-    title: 'Your company runs on a system nobody wants to touch.',
+    label: 'WEB SYSTEMS, CUSTOM SOFTWARE AND MODERNIZATION FOR SMBS AND ENTERPRISES',
+    title: 'From the Excel you outgrew to the system that runs your business.',
     description:
-      'We modernize aging management systems one part at a time, without stopping daily operations. When something new is needed, we also build custom software, websites and online stores.',
-    primaryCta: 'Assess my current system',
-    secondaryCta: 'See how we work',
+      'We turn unmanageable spreadsheets into web systems with financial visibility, build websites and online stores designed to sell, and modernize aging management systems without stopping daily operations.',
+    primaryCta: 'Tell us what your business needs',
+    secondaryCta: 'Talk on WhatsApp',
+  },
+  entryPaths: {
+    title: 'Where is your business today?',
+    subtitle: 'We work both with growing small businesses taking their first digital leap and established companies renewing mission-critical systems.',
+    items: [
+      {
+        audience: 'SMBs · Distributors · Warehouses',
+        title: 'I want to replace an unmanageable Excel',
+        description:
+          'We turn macro-heavy spreadsheets into a professional web system: stock control, expiration alerts, user traceability and an executive overview showing your capital in real time.',
+        ctaLabel: 'See real production case',
+        href: '/portfolio/de-excel-macros-a-sistema-web-stock',
+      },
+      {
+        audience: 'Retail · Professionals · New projects',
+        title: 'I need a business website, store or custom software',
+        description:
+          'We build fast enquiry-generating websites, online stores ready to take payments and custom software tailored to your real workflow.',
+        ctaLabel: 'Explore services and solutions',
+        href: '/servicios',
+      },
+      {
+        audience: 'Cooperatives · Agro · Industry · Insurance',
+        title: 'I have an aging system nobody wants to touch',
+        description:
+          'We modernize legacy systems (Visual FoxPro, VB6, SQL Server) in stages while current operations continue and with rollback at every step.',
+        ctaLabel: 'See gradual modernization',
+        href: '/modernizacion',
+      },
+    ],
   },
   modernizationHero: {
     label: 'MANAGEMENT SYSTEM MODERNIZATION',
@@ -411,6 +501,7 @@ const EN_CONTENT: BusinessContent = {
     detailsCta: 'See modernization',
     items: [
       { slug: 'modernizacion', specialty: true, title: 'Management system modernization', description: 'Your current system keeps working while we build the new one alongside it. We replace it in stages, starting with the lowest-risk area, and every step can be reversed.' },
+      { slug: 'excel-a-sistema', specialty: true, detailsHref: '/portfolio/de-excel-macros-a-sistema-web-stock', detailsLabel: 'See real case', title: 'From macro Excel spreadsheets to a web system', description: 'When the Excel file tracking your stock, expirations or orders becomes unmanageable, we turn it into a professional web system with user traceability, alerts and an executive overview showing how much money sits in the warehouse.' },
       { slug: 'diagnostico-continuidad', specialty: true, title: 'Continuity assessment', description: 'A clear report covering system risks, what to address first and the expected cost. Fixed scope and price, useful even if we do not continue together.' },
       { slug: 'facturacion-arca', title: 'Electronic invoicing and ARCA', description: 'Invoicing should not depend on a last-minute patch. We connect your current system, however old, to ARCA services.' },
       { slug: 'datos-seguros', title: 'Secure, available data', description: 'Verified backups, information available where you need it and monitoring that warns you before a failure reaches users.' },
@@ -433,15 +524,15 @@ const EN_CONTENT: BusinessContent = {
     title: 'There is a real person behind DevMenteStudio',
     body: 'I am Oscar Bringas, Information Systems Engineer (UTN). I have led development teams for more than 15 years and worked for 20 years with the databases that keep real companies running. Today I lead the systems area of an agroindustrial cooperative in northern Argentina, where a historical system and a modern platform coexist every day. Gradual modernization is not a method I read about: it is what I carry out daily on a system an entire company depends on.',
     link: 'Learn more',
-    photoPending: 'Oscar portrait · final photo pending',
+    photoPending: 'Oscar Bringas · Information Systems Engineer (UTN)',
   },
   technical: {
     title: 'For your systems team',
     intro: 'If you are the technical person this link was forwarded to, here is the detail.',
     expand: 'View technical detail',
     groups: [
-      { title: 'Stack', description: '.NET 8, C#, Angular, Blazor, Next.js, SQL Server, PostgreSQL, Azure (Entra ID, Data Factory, DevOps) and Docker.' },
-      { title: 'Legacy systems we work with', description: 'Visual FoxPro, Visual Basic 6, Clipper and desktop systems built around DBF files.' },
+      { title: 'Stack', description: '.NET 8, C#, Angular, Blazor, Next.js, SQL Server, PostgreSQL (Supabase), Azure (Entra ID, Data Factory, DevOps) and Docker.' },
+      { title: 'Legacy systems we work with', description: 'Critical Excel spreadsheets with macros (VBA), Visual FoxPro, Visual Basic 6, Clipper and desktop systems built around DBF files.' },
       { title: 'Method', description: 'Legacy/.NET coexistence over shared data; verified DBF to SQL Server migration; modular rewrites with Clean Architecture; monitored on-premise to Azure transactional replication; ARCA webservice integration; gradual, reversible deployments.' },
       { title: 'How we deliver', description: 'Repository with clean history, architecture and business-rule documentation, separate environments and automated tests where they add value.' },
     ],
@@ -469,6 +560,7 @@ const EN_CONTENT: BusinessContent = {
     items: [
       { slug: 'diagnostico-continuidad', title: 'Continuity assessment', description: 'We map the system, rank risks by impact and propose a staged plan with fixed scope and price.' },
       { slug: 'modernizacion', title: 'Modernization in stages', description: 'The current and new systems coexist while we replace modules from lower to higher risk, with rollback at each step.' },
+      { slug: 'excel-a-sistema', title: 'From macro Excel to a web system', description: 'We move stock, expiration and movement control out of fragile spreadsheets into a web platform with full traceability and a USD/ARS executive overview.' },
       { slug: 'datos-seguros', title: 'Secure, available data', description: 'Verified backups, controlled migrations, monitoring and safe access to the information you need.' },
       { slug: 'facturacion-arca', title: 'Electronic invoicing and ARCA', description: 'We connect existing systems to fiscal services and concentrate regulatory changes in one place.' },
     ],

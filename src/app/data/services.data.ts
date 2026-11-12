@@ -108,6 +108,90 @@ const LOCALIZED_SERVICES: readonly LocalizedService[] = [
     },
   },
   {
+    id: 'excel-a-sistema',
+    slug: 'excel-a-sistema',
+    title: {
+      es: 'De planillas Excel con macros a sistema web',
+      en: 'From macro Excel spreadsheets to a web system',
+    },
+    shortDescription: {
+      es: 'Transformamos planillas inmanejables de stock, precios o pedidos en un sistema web profesional con panorama financiero para la dirección.',
+      en: 'We turn unmanageable stock, pricing or order spreadsheets into a professional web system with an executive financial overview.',
+    },
+    fullDescription: {
+      es: 'Cuando tu empresa creció pero el control sigue en un Excel lleno de macros que se traba o nadie se anima a tocar, construimos un sistema web a medida en .NET, Angular y PostgreSQL. El depósito opera rápido (incluso con lector de códigos) y el dueño o gerente consulta en un tablero Panorama cuánta plata hay en stock y qué se movió en el mes.',
+      en: 'When your company has grown but operations still rely on a fragile macro-filled Excel spreadsheet, we build a custom web system in .NET, Angular and PostgreSQL. The warehouse works fast (including barcode scanning) and owners or managers see in real time how much money is in stock and what moved each month.',
+    },
+    icon: 'refresh-cw',
+    features: {
+      es: [
+        'Migración limpia desde tu planilla Excel actual',
+        'Altas rápidas por escaneo y bajas trazables por destino',
+        'Semáforo de vencimientos y alertas de stock crítico',
+        'Historial auditable de movimientos por usuario y fecha',
+        'Tablero Panorama para gerencia en USD y ARS',
+        'Acceso web seguro por roles (operador, administración, dirección)',
+      ],
+      en: [
+        'Clean migration from your current Excel spreadsheet',
+        'Fast scan-based entries and destination-tracked exits',
+        'Expiration status and critical stock alerts',
+        'Auditable movement history by user and timestamp',
+        'Executive overview dashboard in USD and ARS',
+        'Role-based secure web access (warehouse, admin, management)',
+      ],
+    },
+    technologies: [
+      { name: '.NET 8', icon: 'dotnet' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'PostgreSQL (Supabase)', icon: 'database' },
+      { name: 'Vercel', icon: 'vercel' },
+    ],
+    benefits: {
+      es: [
+        {
+          title: 'Panorama claro para el dueño',
+          description: 'Sabés al instante cuánta plata tenés en el depósito, qué está por vencer y qué clientes traccionan el mes.',
+          icon: 'trending-up',
+        },
+        {
+          title: 'Trazabilidad sin macros rotas',
+          description: 'Cada entrada y salida queda registrada con usuario, fecha y destino, sin planillas que se bloqueen.',
+          icon: 'shield',
+        },
+        {
+          title: 'Puesta en marcha ágil',
+          description: 'Partimos de la planilla que ya usás para entregar una solución funcional en días, no en meses.',
+          icon: 'zap',
+        },
+      ],
+      en: [
+        {
+          title: 'Clear view for business owners',
+          description: 'Know instantly how much capital sits in your warehouse, what is close to expiring and which clients drive monthly volume.',
+          icon: 'trending-up',
+        },
+        {
+          title: 'Traceability without broken macros',
+          description: 'Every entry and exit is logged with user, date and destination, free from spreadsheet lockups.',
+          icon: 'shield',
+        },
+        {
+          title: 'Fast rollout',
+          description: 'We start from the spreadsheet you already use to deliver a working web solution in days, not months.',
+          icon: 'zap',
+        },
+      ],
+    },
+    cta: {
+      text: {
+        es: 'Quiero pasar mi planilla a un sistema web',
+        en: 'Turn my spreadsheet into a web system',
+      },
+      href: '/contacto?servicio=excel-a-sistema',
+    },
+  },
+  {
     id: 'landing-pages',
     slug: 'landing-pages',
     title: {

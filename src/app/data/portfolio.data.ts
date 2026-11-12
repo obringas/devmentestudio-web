@@ -1,5 +1,11 @@
 import { AppLanguage } from '../core/services/locale.service';
 
+export interface PortfolioScreenshot {
+  readonly src: string;
+  readonly title: string;
+  readonly caption: string;
+}
+
 export interface PortfolioCase {
   readonly id: string;
   readonly slug: string;
@@ -11,18 +17,84 @@ export interface PortfolioCase {
   readonly work: string;
   readonly result: string;
   readonly technologies: readonly string[];
+  readonly screenshots?: readonly PortfolioScreenshot[];
 }
 
-interface LocalizedPortfolioCase extends Omit<PortfolioCase, 'title' | 'industry' | 'role' | 'situation' | 'work' | 'result'> {
+interface LocalizedPortfolioScreenshot {
+  readonly src: string;
+  readonly title: Record<AppLanguage, string>;
+  readonly caption: Record<AppLanguage, string>;
+}
+
+interface LocalizedPortfolioCase
+  extends Omit<
+    PortfolioCase,
+    'title' | 'industry' | 'role' | 'situation' | 'work' | 'result' | 'screenshots'
+  > {
   readonly title: Record<AppLanguage, string>;
   readonly industry: Record<AppLanguage, string>;
   readonly role: Record<AppLanguage, string>;
   readonly situation: Record<AppLanguage, string>;
   readonly work: Record<AppLanguage, string>;
   readonly result: Record<AppLanguage, string>;
+  readonly screenshots?: readonly LocalizedPortfolioScreenshot[];
 }
 
 const PORTFOLIO_CASES: readonly LocalizedPortfolioCase[] = [
+  {
+    id: 'case-excel-stock-medico',
+    slug: 'de-excel-macros-a-sistema-web-stock',
+    title: {
+      es: 'De una planilla Excel con macros a un sistema de stock y panorama financiero',
+      en: 'From a macro-heavy Excel spreadsheet to a stock and financial overview system',
+    },
+    industry: {
+      es: 'Insumos médicos quirúrgicos',
+      en: 'Surgical medical supplies',
+    },
+    role: {
+      es: 'Arquitectura y desarrollo integral',
+      en: 'End-to-end architecture and development',
+    },
+    coverImage: '/images/portfolio/medical-supplies-excel-to-web-es.png',
+    situation: {
+      es: 'El control de insumos para cirugías dependía de una planilla Excel con macros que se había vuelto inmanejable: sin alertas claras de vencimiento, sin trazabilidad de quién movía cada ítem ni visibilidad rápida del capital en el depósito.',
+      en: 'Surgical supply control relied on a macro-driven Excel file that had become unmanageable: no clear expiration alerts, no audit trail of who moved each item and no quick view of warehouse capital.',
+    },
+    work: {
+      es: 'En una semana pusimos en marcha un sistema web con altas por escaneo, bajas por destino, alertas de vencimiento a 30/60/90 días y un módulo Panorama en USD y ARS para que la dirección vea el capital en stock y las salidas del mes.',
+      en: 'Within one week we launched a web system featuring scan-based entries, destination exits, 30/60/90-day expiration alerts and a USD/ARS executive overview showing stock capital and monthly outflows.',
+    },
+    result: {
+      es: 'El depósito registra entradas y salidas en segundos con historial por usuario, y la gerencia consulta en tiempo real cuánta plata hay en stock, qué mercadería está en riesgo por vencimiento y qué clientes traccionan el mes.',
+      en: 'The warehouse logs entries and exits in seconds with per-user history, while management checks in real time how much money is in stock, which items face expiration risk and which clients drive monthly volume.',
+    },
+    technologies: ['.NET', 'Angular', 'PostgreSQL (Supabase)'],
+    screenshots: [
+      {
+        src: '/images/portfolio/medical-stock-operacion-es.png',
+        title: {
+          es: 'Operación diaria del depósito',
+          en: 'Daily warehouse operations',
+        },
+        caption: {
+          es: 'Semáforo de vencimientos (vencidos, 30, 45 y 60 días), altas por escaneo, últimos movimientos con responsable y destinos del mes.',
+          en: 'Expiration status (expired, 30, 45 and 60 days), scan-based entries, recent movements with operator accountability and monthly destinations.',
+        },
+      },
+      {
+        src: '/images/portfolio/medical-stock-panorama-es.png',
+        title: {
+          es: 'Panorama ejecutivo para dirección y gerencia',
+          en: 'Executive overview for owners and management',
+        },
+        caption: {
+          es: 'Capital total en stock en USD o ARS, mercadería en riesgo por vencimiento, salidas del mes valorizadas por institución y productos de mayor peso financiero.',
+          en: 'Total stock capital in USD or ARS, inventory at risk by expiration window, valued monthly outflows by institution and highest-weight products.',
+        },
+      },
+    ],
+  },
   {
     id: 'case-vfp-dotnet',
     slug: 'modernizacion-visual-foxpro-dotnet',
@@ -99,6 +171,11 @@ const localize = (item: LocalizedPortfolioCase, language: AppLanguage): Portfoli
   work: item.work[language],
   result: item.result[language],
   technologies: item.technologies,
+  screenshots: item.screenshots?.map((shot) => ({
+    src: shot.src,
+    title: shot.title[language],
+    caption: shot.caption[language],
+  })),
 });
 
 export const getPortfolioCases = (language: AppLanguage): readonly PortfolioCase[] =>
