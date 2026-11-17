@@ -182,13 +182,13 @@ Cerrar procesos que usen `dist/` y reintentar; confirmar si persiste en CI.
 2026-11-17
 
 ### Descripcion
-La línea solo invoca una función que lee la clave; no contiene un valor literal. El detector de secretos la reporta como error y `check-context.js` sale con código 1. No se modificó `api/` por alcance.
+La línea solo invoca una función que lee la clave; no hay valor literal. La causa está en `.ai/tools/check-context.js`: `isPlaceholder` solo exime `process.env`.
 
 ### Impacto
 Bajo
 
 ### Modulo afectado
-`api/chat.js`, `.ai/tools/check-context.js`
+`.ai/tools/check-context.js` (copia del master)
 
 ### Recomendacion
-Renombrar la variable o ajustar el detector con autorización; confirmar que no hay secretos reales (verificado: no los hay en esa línea).
+Corregir en el master del template y re-sincronizar `.ai/`. El repo no se toca (ni `api/` ni `.ai/`).

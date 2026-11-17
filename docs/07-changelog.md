@@ -6,7 +6,7 @@
 > Plantilla del detalle: `.ai/templates/changelog-entry.md`.
 
 ```text
-2026-11-17 · docs · protocol · +.ai/ +CLAUDE.md +GEMINI.md ~AGENTS.md ~docs/07-changelog.md · — · →changelog/2026-11-17-migracion-protocolo-v5.md
+2026-11-17 · docs · protocol · +.ai/ +CLAUDE.md +GEMINI.md ~AGENTS.md ~N archivos · — · →changelog/2026-11-17-migracion-protocolo-v5.md
 2026-11-12 · feat · site · ~25 archivos +3 imágenes portfolio · — · →changelog/2026-11-12-caso-stock-medico-y-mejoras-comerciales.md
 2026-09-22 · feat · site · ~DESIGN.md ~PRODUCT.md ~seo.service.ts ~styles.scss ~N archivos · ADR-0004 · →changelog/2026-09-22-reposicionamiento-continuidad.md
 2026-09-22 · feat · branding · +favicon-concept-c.ico +favicon-concept-c.png · — · →changelog/2026-09-22-favicon-concept-c.md

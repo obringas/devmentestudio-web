@@ -23,8 +23,14 @@ No aplica.
 ## Decisiones
 No aplica.
 
+## Cierre de pendientes
+- `~DESIGN.md` — solo el bloque índice entre `INDEX:start` y `INDEX:end` (14 líneas agregadas), autorizado por el dueño.
+- `~.gitignore` — agrega `.claude/settings.local.json`.
+- `~docs/INDEX.md`, `~docs/07-changelog.md`, `~docs/08-known-issues.md`.
+
 ## Validaciones
-- Ver entrega: check-context, selftest y `npm run check` (antes/después iguales).
+- `check-context.js`: único error restante, falso positivo SECRETO `api/chat.js:35` (→ `08-known-issues.md`).
+- `selftest.js` OK; `npm run check` igual antes y después (EPERM en `dist/`).
 
 ## Pendientes
 - Push y PR a cargo del dueño.

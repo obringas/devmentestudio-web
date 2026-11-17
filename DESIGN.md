@@ -119,6 +119,20 @@ components:
 
 # Design System: DevMenteStudio
 
+
+<!-- INDEX:start -->
+| Sección | Resumen |
+|---|---|
+| [Overview](#overview) | Creative North Star: "Continuidad visible" |
+| [Colors](#colors) | La paleta combina una base institucional navy, superficies frías y luminosas y… |
+| [Typography](#typography) | Display Font: Cormorant Garamond, con Georgia como fallback. |
+| [Layout](#layout) | El contenedor principal tiene un ancho máximo de 80rem y padding lateral progre… |
+| [Elevation & Depth](#elevation-depth) | El sistema es plano por defecto y usa profundidad sólo para distinguir acción,… |
+| [Shapes](#shapes) | La forma es suave, precisa y contenida. Paneles y medios usan radios entre medi… |
+| [Components](#components) |  |
+| [Do's and Don'ts](#dos-and-donts) |  |
+<!-- INDEX:end -->
+
 ## Overview
 
 **Creative North Star: "Continuidad visible"**
