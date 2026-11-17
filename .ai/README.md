@@ -1,4 +1,4 @@
-# Protocolo para agentes IA — v5.7.0
+# Protocolo para agentes IA — v5.7.1
 
 Carpeta de reglas y plantillas que acompaña a `AGENTS.md`. Se copia completa al proyecto objetivo y **no se edita desde el proyecto**: las particularidades van en `docs/05-ai-rules.md`.
 
@@ -16,7 +16,7 @@ Carpeta de reglas y plantillas que acompaña a `AGENTS.md`. Se copia completa al
 5. Revisar lo generado en `/docs`: que no haya inventado reglas ni ADRs, que no haya copiado secretos, que los comandos existan, que los `[PENDIENTE]` estén identificados.
 6. **Guarda automática (recomendado):** `node .ai/tools/install-hooks.js` instala un hook `pre-commit` que corre `check-context.js`; para Azure Pipelines agregar un paso `node .ai/tools/check-context.js` antes del build (ver abajo). Requiere Node ≥ 16, que ya está en cualquier proyecto Angular o con tooling de .NET.
 7. **Proyectos con UI:** tener la skill Impeccable instalada a nivel usuario, nunca en el repo (ver `.ai/rules/31-ui-design.md §9`; la versión se registra en `docs/03-setup.md`) y correr `/impeccable init` + `document` para generar `PRODUCT.md` y `DESIGN.md`. Opcional: `web-design-guidelines` de Vercel como auditoría.
-8. Commit: `docs(protocol): incorpora protocolo para agentes IA v5.7.0`.
+8. Commit: `docs(protocol): incorpora protocolo para agentes IA v5.7.1`.
 
 ## Cómo descubre el protocolo cada herramienta
 
@@ -97,6 +97,7 @@ Repo en 5.1 con índice en formato lista → `PROMPT-chore-optimizacion-contexto
 
 | Versión | Fecha | Cambio |
 |---|---|---|
+| 5.7.1 | 2026-11-17 | Detector de secretos: un valor que es llamada a función (identificador seguido de "(") no se reporta; detectado en el primer repo consumidor real. |
 | 5.7.0 | 2026-11-17 | Correcciones de consistencia: versión única, tope de AGENTS.md, índice sin alineación, validación de §0 y de historial en check-context, detector de secretos sin falsos positivos, selftest de herramientas. |
 | 5.6.1 | 2026-10-16 | Parche de redacción sobre 5.6 sin detalle en el historial original; se conserva la fecha y se documenta el hueco. |
 | 5.6 | 2026-10-16 | Detector de secretos en `check-context` (cadenas de conexión, claves, tokens, llaves privadas; redacta valores; ignora placeholders); plantilla `pedido-tarea.md` y regla de pedido incompleto en `00-core §1`. Cierra la tanda 1 de mejoras post-informe |

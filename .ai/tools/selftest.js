@@ -83,7 +83,7 @@ try {
   });
   test('7 secreto detectado con valor redactado', () => {
     const value = 'fixture' + 'Ab9'.repeat(18), file = path.join(docs, 'credential.md');
-    for (const text of [`Server=localhost;Database=fixture;Password=${value};`, `pat: ${value}`, 'ghp_' + 'A'.repeat(36)]) {
+    for (const text of [`Server=localhost;Database=fixture;Password=${value};`, `pat: ${value}`, 'ghp_' + 'A'.repeat(36), `apiKey = "${value}"`]) {
       replaceFile(file, text, () => {
         const r = external(['--history', '0']); reject(r, 'SECRETO:');
         assert(r.output.includes('[REDACTADO]') && !r.output.includes(value) && !r.output.includes('A'.repeat(36)), 'salida sin redacción completa');
@@ -92,7 +92,7 @@ try {
   });
   test('8 placeholders, hashes y window.prompt permitidos', () => {
     const hash = 'a'.repeat(52);
-    replaceFile(path.join(docs, 'credential.md'), `Password=process.env.DB_PASSWORD\nPassword=<valor>\ntoken = process.env.${hash}\ntoken = <${hash}>\n<ghp_${hash}>\nprocess.env.ghp_${hash}\nhash: ${hash}\nwindow.prompt('Nombre');\n`, () => {
+    replaceFile(path.join(docs, 'credential.md'), `Password=process.env.DB_PASSWORD\nPassword=<valor>\ntoken = process.env.${hash}\ntoken = <${hash}>\n<ghp_${hash}>\nprocess.env.ghp_${hash}\nhash: ${hash}\nwindow.prompt('Nombre');\nconst apiKey = getApiKey();\napiKey: config.getSecret('nombre')\nclient_secret = vault.read(path)\n`, () => {
       const r = external(['--history', '0']); assert(r.status === 0 && !r.output.includes('SECRETO:'), 'falso positivo de secreto');
     });
     assert(!L.AI_MARKERS.test('window.prompt("Nombre")') && L.AI_MARKERS.test('prompt de IA') && L.AI_MARKERS.test('AI-assisted') && L.AI_MARKERS.test('.ai/rules'), 'marcadores incorrectos');

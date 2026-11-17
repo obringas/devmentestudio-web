@@ -37,7 +37,7 @@ const SECRET_PATTERNS = [
   { name: 'PAT con contexto de credencial', rx: /\b(pat|token|secret|key|auth)\b[^\r\n]{0,40}?\b([A-Za-z0-9]{40,})\b/i, context: true },
   { name: 'AWS access key', rx: /\bAKIA[0-9A-Z]{16}\b/ },
 ];
-const SECRET_PLACEHOLDER = /^(process\.env|Environment\.|builder\.Configuration|configuration\[|_config|\$env:|os\.environ|Get-|\$\(|<[^>]*>|\*{3,}|x{3,}|tu[-_]|\+QUOTENAME\(@|\[PENDIENTE[^\]]*\]|\$\{[^}]*\}|\{\{[^}]*\}\}|%[A-Z_]+%|your[-_]|changeme|placeholder|example|dummy|secret-name|from[-_ ]?(user-secrets|keyvault|env))/i;
+const SECRET_PLACEHOLDER = /^(process\.env|Environment\.|builder\.Configuration|configuration\[|_config|\$env:|os\.environ|Get-|\$\(|<[^>]*>|\*{3,}|x{3,}|tu[-_]|\+QUOTENAME\(@|\[PENDIENTE[^\]]*\]|\$\{[^}]*\}|\{\{[^}]*\}\}|%[A-Z_]+%|your[-_]|changeme|placeholder|example|dummy|secret-name|from[-_ ]?(user-secrets|keyvault|env)|[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*\()/i;
 const SECRET_SCAN_FILES = /\.(md|json|xml|config|yml|yaml|env|ini|txt|cs|ts|js|sql|ps1|sh|csproj|props|targets)$|^\.env/i;
 
 const IGNORE_DIRS = new Set(['node_modules', 'bin', 'obj', 'dist', '.git', '.angular', 'coverage', 'TestResults', '.vs', '.idea']);

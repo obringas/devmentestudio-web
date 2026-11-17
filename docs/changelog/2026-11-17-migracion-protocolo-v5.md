@@ -33,4 +33,11 @@ No aplica.
 - `selftest.js` OK; `npm run check` igual antes y después (EPERM en `dist/`).
 
 ## Pendientes
-- Push y PR a cargo del dueño.
+- Push y PR (ver sección 5.7.1).
+
+## Actualización a 5.7.1
+- Se copia `.ai/` completa y se reemplazan `CLAUDE.md`, `GEMINI.md` y `.prettierignore` desde el template; `AGENTS.md` igual al master salvo la tabla §0.
+- Cambian solo `.ai/tools/lib.js`, `.ai/tools/selftest.js`, `.ai/README.md` y la línea de versión de `AGENTS.md`.
+- Corrige el falso positivo de secreto en `api/chat.js:35` (`docs/08-known-issues.md` → `[RESUELTO 2026-11-17]`).
+- Validación: `check-context.js` OK (0 avisos); `selftest.js` 11 PASS · 0 FAIL.
+- Pendiente: merge del PR a `develop` a cargo del dueño.

@@ -2,7 +2,7 @@
 
 > Punto de entrada **único** para Claude Code, Codex, Gemini CLI y otros agentes.
 > `CLAUDE.md` y `GEMINI.md` solo redirigen acá. Las reglas detalladas viven en `.ai/rules/`; la memoria del proyecto en `/docs`.
-> **Versión del protocolo:** 5.7.0 · **Actualizado:** 2026-11-17
+> **Versión del protocolo:** 5.7.1 · **Actualizado:** 2026-11-17
 
 ---
 

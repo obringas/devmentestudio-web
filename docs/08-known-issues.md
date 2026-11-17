@@ -176,7 +176,7 @@ Build local en Windows
 ### Recomendacion
 Cerrar procesos que usen `dist/` y reintentar; confirmar si persiste en CI.
 
-## `check-context.js` marca falso positivo de secreto en `api/chat.js:35`
+## [RESUELTO 2026-11-17] Falso positivo de secreto en `api/chat.js:35`
 
 ### Fecha
 2026-11-17
@@ -191,4 +191,4 @@ Bajo
 `.ai/tools/check-context.js` (copia del master)
 
 ### Recomendacion
-Corregir en el master del template y re-sincronizar `.ai/`. El repo no se toca (ni `api/` ni `.ai/`).
+Resuelto con el parche 5.7.1 del template (`.ai/tools/lib.js`), re-sincronizado en este repo; `check-context.js` ya no lo marca.

@@ -73,7 +73,7 @@ docs/
 │  ├─ #ai_contextmd-se-superpone-con-docs `AI_CONTEXT.md` se superpone con `/docs`
 │  ├─ #02-architecturemd-sin-seccion-sistema-visual `02-architecture.md` sin sección "Sistema visual"
 │  ├─ #npm-run-check-falla-con-eperm-al-limpiar-dist-windows `npm run check` falla con EPERM al limpiar `dist/` (Windows)
-│  └─ #check-contextjs-marca-falso-positivo-de-secreto-en-apichatjs35 `check-context.js` marca falso positivo de secreto en `api/chat.js:35`
+│  └─ #resuelto-2026-11-17-falso-positivo-de-secreto-en-apichatjs35 [RESUELTO 2026-11-17] Falso positivo de secreto en `api/chat.js:35`
 ├─ 09-working-state.md terminada · Sin tarea en curso
 └─ DESIGN.md 8 secciones · leer por ancla, nunca entero
 ```
