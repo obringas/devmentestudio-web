@@ -1,0 +1,8 @@
+# Protocolo para agentes IA: el formateador alinea tablas y árboles con espacios que el modelo paga en tokens.
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.ai/
+docs/
+DESIGN.md
+PRODUCT.md
