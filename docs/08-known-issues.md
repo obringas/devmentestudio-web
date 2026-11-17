@@ -90,3 +90,105 @@ Medio
 
 ### Recomendacion
 Se integró Web3Forms mediante un servicio tipado y transporte `FormData`, con estados reales de éxito, error y carga. Resta validar la entrega extremo a extremo con un envío desde producción después del deploy.
+
+## Tailwind 3 declarado con el plugin PostCSS de Tailwind 4
+
+### Fecha
+2026-11-17
+
+### Descripcion
+`package.json` fija `tailwindcss` ^3.4.19 y `@tailwindcss/postcss` ^4.1.18; `postcss.config.js` usa el plugin v4 y existe `tailwind.config.js` (formato v3). Versiones mezcladas; el build hoy funciona.
+
+### Impacto
+Medio
+
+### Modulo afectado
+`package.json`, `postcss.config.js`, `tailwind.config.js`
+
+### Recomendacion
+Decidir una sola versión (migrar a v4 o volver al plugin v3) con ADR. No tocado en la migración de protocolo.
+
+## Sin CI remoto
+
+### Fecha
+2026-11-17
+
+### Descripcion
+`.github/workflows/` está vacío: `npm run check` (lint, tests, build) solo corre en local. Ya figuraba como follow-up en el changelog de 2026-02-12.
+
+### Impacto
+Medio
+
+### Modulo afectado
+`.github/workflows/`
+
+### Recomendacion
+Agregar un workflow que corra `npm run check` en PR a `develop` y `main`.
+
+## `AI_CONTEXT.md` se superpone con `/docs`
+
+### Fecha
+2026-11-17
+
+### Descripcion
+`AI_CONTEXT.md` en la raíz duplica contexto que hoy vive en `/docs` y puede divergir.
+
+### Impacto
+Bajo
+
+### Modulo afectado
+`AI_CONTEXT.md`
+
+### Recomendacion
+Consolidar lo vigente en `/docs` y archivar o eliminar el archivo, con autorización.
+
+## `02-architecture.md` sin sección "Sistema visual"
+
+### Fecha
+2026-11-17
+
+### Descripcion
+El protocolo pide en frontends una sección "Sistema visual" que apunte a `DESIGN.md`. `02-architecture.md` solo lo menciona en "Activos de marca". Además su árbol "Estructura principal" omite `src/assets/` y `api/`.
+
+### Impacto
+Bajo
+
+### Modulo afectado
+`docs/02-architecture.md`
+
+### Recomendacion
+Agregar la sección en una tarea que permita editar `02`; no se corrigió en la migración por alcance.
+
+## `npm run check` falla con EPERM al limpiar `dist/` (Windows)
+
+### Fecha
+2026-11-17
+
+### Descripcion
+El build Angular genera el bundle y las 9 rutas prerenderizadas, pero termina con `EPERM: unlink dist/devmentestudio-web/3rdpartylicenses.txt`, probablemente por un proceso que bloquea `dist/`. Lint y tests (17) pasan. Además `home.component.ts` excede el presupuesto de estilos por 42 bytes (warning).
+
+### Impacto
+Bajo
+
+### Modulo afectado
+Build local en Windows
+
+### Recomendacion
+Cerrar procesos que usen `dist/` y reintentar; confirmar si persiste en CI.
+
+## [RESUELTO 2026-11-17] Falso positivo de secreto en `api/chat.js:35`
+
+### Fecha
+2026-11-17
+
+### Descripcion
+La línea solo invoca una función que lee la clave; no hay valor literal. La causa está en `.ai/tools/check-context.js`: `isPlaceholder` solo exime `process.env`.
+
+### Impacto
+Bajo
+
+### Modulo afectado
+`.ai/tools/check-context.js` (copia del master)
+
+### Recomendacion
+Resuelto con el parche 5.7.1 del template (`.ai/tools/lib.js`), re-sincronizado en este repo; `check-context.js` ya no lo marca.
